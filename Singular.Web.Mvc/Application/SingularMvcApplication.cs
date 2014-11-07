@@ -5,6 +5,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Web;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Section;
 
 namespace Singular.Web.Mvc.Application
 {
@@ -85,6 +86,11 @@ namespace Singular.Web.Mvc.Application
                     Component
                     .For<ISingularContext>()
                     .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
+                    .LifestyleSingleton(),
+
+                    Component
+                    .For<IMvcSectionManager>()
+                    .UsingFactoryMethod(()=> MvcSectionManager.Current)
                     .LifestyleSingleton()
 
                 )

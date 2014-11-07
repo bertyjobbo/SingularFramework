@@ -1,20 +1,23 @@
 using Singular.Core.Context;
 using System.Web.Mvc;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
     public class BuildController : CoreControllerBase
     {
-        
+        private readonly IEmbeddedResourceManager _resMgr;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="ctx"></param>
-        /// <param name="resourceManager"></param>
-        public BuildController(ISingularContext ctx, IEmbeddedResourceManager resourceManager) : base(ctx,resourceManager)
+        /// <param name="sectionService"></param>
+        /// <param name="mgr"></param>
+        public BuildController(ISingularContext ctx, IMvcSectionManager sectionService, IEmbeddedResourceManager mgr) : base(ctx, sectionService)
         {
-            
+            _resMgr = mgr;
         }
 
         /// <summary>
@@ -24,7 +27,7 @@ namespace Singular.Modules.Core.Controllers
         public ActionResult Index()
         {
             string msg = null;
-            if (ResourceManager.BuildResources(ref msg))
+            if (_resMgr.BuildResources(ref msg))
             {
                 Response.Redirect(base.Url.Content("~/Singular/Core/Build/Success"));
                 return null;

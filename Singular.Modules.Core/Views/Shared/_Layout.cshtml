@@ -8,7 +8,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>_Layout</title>
-    <link rel="stylesheet" href="@Url.EmbeddedContent(this,"~/Content/Css/Singular-Dashboard.min.css")" />
+    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular-Dashboard.css", IncludeBehaviour.MinifyAlways)" />
 </head>
 <body>
     <header>
@@ -23,10 +23,30 @@
     </section>
     <section id="sec_sidebar">
         <ul role="navigation">
-            <li class="sec_sidebar-active"><a href="#"><img src="@Url.EmbeddedContent(this,"~/Content/Images/Dummy/1.png")" /></a></li>
-            <li><a href="#"><img src="@Url.EmbeddedContent(this,"~/Content/Images/Dummy/2.png")" /></a></li>
-            <li><a href="#"><img src="@Url.EmbeddedContent(this,"~/Content/Images/Dummy/3.png")" /></a></li>
-            <li><a href="#"><img src="@Url.EmbeddedContent(this,"~/Content/Images/Dummy/4.png")" /></a></li>
+            @foreach (var section in Model.Sections)
+            {
+                if (section.IsActive.Invoke())
+                {
+                    <li class="sec_sidebar-active">
+                        <a title="@(section.Name) | @(section.Description)"
+                           href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
+                            <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
+                                 alt="@(section.Name) Image" />
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a title="@(section.Name) | @(section.Description)"
+                           href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
+                            <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
+                                 alt="@(section.Name) Image" />
+                        </a>
+                    </li>
+                }
+
+            }
         </ul>
         <p id="p_copyright">&copy;2014 Rob Johnson</p>
     </section>

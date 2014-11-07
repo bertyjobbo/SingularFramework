@@ -94,12 +94,16 @@
     <Compile Include="Application\SingularMvcApplication.cs" />
     <Compile Include="Context\SingularMvcContext.cs" />
     <Compile Include="HtmlExtensions\EmbeddedContentExtensions.cs" />
+    <Compile Include="HtmlExtensions\IncludeBehaviour.cs" />
     <Compile Include="Ioc\ApiControllerInstaller.cs" />
     <Compile Include="Ioc\ControllerInstaller.cs" />
     <Compile Include="Ioc\WindsorControllerFactory.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyResolver.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Section\IMvcSectionManager.cs" />
+    <Compile Include="Section\MvcSectionManager.cs" />
+    <Compile Include="Section\MvcSection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

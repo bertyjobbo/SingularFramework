@@ -113,6 +113,7 @@
     <EmbeddedResource Include="Content\Images\Dummy\2.png" />
     <EmbeddedResource Include="Content\Images\Dummy\3.png" />
     <EmbeddedResource Include="Content\Images\Dummy\4.png" />
+    <EmbeddedResource Include="Content\Images\Tree.png" />
     <Content Include="packages.config" />
     <Content Include="Content\Css\Singular-Dashboard.css.map">
       <DependentUpon>Singular-Dashboard.css</DependentUpon>
@@ -144,7 +145,6 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="Configuration\ModuleConfiguration.cs" />
     <Compile Include="Controllers\CoreControllerBase.cs" />
-    <Compile Include="Controllers\CoreControllerBaseExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BuildController.cs" />
     <Compile Include="Controllers\TestController.cs" />

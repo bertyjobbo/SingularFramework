@@ -36,6 +36,8 @@ using System.Web.UI;
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Css.Singular-Dashboard.min.css", "text/css")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Tree.png", "image/png")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Dummy.1.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Dummy.2.png", "image/png")]
@@ -43,6 +45,8 @@ using System.Web.UI;
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Dummy.3.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Dummy.4.png", "image/png")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Tree.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Dummy.1.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
