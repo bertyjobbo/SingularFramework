@@ -1,0 +1,144 @@
+﻿/* #region @vars */
+/* #endregion */
+/* #region globals */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Segoe, Arial, sans-serif;
+}
+html,
+body {
+  overflow: hidden;
+  background: #cccccc;
+  height: 100%;
+}
+/* #region main-layout */
+header {
+  background: #007acc;
+  color: #ffffff;
+  text-transform: lowercase;
+  width: 100%;
+  height: 10%;
+}
+header > div#header_inner {
+  padding: 16px;
+}
+h1 {
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 22px;
+}
+section#sec_top {
+  background: #444444;
+  color: white;
+  height: 10%;
+}
+section#sec_top > div#sec_top_inner {
+  padding: 16px;
+}
+section#sec_sidebar {
+  float: left;
+  height: 80%;
+  overflow: hidden;
+  background: #444444;
+  color: #ffffff;
+  width: 150px;
+  margin-left: -150px;
+}
+span#spn_hide_scroll {
+  width: 17px;
+  height: 100%;
+  background: #cccccc;
+  float: left;
+  margin-left: -17px;
+  display: none;
+}
+section#sec_dashboard {
+  overflow-y: auto;
+  height: 90%;
+}
+section#sec_dashboard > div#sec_dashboard_inner {
+  padding: 16px 16px 16px 16px;
+}
+/* #endregion*/
+/* #region sidebar */
+section#sec_sidebar > ul {
+  overflow-y: auto;
+  margin-bottom: 32px;
+  height: 96%;
+}
+section#sec_sidebar > ul > li > a {
+  padding: 16px;
+  background: #555555;
+  height: 100px;
+  width: 100px;
+  color: #ffffff;
+  border-bottom: 1px solid #444444;
+  display: block;
+}
+section#sec_sidebar > ul > li > a:hover {
+  background: #6f6f6f;
+}
+section#sec_sidebar > ul > li > a > img {
+  height: 100px;
+}
+section#sec_sidebar > ul > li.sec_sidebar-active > a {
+  background: #cccccc;
+}
+section#sec_sidebar > p#p_copyright {
+  padding: 16px 0 0 8px;
+  font-size: 8px;
+  bottom: 8px;
+  position: fixed;
+}
+/* #endregion */
+/* #region non-mobile overrides */
+/* Small devices (tablets, 76(@padding / 2) and up) */
+@media (min-width: 768px) {
+  section#sec_sidebar {
+    margin-left: 0;
+  }
+  span#spn_hide_scroll {
+    display: block;
+  }
+  section#sec_dashboard {
+    overflow-y: auto;
+  }
+  section#sec_dashboard > div#sec_dashboard_inner {
+    padding: 16px 16px 16px 0;
+  }
+}
+/* Small height (768) */
+/* Medium devices (desktops, 992px and up) */
+/* Medium height 992px and up */
+@media (min-height: 992px) {
+  header,
+  section#sec_top {
+    height: 5%;
+  }
+  section#sec_dashboard,
+  section#sec_sidebar {
+    height: 90%;
+  }
+  h1 {
+    line-height: 14px;
+  }
+}
+/* Large devices (large desktops, 1200px and up) */
+/* large height 1200px and up */
+@media (max-height: 992px) and (min-device-height: 601px) {
+  header,
+  section#sec_top {
+    height: 5%;
+  }
+  section#sec_dashboard,
+  section#sec_sidebar {
+    height: 90%;
+  }
+  h1 {
+    line-height: 14px;
+  }
+}
+/* #endregion*/
+/*# sourceMappingURL=Singular-Dashboard.css.map */
+/*# sourceMappingURL=Singular-Dashboard.css.map */

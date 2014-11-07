@@ -1,0 +1,182 @@
+﻿/* #region @vars */
+
+@color-brand: #007acc;
+@color-dark: #444;
+@color-medium: #555;
+@color-grey: #ccc;
+@color-white: #fff;
+
+@padding: 16px;
+
+@view-small-width: 768px;
+@view-medium-width: 992px;
+@view-large-width: 1200px;
+@view-small-height: 768px;
+@view-medium-height: 992px;
+@view-large-height: 1200px;
+
+
+
+/* #endregion */
+/* #region globals */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Segoe, Arial, sans-serif;
+}
+
+html,
+body {
+    overflow: hidden;
+    background: @color-grey;
+    height: 100%;
+}
+/* #region main-layout */
+header {
+    background: @color-brand;
+    color: @color-white;
+    text-transform: lowercase;
+    width: 100%;
+    height: 10%;
+}
+
+header > div#header_inner {
+    padding: @padding;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+section#sec_top {
+    background: @color-dark;
+    color: white;
+    height: 10%;
+}
+
+section#sec_top > div#sec_top_inner {
+    padding: @padding;
+}
+
+section#sec_sidebar {
+    float: left;
+    height: 80%;
+    overflow: hidden;
+    background: @color-dark;
+    color: @color-white;
+    width: 150px;
+    margin-left: -150px;
+}
+
+span#spn_hide_scroll {
+    width: 17px;
+    height: 100%;
+    background: @color-grey;
+    float: left;
+    margin-left: -17px;
+    display: none;
+}
+
+section#sec_dashboard {
+    overflow-y: auto;
+    height: 90%;
+}
+
+section#sec_dashboard > div#sec_dashboard_inner {
+    padding: @padding @padding @padding @padding;
+}
+/* #endregion*/
+/* #region sidebar */
+section#sec_sidebar > ul {
+    overflow-y: auto;
+    margin-bottom: 32px;
+    height: 96%;
+}
+
+section#sec_sidebar > ul > li > a {
+    padding: @padding;
+    background: @color-medium;
+    height: 100px;
+    width: 100px;
+    color: @color-white;
+    border-bottom: 1px solid @color-dark;
+    display: block;
+}
+
+section#sec_sidebar > ul > li > a:hover {
+    background: lighten(@color-medium,10%);
+}
+
+section#sec_sidebar > ul > li > a > img {
+    height: 100px;
+}
+
+section#sec_sidebar > ul > li.sec_sidebar-active > a {
+    background: @color-grey;
+}
+
+section#sec_sidebar > p#p_copyright {
+    padding: @padding 0 0 (@padding / 2);
+    font-size: (@padding / 2);
+    bottom: (@padding / 2);
+    position: fixed;
+}
+/* #endregion */
+/* #region non-mobile overrides */
+/* Small devices (tablets, 76(@padding / 2) and up) */
+@media (min-width: @view-small-width) {
+    section#sec_sidebar {
+        margin-left: 0;
+    }
+
+    span#spn_hide_scroll {
+        display: block;
+    }
+
+    section#sec_dashboard {
+        overflow-y: auto;
+    }
+
+    section#sec_dashboard > div#sec_dashboard_inner {
+        padding: @padding @padding @padding 0;
+    }
+}
+/* Small height (768) */
+/* Medium devices (desktops, 992px and up) */
+/* Medium height 992px and up */
+@media (min-height: @view-medium-height) {
+    header,
+    section#sec_top {
+        height: 5%;
+    }
+
+    section#sec_dashboard,
+    section#sec_sidebar {
+        height: 90%;
+    }
+
+    h1 {
+        line-height: 14px;
+    }
+}
+/* Large devices (large desktops, 1200px and up) */
+/* large height 1200px and up */
+@media (max-height: @view-medium-height) and (min-device-height: 601px) {
+    header,
+    section#sec_top {
+        height: 5%;
+    }
+
+    section#sec_dashboard,
+    section#sec_sidebar {
+        height: 90%;
+    }
+
+    h1 {
+        line-height: 14px;
+    }
+}
+/* #endregion*/
+/*# sourceMappingURL=Singular-Dashboard.css.map */
