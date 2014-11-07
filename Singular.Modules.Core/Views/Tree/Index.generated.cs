@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Singular.Modules.Core.Views.Home
+namespace Singular.Modules.Core.Views.Tree
 {
     using System;
     using System.Collections.Generic;
@@ -28,8 +28,8 @@ namespace Singular.Modules.Core.Views.Home
     using System.Web.WebPages;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Home/Index.cshtml")]
-    public partial class Index : System.Web.Mvc.WebViewPage<dynamic>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Tree/Index.cshtml")]
+    public partial class Index : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
     {
         public Index()
         {
@@ -37,14 +37,14 @@ namespace Singular.Modules.Core.Views.Home
         public override void Execute()
         {
             
-            #line 2 "..\..\Views\Home\Index.cshtml"
+            #line 3 "..\..\Views\Tree\Index.cshtml"
   
-    ViewBag.Title = "The Stuff Management system";
+    ViewBag.Title = "Content tree";
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("\r\n\r\n<h2>Content tree</h2>\r\n\r\n");
 
         }
     }

@@ -59,7 +59,7 @@ namespace Singular.Modules.Core.Configuration
         public override void RegisterArea(AreaRegistrationContext context)
         {
             var routeObj = new { controller = "Home", action = "Index", id = UrlParameter.Optional };
-            var strArrays = new string[] { "Singular.Modules.Core.Controllers" };
+            var strArrays = new [] { "Singular.Modules.Core.Controllers" };
             context.MapRoute("Core", "Singular/Core/{controller}/{action}/{id}", routeObj, strArrays);
         }
     }

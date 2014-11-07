@@ -95,6 +95,7 @@
     <Compile Include="Context\SingularMvcContext.cs" />
     <Compile Include="HtmlExtensions\EmbeddedContentExtensions.cs" />
     <Compile Include="HtmlExtensions\IncludeBehaviour.cs" />
+    <Compile Include="HtmlExtensions\TranslateExtensions.cs" />
     <Compile Include="Ioc\ApiControllerInstaller.cs" />
     <Compile Include="Ioc\ControllerInstaller.cs" />
     <Compile Include="Ioc\WindsorControllerFactory.cs" />
