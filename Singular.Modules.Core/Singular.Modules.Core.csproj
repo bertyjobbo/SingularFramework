@@ -130,6 +130,8 @@
     <EmbeddedResource Include="Content\Bootstrap\css\bootstrap.css" />
     <EmbeddedResource Include="Content\Bootstrap\css\bootstrap.min.css" />
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <EmbeddedResource Include="Scripts\angular-animate.js" />
+    <EmbeddedResource Include="Scripts\angular-animate.min.js" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -162,6 +164,7 @@
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <EmbeddedResource Include="Scripts\angular-animate.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

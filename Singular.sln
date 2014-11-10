@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ComponentModules", "Compone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltNg", "AltNg\AltNg.csproj", "{AE75B047-07C0-4F9C-95EF-C1299452F93B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreModules", "CoreModules", "{EB4C217E-A848-4C62-BC13-B813C3C548A6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SingularModules", "SingularModules", "{EB4C217E-A848-4C62-BC13-B813C3C548A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

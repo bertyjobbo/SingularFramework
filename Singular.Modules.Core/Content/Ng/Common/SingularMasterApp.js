@@ -13,7 +13,7 @@ if (Singular == undefined) var Singular = {};
 if (Singular.Common == undefined) Singular.Common = {};
  
 // master app
-Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng","alt.route","alt.ui","alt.repeat"]);
+Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng","ngAnimate","alt.route","alt.ui","alt.repeat"]);
 
 // closure
 (function (app) {

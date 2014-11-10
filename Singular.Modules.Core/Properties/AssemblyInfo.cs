@@ -82,6 +82,12 @@ using System.Web.UI;
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.Core.SingularCoreApp.min.js.map", "text/plain")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Scripts.angular-animate.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Scripts.angular-animate.min.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Scripts.angular-animate.min.js.map", "text/plain")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Scripts.angular-mocks.js", "application/x-javascript")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Scripts.angular.js", "application/x-javascript")]
