@@ -98,6 +98,8 @@
     <Compile Include="HtmlExtensions\TranslateExtensions.cs" />
     <Compile Include="Ioc\ApiControllerInstaller.cs" />
     <Compile Include="Ioc\ControllerInstaller.cs" />
+    <Compile Include="Ioc\IMvcIocManager.cs" />
+    <Compile Include="Ioc\MvcIocManager.cs" />
     <Compile Include="Ioc\WindsorControllerFactory.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyResolver.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyScope.cs" />

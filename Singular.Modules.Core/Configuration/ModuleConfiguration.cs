@@ -36,23 +36,44 @@ namespace Singular.Modules.Core.Configuration
                 .CreateCollection(this, "Singular.Modules.Core", "Core")
                 .SetRouteFolder(@"C:\Git\SingularFramework\Singular.Modules.Core") // replace with appSetting ?
                 .SetProjectFileName("Singular.Modules.Core.csproj")
-                .AddFile("~/Content/Css/Singular-Dashboard.min.css")
+                .AddFolder("~/Content/Css")
+                .AddFolder("~/Content/Bootstrap/css")
+                .AddFolder("~/Content/Bootstrap/fonts")
                 .AddFolder("~/Content/Images")
-                .AddFolder("~/Content/Images/Dummy");
+                .AddFolder("~/Content/Ng")
+                .AddFolder("~/Content/Ng/Common")
+                .AddFolder("~/Content/Ng/Modules")
+                .AddFolder("~/Content/Ng/Modules/Core")
+                .AddFolder("~/Scripts")
+                .AddFolder("~/Scripts/angularui");
 
-            MvcSectionManager.Current.AddSection(new MvcSection
-            {
-                Order = -10000,
-                Name = "Tree",
-                Description = "Content tree for storing data, pages etc",
-                Action = "Index",
-                AreaName = "Core",
-                Controller = "Tree",
-                ImageVirtualPath = "~/Content/Images/Tree.png",
-                RouteValues = new { area = "Core" },
-                IsActive = () => HttpContext.Current != null &&
-                                 HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/tree")
-            });
+            MvcSectionManager.Current
+                .AddSection(new MvcSection
+                {
+                    Order = -10000,
+                    Name = "Tree",
+                    Description = "Content tree for storing data, pages etc",
+                    Action = "Index",
+                    AreaName = "Core",
+                    Controller = "Tree",
+                    ImageVirtualPath = "~/Content/Images/Tree.png",
+                    RouteValues = new { area = "Core" },
+                    IsActive = () => HttpContext.Current != null &&
+                                     HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/tree")
+                })
+                .AddSection(new MvcSection
+                {
+                    Order = -9500,
+                    Name = "UserManagement",
+                    Description = "User management - users, groups, permissions",
+                    Action = "Index",
+                    AreaName = "Core",
+                    Controller = "User",
+                    ImageVirtualPath = "~/Content/Images/User.png",
+                    RouteValues = new { area = "Core" },
+                    IsActive = () => HttpContext.Current != null &&
+                                     HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/user")
+                });
         }
 
 

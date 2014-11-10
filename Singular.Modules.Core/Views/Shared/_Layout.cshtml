@@ -1,62 +1,54 @@
-﻿@using System.Web.UI.WebControls
+﻿@using System.Web.Mvc.Html
+@using System.Web.UI.WebControls
 @using Singular.Web.Mvc.HtmlExtensions
 @inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
 @{
     Layout = null;
-}
-<!DOCTYPE html>
-<html>
+}<!DOCTYPE html>
+<html data-ng-app="@ViewBag.NgAppName">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Singular | @(ViewBag.Title ?? "[Set ViewBage.Title]")</title>
-    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular-Dashboard.css", IncludeBehaviour.MinifyAlways)" />
+    @*GLYPHS - LOAD FROM ASSEMBLY*@
+    <style>
+        @@font-face {
+            font-family: 'Glyphicons Halflings';
+            src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
+            src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
+        }
+    </style>
+
+    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+    @RenderSection("styles", false)
 </head>
-<body>
+<body data-ng-controller="SingularMasterAppController">
     <header>
-        <div id="header_inner">
-            <h1>Singular</h1>
-        </div>
+        @Html.Partial("_Nav")
     </header>
-    <section id="sec_top">
-        <div id="sec_top_inner">
-            <p>&nbsp;</p>
-        </div>
-    </section>
-    <section id="sec_sidebar">
+    <nav id="sidebar">
         <ul role="navigation">
             @foreach (var section in Model.Sections)
             {
-                if (section.IsActive.Invoke())
-                {
-                    <li class="sec_sidebar-active">
-                        <a title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
-                           href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
-                            <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
-                                 alt="@(Html.Translate(section.Name)) Image" />
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    <li>
-                        <a title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
-                           href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
-                            <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
-                                 alt="@(Html.Translate(section.Name)) Image" />
-                        </a>
-                    </li>
-                }
+                <li class="@(section.IsActive.Invoke() ? "active":"")">
+                    <a title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
+                       href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
+                        <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
+                             alt="@(Html.Translate(section.Name)) Image" />
+                    </a>
+                </li>
 
             }
         </ul>
-        <p id="p_copyright">&copy;2014 Rob Johnson</p>
-    </section>
-    <span id="spn_hide_scroll"></span>
-    <section id="sec_dashboard">
-        <div id="sec_dashboard_inner">
-            @RenderBody()
-        </div>
-    </section>
+    </nav>
+    <section id="dashboard">@RenderBody()</section>
+    <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>
 

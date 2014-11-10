@@ -118,6 +118,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AltNg\AltNg.csproj">
+      <Project>{ae75b047-07c0-4f9c-95ef-c1299452f93b}</Project>
+      <Name>AltNg</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Singular.Core\Singular.Core.csproj">
       <Project>{d0b9bc15-a3f6-4cc6-880d-31b9ae5ae5bc}</Project>
       <Name>Singular.Core</Name>

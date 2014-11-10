@@ -66,38 +66,52 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
                 //}
 
                 // create new collection
-                var cachedCollection = new CachedEmbeddedResourceCollection(collection);
+                var cachedCollection = Cache.FirstOrDefault(x=>x.InnerCollection.AreaName== collection.AreaName) ?? new CachedEmbeddedResourceCollection(collection);
 
-                // sort out files
-                foreach (var webFolder in cachedCollection.InnerCollection.Folders)
+                // check
+                if (!cachedCollection.AlreadyCached)
                 {
-                    // get folder
-                    var folderPath = Path.Combine(cachedCollection.InnerCollection.RouteFolder, webFolder.Replace("~/", "").Replace("/", "\\"));
-                    var dir = new DirectoryInfo(folderPath);
-                    var dirFiles = dir.GetFiles();
-
-                    // loop files and add
-                    foreach (var fileInfo in dirFiles)
+                    // sort out files
+                    foreach (var webFolder in cachedCollection.InnerCollection.Folders)
                     {
-                        if (fileInfo.Extension == ".cshtml" || fileInfo.Extension == ".vbhtml")
+                        // get folder
+                        var folderPath = Path.Combine(cachedCollection.InnerCollection.RouteFolder, webFolder.Replace("~/", "").Replace("/", "\\"));
+                        var dir = new DirectoryInfo(folderPath);
+                        var dirFiles = dir.GetFiles();
+
+                        // loop files and add
+                        foreach (var fileInfo in dirFiles)
                         {
-                            throw new Exception("Cannot add .cshtml or .vbhtml. RazorGenerator will take care of that!");
+                            if (fileInfo.Extension == ".cshtml" || fileInfo.Extension == ".vbhtml")
+                            {
+                                throw new Exception("Cannot add .cshtml or .vbhtml. RazorGenerator will take care of that!");
+                            }
+
+                            cachedCollection
+                                .InnerCollection
+                                .Files
+                                .Add(
+                                    "~/" +
+                                    (fileInfo.FullName
+                                        .Replace(cachedCollection.InnerCollection.RouteFolder, "")
+                                        .TrimStart('\\')
+                                        .Replace("\\", "/")
+                                    )
+                                );
                         }
 
-                        cachedCollection
-                            .InnerCollection
-                            .Files
-                            .Add(
-                                "~/" +
-                                (fileInfo.FullName
-                                    .Replace(cachedCollection.InnerCollection.RouteFolder, "")
-                                    .TrimStart('\\')
-                                    .Replace("\\", "/")
-                                )
-                            );
                     }
 
+                    // finally
+                    cachedCollection.InnerCollection.Files =
+                        cachedCollection
+                        .InnerCollection
+                        .Files
+                        .Distinct()
+                        .ToList();
                 }
+
+                
 
                 if (changeFiles)
                 {
@@ -108,14 +122,12 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
                     changeAssemblyInfo(cachedCollection);
                 }
 
-                // finally
-                cachedCollection.InnerCollection.Files =
-                    cachedCollection
-                    .InnerCollection
-                    .Files
-                    .Distinct()
-                    .ToList();
-                Cache.Add(cachedCollection);
+                if (!cachedCollection.AlreadyCached)
+                {
+                    cachedCollection.AlreadyCached = true;
+                    Cache.Add(cachedCollection); 
+  
+                }
 
                 //
                 return true;
@@ -213,7 +225,7 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
                 // loop includes
                 foreach (var inc in includesToAddToCsProj)
                 {
-                    if (line.ToLower().Contains("<Content".ToLower()) && line.ToLower().Contains("Include=\"".ToLower() + inc.ToLower()))
+                    if (line.ToLower().Contains("<Content".ToLower()) && line.ToLower().Contains("Include=\"".ToLower() + inc.ToLower()+ "\""))
                     {
                         contentFoundLines.Add(new Tuple<int, string>(i, inc));
                         contentRemoveLineNumbers.Add(i);
@@ -223,7 +235,7 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
                             contentRemoveLineNumbers.Add(i + 2);
                         }
                     }
-                    if (line.ToLower().Contains("<EmbeddedResource".ToLower()) && line.ToLower().Contains("Include=\"".ToLower() + inc.ToLower()))
+                    if (line.ToLower().Contains("<EmbeddedResource".ToLower()) && line.ToLower().Contains("Include=\"".ToLower() + inc.ToLower() + "\""))
                     {
                         contentRemoveLineNumbers.Add(i);
                         contentFoundLines.Add(new Tuple<int, string>(i, inc));
@@ -242,10 +254,8 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
                 {
                     finalLines.Add("    <EmbeddedResource Include=\"" + foundTuple.Item2 + "\" />");
                 }
-
-                if (!contentRemoveLineNumbers.Contains(i))
+                else if (!contentRemoveLineNumbers.Contains(i))
                 {
-
                     finalLines.Add(line);
                 }
             }
@@ -311,7 +321,7 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
         {
             if (string.IsNullOrWhiteSpace(SolutionPath)) throw new Exception("SetSolutionPath in EmbeddedResourceManager");
             if (string.IsNullOrWhiteSpace(MsBuildPath)) throw new Exception("SetMsBuildPath in EmbeddedResourceManager");
-            Cache = new List<CachedEmbeddedResourceCollection>();
+            Cache = Cache ?? new List<CachedEmbeddedResourceCollection>();
             return buildResources(ref msg, true);
         }
 

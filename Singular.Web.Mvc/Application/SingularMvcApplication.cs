@@ -5,6 +5,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Web;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Ioc;
 using Singular.Web.Mvc.Section;
 
 namespace Singular.Web.Mvc.Application
@@ -73,27 +74,27 @@ namespace Singular.Web.Mvc.Application
 		protected virtual void SingularApplicationStart(object sender, EventArgs eventArgs)
 		{
 
+		    MvcIocManager.Current.AddServices(
+
+		        Component
+		            .For<IEmbeddedResourceManager>()
+		            .UsingFactoryMethod(() => EmbeddedResourceManager.Current)
+		            .LifestyleSingleton(),
+
+		        Component
+		            .For<ISingularContext>()
+		            .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
+		            .LifestyleSingleton(),
+
+		        Component
+		            .For<IMvcSectionManager>()
+		            .UsingFactoryMethod(() => MvcSectionManager.Current)
+		            .LifestyleSingleton()
+
+		        );
 
 		    SingularMvcContext
 		        .Current
-		        .AddServices(
-
-                    Component
-                    .For<IEmbeddedResourceManager>()
-                    .UsingFactoryMethod(()=> EmbeddedResourceManager.Current)
-                    .LifestyleSingleton(),
-
-                    Component
-                    .For<ISingularContext>()
-                    .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
-                    .LifestyleSingleton(),
-
-                    Component
-                    .For<IMvcSectionManager>()
-                    .UsingFactoryMethod(()=> MvcSectionManager.Current)
-                    .LifestyleSingleton()
-
-                )
 		        .RegisterModules()
                 .LoadResources();
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -106,19 +106,30 @@
   </ItemGroup>
   <!-- CONTENT ITEM GROUP -->
   <ItemGroup>
-    <Content Include="Content\Css\Singular-Dashboard.css" />
-    <EmbeddedResource Include="IGNORE\test.css" />
-    <EmbeddedResource Include="Content\Css\Singular-Dashboard.min.css" />
-    <EmbeddedResource Include="Content\Images\Dummy\1.png" />
-    <EmbeddedResource Include="Content\Images\Dummy\2.png" />
-    <EmbeddedResource Include="Content\Images\Dummy\3.png" />
-    <EmbeddedResource Include="Content\Images\Dummy\4.png" />
     <EmbeddedResource Include="Content\Images\Tree.png" />
-    <Content Include="packages.config" />
-    <Content Include="Content\Css\Singular-Dashboard.css.map">
-      <DependentUpon>Singular-Dashboard.css</DependentUpon>
-    </Content>
-    <Content Include="Content\Css\Singular-Dashboard.less" />
+    <EmbeddedResource Include="Content\Images\User.png" />
+    <EmbeddedResource Include="Content\Ng\Common\SingularMasterApp.js" />
+    <EmbeddedResource Include="Content\Ng\Common\SingularMasterApp.min.js" />
+    <EmbeddedResource Include="Scripts\angular-mocks.js" />
+    <EmbeddedResource Include="Scripts\angular.js" />
+    <EmbeddedResource Include="Scripts\angular.min.js" />
+    <EmbeddedResource Include="Content\Ng\Common\SingularMasterApp.min.js.map" />
+    <EmbeddedResource Include="Scripts\angular.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Ng\Modules\Core\SingularCoreApp.js" />
+    <EmbeddedResource Include="Content\Ng\Modules\Core\SingularCoreApp.min.js" />
+    <EmbeddedResource Include="Content\Css\Singular.Core.css" />
+    <EmbeddedResource Include="Content\Css\Singular.Core.min.css" />
+    <EmbeddedResource Include="Scripts\angularui\ui-bootstrap-tpls.js" />
+    <EmbeddedResource Include="Scripts\angularui\ui-bootstrap-tpls.min.js" />
+    <EmbeddedResource Include="Scripts\angularui\ui-bootstrap.js" />
+    <EmbeddedResource Include="Scripts\angularui\ui-bootstrap.min.js" />
+    <EmbeddedResource Include="Content\Bootstrap\css\bootstrap-theme.css" />
+    <EmbeddedResource Include="Content\Bootstrap\css\bootstrap-theme.min.css" />
+    <EmbeddedResource Include="Content\Bootstrap\css\bootstrap.css" />
+    <EmbeddedResource Include="Content\Bootstrap\css\bootstrap.min.css" />
+    <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -135,6 +146,22 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\User\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Content\Ng\Modules\Core\SingularCoreApp.min.js.map" />
+    <EmbeddedResource Include="Content\Css\Singular.Core.less" />
+    <EmbeddedResource Include="Content\Css\Singular.Core.css.map" />
+    <EmbeddedResource Include="Views\Shared\_Nav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Nav.generated.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="packages.config" />
+    <Content Include="Content\Bootstrap\config.json" />
+    <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,9 +176,9 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="Configuration\ModuleConfiguration.cs" />
     <Compile Include="Controllers\CoreControllerBase.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BuildController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CoreViewModelBase.cs" />
@@ -165,6 +192,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Layout.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\_Nav.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Nav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Tree\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +214,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AltNg\AltNg.csproj">
+      <Project>{ae75b047-07c0-4f9c-95ef-c1299452f93b}</Project>
+      <Name>AltNg</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Singular.Core\Singular.Core.csproj">
       <Project>{d0b9bc15-a3f6-4cc6-880d-31b9ae5ae5bc}</Project>
       <Name>Singular.Core</Name>

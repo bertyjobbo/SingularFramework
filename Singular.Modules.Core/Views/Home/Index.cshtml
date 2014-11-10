@@ -1,5 +1,10 @@
-﻿@inherits System.Web.Mvc.WebViewPage
+﻿@using Singular.Web.Mvc.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage
 @{
     ViewBag.Title = "The Stuff Management system";
+    ViewBag.NgAppName = "Singular.Modules.SingularCoreApp";
 }
-
+@section scripts
+{
+    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Modules/Core/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+}

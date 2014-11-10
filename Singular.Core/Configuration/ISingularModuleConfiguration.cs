@@ -6,21 +6,16 @@ namespace Singular.Core.Configuration
     /// <summary>
     /// Module config
     /// </summary>
-	public interface ISingularModuleConfiguration
-	{
+    public interface ISingularModuleConfiguration
+    {
         /// <summary>
         /// Area name
         /// </summary>
-		string AreaName{get;}
-
-        /// <summary>
-        /// Service reg
-        /// </summary>
-		IRegistration[] ServiceRegistrations{get;}
+        string AreaName { get; }
 
         /// <summary>
         /// App start
         /// </summary>
-		void OnAppStart();
-	}
+        void OnAppStart();
+    }
 }

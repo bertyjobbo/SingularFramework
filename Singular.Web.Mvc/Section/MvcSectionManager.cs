@@ -21,9 +21,10 @@ namespace Singular.Web.Mvc.Section
             return _sections.OrderBy(x => x.Order).ToList();
         }
 
-        public void AddSection(MvcSection section)
+        public IMvcSectionManager AddSection(MvcSection section)
         {
             _sections.Add(section);
+            return this;
         }
     }
 }

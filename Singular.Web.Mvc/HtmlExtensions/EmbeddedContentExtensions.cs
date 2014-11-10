@@ -53,6 +53,7 @@ namespace Singular.Web.Mvc.HtmlExtensions
         public static string EmbeddedContent(this UrlHelper url, string areaName, string virtualPath,
             IncludeBehaviour behaviour = IncludeBehaviour.None)
         {
+            
             // find include set
             var set =
                 EmbeddedResourceManager.Current.Cache

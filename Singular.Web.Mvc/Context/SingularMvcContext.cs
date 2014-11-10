@@ -35,7 +35,6 @@ namespace Singular.Web.Mvc.Context
         private static ISingularContext _current;
 
         // fields
-		private readonly List<IRegistration> _tmpRegistrations = new List<IRegistration>();
 		private List<Assembly> _assemblies;
 		private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
 		private readonly Type _areaRegType = typeof(AreaRegistration);
@@ -56,10 +55,9 @@ namespace Singular.Web.Mvc.Context
             {
                 pathToBin = Path.Combine(pathToBin, "bin");
             }
-            var files = Directory.GetFiles(pathToBin, "*.dll");
-            for (var i = 0; i < files.Length; i++)
+            var files = Directory.GetFiles(pathToBin, "*.dll").Where(x=>!x.StartsWith("System.")).ToList();
+            foreach (var dllPath in files)
             {
-                var dllPath = files[i];
                 var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
                 _assemblies.Add(assembly);
             }
@@ -78,37 +76,15 @@ namespace Singular.Web.Mvc.Context
                         throw new Exception("An implementaiton of ISingularModuleConfiguration must inherit from AreaRegistration");
                     }
                     var module = (ISingularModuleConfiguration)Activator.CreateInstance(appType);
-                    AddServices(module.ServiceRegistrations);
                     Modules.Add(module.AreaName, module);
                 }
             }
         }
 
         /// <summary>
-        /// Api container
-        /// </summary>
-		public IWindsorContainer ApiControllerContainer { get; private set; }
-
-        /// <summary>
-        /// Controller container
-        /// </summary>
-		public IWindsorContainer ControllerContainer { get; private set; }
-
-        /// <summary>
         /// Modules
         /// </summary>
 		public IDictionary<string, ISingularModuleConfiguration> Modules { get; private set; }
-
-        /// <summary>
-        /// Add services
-        /// </summary>
-        /// <param name="registrations"></param>
-        /// <returns></returns>
-		public ISingularContext AddServices(params IRegistration[] registrations)
-		{
-			_tmpRegistrations.AddRange(registrations);
-			return this;
-		}
 
         /// <summary>
         /// Register the modules
@@ -125,33 +101,10 @@ namespace Singular.Web.Mvc.Context
 			});
 			setAssemblies();
 			setModules();
-			var windsorContainer = new WindsorContainer();
-			var controllerInstaller = new IWindsorInstaller[] { new ControllerInstaller() };
-			ControllerContainer = windsorContainer.Install(controllerInstaller);
-			ControllerContainer.Register(_tmpRegistrations.ToArray());
-			ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(ControllerContainer.Kernel));
-			var windsorContainer1 = new WindsorContainer();
-			controllerInstaller = new IWindsorInstaller[] { new ApiControllerInstaller() };
-			ApiControllerContainer = windsorContainer1.Install(controllerInstaller);
-			GlobalConfiguration.Configuration.DependencyResolver = new WindsorWebApiDependencyResolver(ApiControllerContainer);
-			ApiControllerContainer.Register(_tmpRegistrations.ToArray());
 			fireModuleAppStartMethods();
+            MvcIocManager.Current.FinalizeServices();
 			return this;
 		}
-
-        /// <summary>
-        /// Get service
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-	    public T GetService<T>()
-	    {
-	        if (ControllerContainer != null)
-	        {
-	            return ControllerContainer.Resolve<T>();
-	        }
-	        return default (T);
-	    }
 
         /// <summary>
         /// Load resources

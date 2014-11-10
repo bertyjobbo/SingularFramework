@@ -21,19 +21,24 @@ namespace Singular.Modules.Core.Views.Shared
     using System.Web.Helpers;
     using System.Web.Mvc;
     using System.Web.Mvc.Ajax;
+    
+    #line 1 "..\..\Views\Shared\_Layout.cshtml"
     using System.Web.Mvc.Html;
+    
+    #line default
+    #line hidden
     using System.Web.Routing;
     using System.Web.Security;
     using System.Web.UI;
     
-    #line 1 "..\..\Views\Shared\_Layout.cshtml"
+    #line 2 "..\..\Views\Shared\_Layout.cshtml"
     using System.Web.UI.WebControls;
     
     #line default
     #line hidden
     using System.Web.WebPages;
     
-    #line 2 "..\..\Views\Shared\_Layout.cshtml"
+    #line 3 "..\..\Views\Shared\_Layout.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -49,14 +54,27 @@ namespace Singular.Modules.Core.Views.Shared
         public override void Execute()
         {
             
-            #line 4 "..\..\Views\Shared\_Layout.cshtml"
+            #line 5 "..\..\Views\Shared\_Layout.cshtml"
   
     Layout = null;
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\r\n<html");
+
+WriteLiteral(" data-ng-app=\"");
+
+            
+            #line 8 "..\..\Views\Shared\_Layout.cshtml"
+              Write(ViewBag.NgAppName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"");
+
+WriteLiteral(">\r\n<head>\r\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
@@ -71,35 +89,114 @@ WriteLiteral(" />\r\n    <title>Singular | ");
             
             #line default
             #line hidden
-WriteLiteral("</title>\r\n    <link");
+WriteLiteral("</title>\r\n    ");
 
-WriteLiteral(" rel=\"stylesheet\"");
+WriteLiteral("\r\n    <style>\r\n        ");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 383), Tuple.Create("\"", 488)
+WriteLiteral("@font-face {\r\n            font-family: \'Glyphicons Halflings\';\r\n            src: " +
+"url(\'");
+
             
-            #line 12 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 390), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Css/Singular-Dashboard.css", IncludeBehaviour.MinifyAlways)
+            #line 16 "..\..\Views\Shared\_Layout.cshtml"
+                 Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot"));
+
             
             #line default
             #line hidden
-, 390), false)
+WriteLiteral("\');\r\n            src: url(\'");
+
+            
+            #line 17 "..\..\Views\Shared\_Layout.cshtml"
+                 Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("?#iefix\') format(\'embedded-opentype\'), url(\'");
+
+            
+            #line 17 "..\..\Views\Shared\_Layout.cshtml"
+                                                                                                                                                       Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\') format(\'woff\'), url(\'");
+
+            
+            #line 17 "..\..\Views\Shared\_Layout.cshtml"
+                                                                                                                                                                                                                                                                          Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\') format(\'truetype\'), url(\'");
+
+            
+            #line 17 "..\..\Views\Shared\_Layout.cshtml"
+                                                                                                                                                                                                                                                                                                                                                                                                Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("#glyphicons_halflingsregular\') format(\'svg\');\r\n        }\r\n    </style>\r\n\r\n    <li" +
+"nk");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 1235), Tuple.Create("\"", 1347)
+            
+            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 1242), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 1242), false)
 );
 
-WriteLiteral(" />\r\n</head>\r\n<body>\r\n    <header>\r\n        <div");
+WriteLiteral(" />\r\n    <link");
 
-WriteLiteral(" id=\"header_inner\"");
+WriteLiteral(" rel=\"stylesheet\"");
 
-WriteLiteral(">\r\n            <h1>Singular</h1>\r\n        </div>\r\n    </header>\r\n    <section");
+WriteAttribute("href", Tuple.Create(" href=\"", 1379), Tuple.Create("\"", 1485)
+            
+            #line 22 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 1386), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 1386), false)
+);
 
-WriteLiteral(" id=\"sec_top\"");
+WriteLiteral(" />\r\n");
 
-WriteLiteral(">\r\n        <div");
+WriteLiteral("    ");
 
-WriteLiteral(" id=\"sec_top_inner\"");
+            
+            #line 23 "..\..\Views\Shared\_Layout.cshtml"
+Write(RenderSection("styles", false));
 
-WriteLiteral(">\r\n            <p>&nbsp;</p>\r\n        </div>\r\n    </section>\r\n    <section");
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</head>\r\n<body");
 
-WriteLiteral(" id=\"sec_sidebar\"");
+WriteLiteral(" data-ng-controller=\"SingularMasterAppController\"");
+
+WriteLiteral(">\r\n    <header>\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+   Write(Html.Partial("_Nav"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    </header>\r\n    <nav");
+
+WriteLiteral(" id=\"sidebar\"");
 
 WriteLiteral(">\r\n        <ul");
 
@@ -108,181 +205,191 @@ WriteLiteral(" role=\"navigation\"");
 WriteLiteral(">\r\n");
 
             
-            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+            #line 31 "..\..\Views\Shared\_Layout.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+            #line 31 "..\..\Views\Shared\_Layout.cshtml"
              foreach (var section in Model.Sections)
             {
-                if (section.IsActive.Invoke())
-                {
 
             
             #line default
             #line hidden
-WriteLiteral("                    <li");
+WriteLiteral("                <li");
 
-WriteLiteral(" class=\"sec_sidebar-active\"");
-
-WriteLiteral(">\r\n                        <a");
-
-WriteAttribute("title", Tuple.Create(" title=\"", 1020), Tuple.Create("\"", 1100)
-            
-            #line 32 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1028), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
-            
-            #line default
-            #line hidden
-, 1028), false)
-, Tuple.Create(Tuple.Create(" ", 1059), Tuple.Create("|", 1060), true)
-            
-            #line 32 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1061), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
-            
-            #line default
-            #line hidden
-, 1062), false)
-);
-
-WriteAttribute("href", Tuple.Create("\r\n                           href=\"", 1101), Tuple.Create("\"", 1204)
+WriteAttribute("class", Tuple.Create(" class=\"", 1798), Tuple.Create("\"", 1848)
             
             #line 33 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1136), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+, Tuple.Create(Tuple.Create("", 1806), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
             
             #line default
             #line hidden
-, 1136), false)
+, 1806), false)
 );
 
-WriteLiteral(">\r\n                            <img");
+WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1240), Tuple.Create("\"", 1310)
+WriteAttribute("title", Tuple.Create(" title=\"", 1874), Tuple.Create("\"", 1954)
             
             #line 34 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1246), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
+, Tuple.Create(Tuple.Create("", 1882), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
             
             #line default
             #line hidden
-, 1246), false)
+, 1882), false)
+, Tuple.Create(Tuple.Create(" ", 1913), Tuple.Create("|", 1914), true)
+            
+            #line 34 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create(" ", 1915), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
+            
+            #line default
+            #line hidden
+, 1916), false)
 );
 
-WriteAttribute("alt", Tuple.Create("\r\n                                 alt=\"", 1311), Tuple.Create("\"", 1388)
+WriteAttribute("href", Tuple.Create("\r\n                       href=\"", 1955), Tuple.Create("\"", 2054)
             
             #line 35 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1351), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+, Tuple.Create(Tuple.Create("", 1986), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
             
             #line default
             #line hidden
-, 1351), false)
-, Tuple.Create(Tuple.Create(" ", 1382), Tuple.Create("Image", 1383), true)
+, 1986), false)
 );
 
-WriteLiteral(" />\r\n                        </a>\r\n                    </li>\r\n");
+WriteLiteral(">\r\n                        <img");
 
+WriteAttribute("src", Tuple.Create(" src=\"", 2086), Tuple.Create("\"", 2156)
             
-            #line 38 "..\..\Views\Shared\_Layout.cshtml"
-                }
-                else
-                {
-
+            #line 36 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2092), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
             
             #line default
             #line hidden
-WriteLiteral("                    <li>\r\n                        <a");
-
-WriteAttribute("title", Tuple.Create(" title=\"", 1563), Tuple.Create("\"", 1643)
-            
-            #line 42 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1571), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
-            
-            #line default
-            #line hidden
-, 1571), false)
-, Tuple.Create(Tuple.Create(" ", 1602), Tuple.Create("|", 1603), true)
-            
-            #line 42 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1604), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
-            
-            #line default
-            #line hidden
-, 1605), false)
+, 2092), false)
 );
 
-WriteAttribute("href", Tuple.Create("\r\n                           href=\"", 1644), Tuple.Create("\"", 1747)
+WriteAttribute("alt", Tuple.Create("\r\n                             alt=\"", 2157), Tuple.Create("\"", 2230)
             
-            #line 43 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1679), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
-            
-            #line default
-            #line hidden
-, 1679), false)
-);
-
-WriteLiteral(">\r\n                            <img");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1783), Tuple.Create("\"", 1853)
-            
-            #line 44 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1789), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
+            #line 37 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2193), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
             
             #line default
             #line hidden
-, 1789), false)
+, 2193), false)
+, Tuple.Create(Tuple.Create(" ", 2224), Tuple.Create("Image", 2225), true)
 );
 
-WriteAttribute("alt", Tuple.Create("\r\n                                 alt=\"", 1854), Tuple.Create("\"", 1931)
-            
-            #line 45 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1894), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
-            
-            #line default
-            #line hidden
-, 1894), false)
-, Tuple.Create(Tuple.Create(" ", 1925), Tuple.Create("Image", 1926), true)
-);
-
-WriteLiteral(" />\r\n                        </a>\r\n                    </li>\r\n");
+WriteLiteral(" />\r\n                    </a>\r\n                </li>\r\n");
 
             
-            #line 48 "..\..\Views\Shared\_Layout.cshtml"
-                }
+            #line 40 "..\..\Views\Shared\_Layout.cshtml"
 
             }
 
             
             #line default
             #line hidden
-WriteLiteral("        </ul>\r\n        <p");
+WriteLiteral("        </ul>\r\n    </nav>\r\n    <section");
 
-WriteLiteral(" id=\"p_copyright\"");
+WriteLiteral(" id=\"dashboard\"");
 
-WriteLiteral(">&copy;2014 Rob Johnson</p>\r\n    </section>\r\n    <span");
-
-WriteLiteral(" id=\"spn_hide_scroll\"");
-
-WriteLiteral("></span>\r\n    <section");
-
-WriteLiteral(" id=\"sec_dashboard\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" id=\"sec_dashboard_inner\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("            ");
+WriteLiteral(">");
 
             
-            #line 57 "..\..\Views\Shared\_Layout.cshtml"
-       Write(RenderBody());
+            #line 44 "..\..\Views\Shared\_Layout.cshtml"
+                       Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n    </section>\r\n</body>\r\n</html>\r\n\r\n");
+WriteLiteral("</section>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2393), Tuple.Create("\"", 2487)
+            
+            #line 45 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2399), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2399), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2511), Tuple.Create("\"", 2626)
+            
+            #line 46 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2517), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2517), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2650), Tuple.Create("\"", 2743)
+            
+            #line 47 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2656), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2656), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2767), Tuple.Create("\"", 2861)
+            
+            #line 48 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2773), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2773), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2885), Tuple.Create("\"", 2975)
+            
+            #line 49 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2891), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2891), false)
+);
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2999), Tuple.Create("\"", 3113)
+            
+            #line 50 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3005), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 3005), false)
+);
+
+WriteLiteral("></script>\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 51 "..\..\Views\Shared\_Layout.cshtml"
+Write(RenderSection("scripts", false));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</body>\r\n</html>\r\n\r\n");
 
         }
     }

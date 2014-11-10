@@ -14,5 +14,6 @@ namespace Singular.Web.Mvc.EmbeddedResourceConfiguration
         }
 
         public IEmbeddedResourceCollection InnerCollection { get; private set; }
+        public bool AlreadyCached { get; set; }
     }
 }

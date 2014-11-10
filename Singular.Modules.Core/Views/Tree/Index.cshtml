@@ -1,8 +1,9 @@
-﻿@model Singular.Modules.Core.ViewModels.CoreViewModelBase
+﻿@using Singular.Web.Mvc.HtmlExtensions
+@model Singular.Modules.Core.ViewModels.CoreViewModelBase
 
 @{
-    ViewBag.Title = "Content tree";
+    ViewBag.Title = Html.Translate("Content tree");
 }
 
-<h2>Content tree</h2>
+<h2>@ViewBag.Title</h2>
 

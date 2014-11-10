@@ -27,6 +27,12 @@ namespace Singular.Modules.Core.Views.Home
     using System.Web.UI;
     using System.Web.WebPages;
     
+    #line 1 "..\..\Views\Home\Index.cshtml"
+    using Singular.Web.Mvc.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Home/Index.cshtml")]
     public partial class Index : System.Web.Mvc.WebViewPage<dynamic>
@@ -37,14 +43,33 @@ namespace Singular.Modules.Core.Views.Home
         public override void Execute()
         {
             
-            #line 2 "..\..\Views\Home\Index.cshtml"
+            #line 3 "..\..\Views\Home\Index.cshtml"
   
     ViewBag.Title = "The Stuff Management system";
+    ViewBag.NgAppName = "Singular.Modules.SingularCoreApp";
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("\r\n");
+
+DefineSection("scripts", () => {
+
+WriteLiteral("\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 230), Tuple.Create("\"", 348)
+            
+            #line 9 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 236), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/Core/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 236), false)
+);
+
+WriteLiteral("></script>\r\n");
+
+});
 
         }
     }

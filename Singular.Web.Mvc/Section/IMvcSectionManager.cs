@@ -9,6 +9,6 @@ namespace Singular.Web.Mvc.Section
     public interface IMvcSectionManager
     {
         IList<MvcSection> GetSections();
-        void AddSection(MvcSection section);
+        IMvcSectionManager AddSection(MvcSection section);
     }
 }

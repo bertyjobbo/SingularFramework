@@ -27,6 +27,12 @@ namespace Singular.Modules.Core.Views.Tree
     using System.Web.UI;
     using System.Web.WebPages;
     
+    #line 1 "..\..\Views\Tree\Index.cshtml"
+    using Singular.Web.Mvc.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Tree/Index.cshtml")]
     public partial class Index : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
@@ -37,14 +43,23 @@ namespace Singular.Modules.Core.Views.Tree
         public override void Execute()
         {
             
-            #line 3 "..\..\Views\Tree\Index.cshtml"
+            #line 4 "..\..\Views\Tree\Index.cshtml"
   
-    ViewBag.Title = "Content tree";
+    ViewBag.Title = Html.Translate("Content tree");
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>Content tree</h2>\r\n\r\n");
+WriteLiteral("\r\n\r\n<h2>");
+
+            
+            #line 8 "..\..\Views\Tree\Index.cshtml"
+Write(ViewBag.Title);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</h2>\r\n\r\n");
 
         }
     }
