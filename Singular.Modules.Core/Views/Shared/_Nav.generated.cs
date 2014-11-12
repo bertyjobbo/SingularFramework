@@ -40,7 +40,7 @@ namespace Singular.Modules.Core.Views.Shared
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/_Nav.cshtml")]
-    public partial class Nav : System.Web.Mvc.WebViewPage<dynamic>
+    public partial class Nav : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
     {
         public Nav()
         {
@@ -90,18 +90,27 @@ WriteLiteral("></span>\r\n            </button>\r\n            <a");
 
 WriteLiteral(" class=\"navbar-brand\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 695), Tuple.Create("\"", 729)
+WriteAttribute("href", Tuple.Create(" href=\"", 747), Tuple.Create("\"", 781)
             
             #line 16 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 702), Tuple.Create<System.Object, System.Int32>(Url.Action("Index","Home")
+, Tuple.Create(Tuple.Create("", 754), Tuple.Create<System.Object, System.Int32>(Url.Action("Index","Home")
             
             #line default
             #line hidden
-, 702), false)
+, 754), false)
 );
 
-WriteLiteral(">Singular Framework</a>\r\n        </div>\r\n\r\n        <!-- Collect the nav links, fo" +
-"rms, and other content for toggling -->\r\n        <div");
+WriteLiteral(">");
+
+            
+            #line 16 "..\..\Views\Shared\_Nav.cshtml"
+                                                                  Write(Html.Translate("Singular Framework"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</a>\r\n        </div>\r\n\r\n        <!-- Collect the nav links, forms, and other cont" +
+"ent for toggling -->\r\n        <div");
 
 WriteLiteral(" class=\"navbar-collapse collapse\"");
 
@@ -109,70 +118,87 @@ WriteLiteral(">\r\n            <ul");
 
 WriteLiteral(" class=\"nav navbar-nav\"");
 
-WriteLiteral(">\r\n                <li><a");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 963), Tuple.Create("\"", 1001)
-            
-            #line 22 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 970), Tuple.Create<System.Object, System.Int32>(Url.Content("~/Singular/Core")
-            
-            #line default
-            #line hidden
-, 970), false)
-);
-
-WriteAttribute("title", Tuple.Create(" title=\"", 1002), Tuple.Create("\"", 1033)
-            
-            #line 22 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 1010), Tuple.Create<System.Object, System.Int32>(Html.Translate("Home")
-            
-            #line default
-            #line hidden
-, 1010), false)
-);
-
-WriteLiteral(">");
+WriteLiteral(">\r\n");
 
             
             #line 22 "..\..\Views\Shared\_Nav.cshtml"
-                                                                                         Write(Html.Translate("Home"));
+                
+            
+            #line default
+            #line hidden
+            
+            #line 22 "..\..\Views\Shared\_Nav.cshtml"
+                 foreach (var section in Model.Sections)
+                {
 
             
             #line default
             #line hidden
-WriteLiteral("</a></li>\r\n                <li><a");
+WriteLiteral("                    <li");
 
-WriteLiteral(" href=\"#\"");
-
-WriteAttribute("title", Tuple.Create(" title=\"", 1100), Tuple.Create("\"", 1137)
+WriteAttribute("class", Tuple.Create(" class=\"", 1112), Tuple.Create("\"", 1162)
             
-            #line 23 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 1108), Tuple.Create<System.Object, System.Int32>(Html.Translate("My account")
+            #line 24 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 1120), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
             
             #line default
             #line hidden
-, 1108), false)
+, 1120), false)
 );
 
-WriteLiteral(">");
+WriteLiteral(">\r\n                        <a");
+
+WriteAttribute("title", Tuple.Create(" title=\"", 1192), Tuple.Create("\"", 1272)
+            
+            #line 25 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 1200), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+            
+            #line default
+            #line hidden
+, 1200), false)
+, Tuple.Create(Tuple.Create(" ", 1231), Tuple.Create("|", 1232), true)
+            
+            #line 25 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create(" ", 1233), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
+            
+            #line default
+            #line hidden
+, 1234), false)
+);
+
+WriteAttribute("href", Tuple.Create("\r\n                           href=\"", 1273), Tuple.Create("\"", 1376)
+            
+            #line 26 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 1308), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+            
+            #line default
+            #line hidden
+, 1308), false)
+);
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
 
             
-            #line 23 "..\..\Views\Shared\_Nav.cshtml"
-                                                                 Write(Html.Translate("My account"));
+            #line 27 "..\..\Views\Shared\_Nav.cshtml"
+                        Write(Html.Translate(section.Name));
 
             
             #line default
             #line hidden
-WriteLiteral("</a></li>\r\n                <li><a");
+WriteLiteral("\r\n                        </a>\r\n                    </li>\r\n");
 
-WriteLiteral(" href=\"\"");
+            
+            #line 30 "..\..\Views\Shared\_Nav.cshtml"
 
-WriteLiteral(">Random button <span");
+                }
 
-WriteLiteral(" class=\"glyphicon glyphicon-calendar\"");
-
-WriteLiteral("></span></a></li>\r\n            </ul>\r\n        </div><!-- /.navbar-collapse -->\r\n " +
-"   </div><!-- /.container-fluid -->\r\n</nav>\r\n");
+            
+            #line default
+            #line hidden
+WriteLiteral("            </ul>\r\n        </div><!-- /.navbar-collapse -->\r\n    </div><!-- /.con" +
+"tainer-fluid -->\r\n</nav>\r\n");
 
         }
     }

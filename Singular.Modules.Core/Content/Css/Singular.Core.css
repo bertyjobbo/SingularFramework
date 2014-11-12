@@ -1,1 +1,49 @@
-﻿
+﻿/* Small devices (tabets, 768px and up) */
+/* Medium devices (desktops, 992px and up) */
+/* Large devices (large desktops, 1200px and up) */
+.collapse,
+.collapse.in {
+  display: block !important;
+  visibility: visible !important;
+  max-height: 0;
+  overflow-y: hidden;
+  -webkit-transition: max-height 0.4s ease-out;
+  -moz-transition: max-height 0.4s ease-out;
+  -o-transition: max-height 0.4s ease-out;
+  transition: max-height 0.4s ease-out;
+}
+.collapse.in {
+  max-height: 100px;
+  overflow-y: auto;
+}
+nav#sidebar {
+  float: left;
+}
+nav#sidebar > ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav#sidebar > ul > li > a {
+  display: block;
+  padding: 8px;
+  border-bottom: 1px solid #888888;
+  background: #555555;
+}
+nav#sidebar > ul > li > a:hover,
+nav#sidebar > ul > li.active > a {
+  background: #6f6f6f;
+}
+nav#sidebar > ul > li > a > img {
+  height: 50px;
+}
+@media (max-width: 768px) {
+  nav#sidebar {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  div.navbar-collapse.collapse {
+    display: none !important;
+  }
+}
+/*# sourceMappingURL=Singular.Core.css.map */

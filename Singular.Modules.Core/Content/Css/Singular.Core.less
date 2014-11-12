@@ -1,1 +1,70 @@
-﻿
+﻿/* Small devices (tabets, 768px and up) */
+@screen-sm-min:768px;
+@screen-sm-min-plusone:769px;
+/* Medium devices (desktops, 992px and up) */
+@screen-md-min:992px;
+@screen-md-min-plusone:993px;
+/* Large devices (large desktops, 1200px and up) */
+@screen-lg-min: 1200px;
+@screen-lg-min-plusone: 1201px;
+
+@color-dark:#555;
+
+@padding: 8px;
+
+.in {
+}
+
+.collapse, .collapse.in {
+    display:block !important;
+    visibility:visible !important;
+    max-height: 0;
+    overflow-y: hidden;
+    -webkit-transition: max-height 0.4s ease-out;
+    -moz-transition: max-height 0.4s ease-out;
+    -o-transition: max-height 0.4s ease-out;
+    transition: max-height 0.4s ease-out;
+}
+
+.collapse.in {
+    max-height: 100px;
+    overflow-y:auto;
+}
+
+nav#sidebar {
+    float: left;
+}
+
+nav#sidebar > ul {
+    list-style-type:none;
+    padding: 0;
+}
+
+nav#sidebar > ul > li > a{
+    display: block;
+    padding: @padding;
+    border-bottom: 1px solid lighten(@color-dark, 20%);
+    background:@color-dark;
+}
+
+
+nav#sidebar > ul > li > a:hover, nav#sidebar > ul > li.active > a{
+    background:lighten(@color-dark, 10%);
+}
+
+nav#sidebar > ul > li > a > img{
+    height: 50px;
+}
+
+
+@media(max-width: @screen-sm-min){
+    nav#sidebar{
+        display: none;
+    } 
+}
+@media(min-width: (@screen-sm-min-plusone)){
+    div.navbar-collapse.collapse/* > ul.nav.navbar*/{
+        display: none !important;
+    }
+}
+
