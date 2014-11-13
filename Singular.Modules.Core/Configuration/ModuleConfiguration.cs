@@ -63,7 +63,7 @@ namespace Singular.Modules.Core.Configuration
                 .AddSection(new MvcSection
                 {
                     Order = -9500,
-                    Name = "UserManagement",
+                    Name = "User Management",
                     Description = "User management - users, groups, permissions",
                     Action = "Index",
                     AreaName = "Core",
@@ -72,6 +72,19 @@ namespace Singular.Modules.Core.Configuration
                     RouteValues = new { area = "Core" },
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/users")
+                })
+                .AddSection(new MvcSection
+                {
+                    Order = -9000,
+                    Name = "Translate",
+                    Description = "Multilingual text management",
+                    Action = "Index",
+                    AreaName = "Core",
+                    Controller = "Translate",
+                    ImageVirtualPath = "~/Content/Images/Translate.png",
+                    RouteValues = new { area = "Core" },
+                    IsActive = () => HttpContext.Current != null &&
+                                     HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/translate")
                 });
         }
 

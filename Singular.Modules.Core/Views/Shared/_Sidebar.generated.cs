@@ -28,6 +28,12 @@ namespace Singular.Modules.Core.Views.Shared
     using System.Web.WebPages;
     
     #line 1 "..\..\Views\Shared\_Sidebar.cshtml"
+    using Singular.Modules.Core.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
+    #line 2 "..\..\Views\Shared\_Sidebar.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -55,13 +61,13 @@ WriteLiteral(" role=\"navigation\"");
 WriteLiteral(">\r\n");
 
             
-            #line 5 "..\..\Views\Shared\_Sidebar.cshtml"
+            #line 6 "..\..\Views\Shared\_Sidebar.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 5 "..\..\Views\Shared\_Sidebar.cshtml"
+            #line 6 "..\..\Views\Shared\_Sidebar.cshtml"
          foreach (var section in Model.Sections)
         {
 
@@ -70,75 +76,75 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("            <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 270), Tuple.Create("\"", 320)
+WriteAttribute("class", Tuple.Create(" class=\"", 315), Tuple.Create("\"", 365)
             
-            #line 7 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 278), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
+            #line 8 "..\..\Views\Shared\_Sidebar.cshtml"
+, Tuple.Create(Tuple.Create("", 323), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
             
             #line default
             #line hidden
-, 278), false)
+, 323), false)
 );
 
 WriteLiteral(">\r\n                <a");
 
 WriteLiteral(" data-ng-click=\"Ui.ShowLoader()\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 374), Tuple.Create("\"", 454)
-            
-            #line 8 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 382), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
-            
-            #line default
-            #line hidden
-, 382), false)
-, Tuple.Create(Tuple.Create(" ", 413), Tuple.Create("|", 414), true)
-            
-            #line 8 "..\..\Views\Shared\_Sidebar.cshtml"
-             , Tuple.Create(Tuple.Create(" ", 415), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
-            
-            #line default
-            #line hidden
-, 416), false)
-);
-
-WriteAttribute("href", Tuple.Create("\r\n                   href=\"", 455), Tuple.Create("\"", 550)
+WriteAttribute("title", Tuple.Create(" title=\"", 419), Tuple.Create("\"", 499)
             
             #line 9 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 482), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+, Tuple.Create(Tuple.Create("", 427), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
             
             #line default
             #line hidden
-, 482), false)
+, 427), false)
+, Tuple.Create(Tuple.Create(" ", 458), Tuple.Create("|", 459), true)
+            
+            #line 9 "..\..\Views\Shared\_Sidebar.cshtml"
+             , Tuple.Create(Tuple.Create(" ", 460), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
+            
+            #line default
+            #line hidden
+, 461), false)
+);
+
+WriteAttribute("href", Tuple.Create("\r\n                   href=\"", 500), Tuple.Create("\"", 595)
+            
+            #line 10 "..\..\Views\Shared\_Sidebar.cshtml"
+, Tuple.Create(Tuple.Create("", 527), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+            
+            #line default
+            #line hidden
+, 527), false)
 );
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 578), Tuple.Create("\"", 648)
-            
-            #line 10 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 584), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
-            
-            #line default
-            #line hidden
-, 584), false)
-);
-
-WriteAttribute("alt", Tuple.Create("\r\n                         alt=\"", 649), Tuple.Create("\"", 718)
+WriteAttribute("src", Tuple.Create(" src=\"", 623), Tuple.Create("\"", 693)
             
             #line 11 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 681), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+, Tuple.Create(Tuple.Create("", 629), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
             
             #line default
             #line hidden
-, 681), false)
-, Tuple.Create(Tuple.Create(" ", 712), Tuple.Create("Image", 713), true)
+, 629), false)
+);
+
+WriteAttribute("alt", Tuple.Create("\r\n                         alt=\"", 694), Tuple.Create("\"", 763)
+            
+            #line 12 "..\..\Views\Shared\_Sidebar.cshtml"
+, Tuple.Create(Tuple.Create("", 726), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+            
+            #line default
+            #line hidden
+, 726), false)
+, Tuple.Create(Tuple.Create(" ", 757), Tuple.Create("Image", 758), true)
 );
 
 WriteLiteral(" />\r\n                </a>\r\n            </li>\r\n");
 
             
-            #line 14 "..\..\Views\Shared\_Sidebar.cshtml"
+            #line 15 "..\..\Views\Shared\_Sidebar.cshtml"
         }
 
             

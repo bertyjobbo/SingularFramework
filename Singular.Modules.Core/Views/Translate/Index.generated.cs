@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Singular.Modules.Core.Views.Users
+namespace Singular.Modules.Core.Views.Translate
 {
     using System;
     using System.Collections.Generic;
@@ -27,20 +27,20 @@ namespace Singular.Modules.Core.Views.Users
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\Users\Index.cshtml"
+    #line 1 "..\..\Views\Translate\Index.cshtml"
     using Singular.Modules.Core.HtmlExtensions;
     
     #line default
     #line hidden
     
-    #line 2 "..\..\Views\Users\Index.cshtml"
+    #line 2 "..\..\Views\Translate\Index.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Users/Index.cshtml")]
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Translate/Index.cshtml")]
     public partial class Index : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
     {
         public Index()
@@ -49,10 +49,10 @@ namespace Singular.Modules.Core.Views.Users
         public override void Execute()
         {
             
-            #line 5 "..\..\Views\Users\Index.cshtml"
+            #line 5 "..\..\Views\Translate\Index.cshtml"
   
-    ViewBag.Title = Html.Translate("User management");
-    ViewBag.NgAppName = "Singular.Modules.SingularUsersApp";
+    ViewBag.Title = Html.Translate("Translate");
+    ViewBag.NgAppName = "Singular.Modules.TranslateApp";
 
             
             #line default
@@ -60,7 +60,7 @@ namespace Singular.Modules.Core.Views.Users
 WriteLiteral("\r\n\r\n<h2>");
 
             
-            #line 10 "..\..\Views\Users\Index.cshtml"
+            #line 10 "..\..\Views\Translate\Index.cshtml"
 Write(ViewBag.Title);
 
             
@@ -72,14 +72,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 332), Tuple.Create("\"", 438)
+WriteAttribute("src", Tuple.Create(" src=\"", 322), Tuple.Create("\"", 432)
             
-            #line 14 "..\..\Views\Users\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 338), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 14 "..\..\Views\Translate\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 328), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TranslateApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 338), false)
+, 328), false)
 );
 
 WriteLiteral("></script>\r\n");

@@ -72,6 +72,8 @@ using System.Web.UI;
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Reload.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Translate.png", "image/png")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Tree.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.User.png", "image/png")]
@@ -87,6 +89,12 @@ using System.Web.UI;
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularCoreApp.min.js", "application/x-javascript")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularCoreApp.min.js.map", "text/plain")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.TranslateApp.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.TranslateApp.min.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.TranslateApp.min.js.map", "text/plain")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.TreeApp.js", "application/x-javascript")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */

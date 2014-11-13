@@ -28,6 +28,12 @@ namespace Singular.Modules.Core.Views.Tree
     using System.Web.WebPages;
     
     #line 1 "..\..\Views\Tree\Index.cshtml"
+    using Singular.Modules.Core.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
+    #line 2 "..\..\Views\Tree\Index.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -43,7 +49,7 @@ namespace Singular.Modules.Core.Views.Tree
         public override void Execute()
         {
             
-            #line 4 "..\..\Views\Tree\Index.cshtml"
+            #line 5 "..\..\Views\Tree\Index.cshtml"
   
     ViewBag.Title = Html.Translate("Content tree");
     ViewBag.NgAppName = "Singular.Modules.SingularTreeApp";
@@ -54,7 +60,7 @@ namespace Singular.Modules.Core.Views.Tree
 WriteLiteral("\r\n\r\n<h2>");
 
             
-            #line 9 "..\..\Views\Tree\Index.cshtml"
+            #line 10 "..\..\Views\Tree\Index.cshtml"
 Write(ViewBag.Title);
 
             
@@ -66,14 +72,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 283), Tuple.Create("\"", 388)
+WriteAttribute("src", Tuple.Create(" src=\"", 328), Tuple.Create("\"", 433)
             
-            #line 13 "..\..\Views\Tree\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 289), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 14 "..\..\Views\Tree\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 334), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 289), false)
+, 334), false)
 );
 
 WriteLiteral("></script>\r\n");

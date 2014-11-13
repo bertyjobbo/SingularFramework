@@ -28,6 +28,12 @@ namespace Singular.Modules.Core.Views.Home
     using System.Web.WebPages;
     
     #line 1 "..\..\Views\Home\Index.cshtml"
+    using Singular.Modules.Core.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
+    #line 2 "..\..\Views\Home\Index.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -43,7 +49,7 @@ namespace Singular.Modules.Core.Views.Home
         public override void Execute()
         {
             
-            #line 3 "..\..\Views\Home\Index.cshtml"
+            #line 4 "..\..\Views\Home\Index.cshtml"
   
     ViewBag.Title = "The Stuff Management system";
     ViewBag.NgAppName = "Singular.Modules.SingularCoreApp";
@@ -57,14 +63,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 230), Tuple.Create("\"", 343)
+WriteAttribute("src", Tuple.Create(" src=\"", 275), Tuple.Create("\"", 388)
             
-            #line 9 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 236), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 10 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 281), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 236), false)
+, 281), false)
 );
 
 WriteLiteral("></script>\r\n");
@@ -79,24 +85,24 @@ WriteLiteral(" class=\"jumbotron text-center\"");
 
 WriteLiteral(">\r\n    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 565), Tuple.Create("\"", 627)
+WriteAttribute("src", Tuple.Create(" src=\"", 610), Tuple.Create("\"", 672)
             
-            #line 15 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 571), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
+            #line 16 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 616), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
             
             #line default
             #line hidden
-, 571), false)
+, 616), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 628), Tuple.Create("\"", 671)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 673), Tuple.Create("\"", 716)
             
-            #line 15 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 634), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
+            #line 16 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 679), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
             
             #line default
             #line hidden
-, 634), false)
+, 679), false)
 );
 
 WriteLiteral("/>\r\n</div>\r\n<p>Fixie bitters fanny pack, flannel 8-bit taxidermy +1 selfies Kicks" +

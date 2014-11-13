@@ -22,7 +22,7 @@ namespace Singular.Modules.Core.Controllers
 
         protected CoreViewModelBase GetCoreModelBaseInstance()
 		{
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
 			return new CoreViewModelBase(SingularContext, SectionService);
 		}
     }

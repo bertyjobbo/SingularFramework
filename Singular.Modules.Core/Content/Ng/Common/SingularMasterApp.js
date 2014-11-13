@@ -37,11 +37,11 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 
         // show hide
         $rootScope.$on("SgLoaderShow", function () {
-            console.log("showLoader")
-            $rootScope.Ui.LoaderVisible = true;
+            $timeout(function () {
+                $rootScope.Ui.LoaderVisible = true;
+            }, 500);            
         });
         $rootScope.$on("SgLoaderHide", function () {
-            console.log("hideLoader")
             $rootScope.Ui.LoaderVisible = false;
         });
 

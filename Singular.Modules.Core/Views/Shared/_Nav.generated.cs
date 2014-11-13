@@ -33,6 +33,12 @@ namespace Singular.Modules.Core.Views.Shared
     using System.Web.WebPages;
     
     #line 2 "..\..\Views\Shared\_Nav.cshtml"
+    using Singular.Modules.Core.HtmlExtensions;
+    
+    #line default
+    #line hidden
+    
+    #line 3 "..\..\Views\Shared\_Nav.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -88,29 +94,29 @@ WriteLiteral(" class=\"icon-bar\"");
 
 WriteLiteral("></span>\r\n            </button>\r\n            <a");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 743), Tuple.Create("\"", 834)
-, Tuple.Create(Tuple.Create("", 751), Tuple.Create("background-image:", 751), true)
-, Tuple.Create(Tuple.Create(" ", 768), Tuple.Create("url(\'", 769), true)
+WriteAttribute("style", Tuple.Create(" style=\"", 788), Tuple.Create("\"", 879)
+, Tuple.Create(Tuple.Create("", 796), Tuple.Create("background-image:", 796), true)
+, Tuple.Create(Tuple.Create(" ", 813), Tuple.Create("url(\'", 814), true)
             
-            #line 16 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 774), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")
+            #line 17 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 819), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")
             
             #line default
             #line hidden
-, 774), false)
-, Tuple.Create(Tuple.Create("", 831), Tuple.Create("\');", 831), true)
+, 819), false)
+, Tuple.Create(Tuple.Create("", 876), Tuple.Create("\');", 876), true)
 );
 
 WriteLiteral("\r\n               class=\"navbar-brand\"");
 
-WriteAttribute("href", Tuple.Create("\r\n               href=\"", 872), Tuple.Create("\"", 923)
+WriteAttribute("href", Tuple.Create("\r\n               href=\"", 917), Tuple.Create("\"", 968)
             
-            #line 18 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 895), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
+            #line 19 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 940), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
             
             #line default
             #line hidden
-, 895), false)
+, 940), false)
 );
 
 WriteLiteral("\r\n               data-ng-click=\"Ui.ShowLoader()\"");
@@ -122,7 +128,7 @@ WriteLiteral(" class=\"sr-only\"");
 WriteLiteral(">");
 
             
-            #line 20 "..\..\Views\Shared\_Nav.cshtml"
+            #line 21 "..\..\Views\Shared\_Nav.cshtml"
                                  Write(Html.Translate("Singular Framework"));
 
             
@@ -144,13 +150,13 @@ WriteLiteral(" class=\"nav navbar-nav mb-only\"");
 WriteLiteral(">\r\n");
 
             
-            #line 28 "..\..\Views\Shared\_Nav.cshtml"
+            #line 29 "..\..\Views\Shared\_Nav.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 28 "..\..\Views\Shared\_Nav.cshtml"
+            #line 29 "..\..\Views\Shared\_Nav.cshtml"
                  foreach (var section in Model.Sections)
                 {
 
@@ -159,59 +165,59 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                    <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1426), Tuple.Create("\"", 1476)
+WriteAttribute("class", Tuple.Create(" class=\"", 1471), Tuple.Create("\"", 1521)
             
-            #line 30 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 1434), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
+            #line 31 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 1479), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
             
             #line default
             #line hidden
-, 1434), false)
+, 1479), false)
 );
 
 WriteLiteral(">\r\n                        <a");
 
 WriteLiteral(" data-ng-click=\"Ui.ShowLoader()\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 1538), Tuple.Create("\"", 1636)
-, Tuple.Create(Tuple.Create("", 1546), Tuple.Create("background-image:", 1546), true)
-, Tuple.Create(Tuple.Create(" ", 1563), Tuple.Create("url(\'", 1564), true)
-            
-            #line 31 "..\..\Views\Shared\_Nav.cshtml"
-         , Tuple.Create(Tuple.Create("", 1569), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
-            
-            #line default
-            #line hidden
-, 1569), false)
-, Tuple.Create(Tuple.Create("", 1633), Tuple.Create("\');", 1633), true)
-);
-
-WriteAttribute("title", Tuple.Create(" title=\"", 1637), Tuple.Create("\"", 1717)
-            
-            #line 31 "..\..\Views\Shared\_Nav.cshtml"
-                                                                                      , Tuple.Create(Tuple.Create("", 1645), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
-            
-            #line default
-            #line hidden
-, 1645), false)
-, Tuple.Create(Tuple.Create(" ", 1676), Tuple.Create("|", 1677), true)
-            
-            #line 31 "..\..\Views\Shared\_Nav.cshtml"
-                                                                                                                       , Tuple.Create(Tuple.Create(" ", 1678), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
-            
-            #line default
-            #line hidden
-, 1679), false)
-);
-
-WriteAttribute("href", Tuple.Create("\r\n                           href=\"", 1718), Tuple.Create("\"", 1821)
+WriteAttribute("style", Tuple.Create(" style=\"", 1583), Tuple.Create("\"", 1681)
+, Tuple.Create(Tuple.Create("", 1591), Tuple.Create("background-image:", 1591), true)
+, Tuple.Create(Tuple.Create(" ", 1608), Tuple.Create("url(\'", 1609), true)
             
             #line 32 "..\..\Views\Shared\_Nav.cshtml"
-, Tuple.Create(Tuple.Create("", 1753), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+         , Tuple.Create(Tuple.Create("", 1614), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
             
             #line default
             #line hidden
-, 1753), false)
+, 1614), false)
+, Tuple.Create(Tuple.Create("", 1678), Tuple.Create("\');", 1678), true)
+);
+
+WriteAttribute("title", Tuple.Create(" title=\"", 1682), Tuple.Create("\"", 1762)
+            
+            #line 32 "..\..\Views\Shared\_Nav.cshtml"
+                                                                                      , Tuple.Create(Tuple.Create("", 1690), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+            
+            #line default
+            #line hidden
+, 1690), false)
+, Tuple.Create(Tuple.Create(" ", 1721), Tuple.Create("|", 1722), true)
+            
+            #line 32 "..\..\Views\Shared\_Nav.cshtml"
+                                                                                                                       , Tuple.Create(Tuple.Create(" ", 1723), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
+            
+            #line default
+            #line hidden
+, 1724), false)
+);
+
+WriteAttribute("href", Tuple.Create("\r\n                           href=\"", 1763), Tuple.Create("\"", 1866)
+            
+            #line 33 "..\..\Views\Shared\_Nav.cshtml"
+, Tuple.Create(Tuple.Create("", 1798), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+            
+            #line default
+            #line hidden
+, 1798), false)
 );
 
 WriteLiteral(">\r\n");
@@ -219,7 +225,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 33 "..\..\Views\Shared\_Nav.cshtml"
+            #line 34 "..\..\Views\Shared\_Nav.cshtml"
                         Write(Html.Translate(section.Name));
 
             
@@ -228,7 +234,7 @@ WriteLiteral("                            ");
 WriteLiteral("\r\n                        </a>\r\n                    </li>\r\n");
 
             
-            #line 36 "..\..\Views\Shared\_Nav.cshtml"
+            #line 37 "..\..\Views\Shared\_Nav.cshtml"
 
                 }
 

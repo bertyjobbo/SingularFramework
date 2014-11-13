@@ -139,6 +139,9 @@
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.min.js" />
     <EmbeddedResource Include="Content\Images\Reload.png" />
     <EmbeddedResource Include="Content\Images\Reload-Purple.png" />
+    <EmbeddedResource Include="Content\Images\Translate.png" />
+    <EmbeddedResource Include="Content\Ng\Modules\TranslateApp.js" />
+    <EmbeddedResource Include="Content\Ng\Modules\TranslateApp.min.js" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -182,6 +185,11 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Loader.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Translate\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Content\Ng\Modules\TranslateApp.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,10 +204,12 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="Configuration\ModuleConfiguration.cs" />
     <Compile Include="Controllers\CoreControllerBase.cs" />
+    <Compile Include="Controllers\TranslateController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BuildController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
+    <Compile Include="HtmlExtensions\TranslateExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CoreViewModelBase.cs" />
     <Compile Include="Views\Home\Index.generated.cs">
@@ -226,6 +236,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Sidebar.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Translate\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Users\Index.generated.cs">
       <DependentUpon>Index.cshtml</DependentUpon>
