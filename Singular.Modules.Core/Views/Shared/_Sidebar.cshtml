@@ -1,0 +1,18 @@
+﻿@using Singular.Web.Mvc.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
+<nav id="sidebar" class="dt-only">
+    <ul role="navigation">
+        @foreach (var section in Model.Sections)
+        {
+            <li class="@(section.IsActive.Invoke() ? "active":"")">
+                <a title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
+                   href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
+                    <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
+                         alt="@(Html.Translate(section.Name)) Image" />
+                </a>
+            </li>
+
+        }
+    </ul>
+</nav>
+

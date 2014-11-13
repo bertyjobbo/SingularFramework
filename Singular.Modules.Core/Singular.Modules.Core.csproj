@@ -132,6 +132,7 @@
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <EmbeddedResource Include="Scripts\angular-animate.js" />
     <EmbeddedResource Include="Scripts\angular-animate.min.js" />
+    <EmbeddedResource Include="Content\Images\Logo.png" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -165,6 +166,10 @@
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <EmbeddedResource Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <EmbeddedResource Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Views\Shared\_Sidebar.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Sidebar.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,6 +204,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Nav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Sidebar.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Sidebar.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Index.generated.cs">
       <DependentUpon>Index.cshtml</DependentUpon>

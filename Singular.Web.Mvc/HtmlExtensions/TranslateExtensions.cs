@@ -11,7 +11,8 @@ namespace Singular.Web.Mvc.HtmlExtensions
     {
         public static string Translate(this HtmlHelper html, string originalValue)
         {
-            return "!" + originalValue + "!";
+            // TODO - move this into separate module (core?) 
+            return originalValue;
         }
     }
 }

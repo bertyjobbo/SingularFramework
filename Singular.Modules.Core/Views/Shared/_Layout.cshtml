@@ -9,39 +9,36 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Singular | @(ViewBag.Title ?? "[Set ViewBage.Title]")</title>
-    @*GLYPHS - LOAD FROM ASSEMBLY*@
+    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+    @RenderSection("styles", false)
+
+    @*
+        DATA-DRIVEN CSS
+    *@
     <style>
+
+        .collapse.in {
+            height: @((Model.Sections.Count * 60) + 100)px;
+            overflow: hidden;
+        }
         @@font-face {
             font-family: 'Glyphicons Halflings';
             src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
             src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
         }
     </style>
+    
 
-    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
-    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
-    @RenderSection("styles", false)
 </head>
 <body data-ng-controller="SingularMasterAppController">
     <header>
         @Html.Partial("_Nav")
     </header>
-    <nav id="sidebar">
-        <ul role="navigation">
-            @foreach (var section in Model.Sections)
-            {
-                <li class="@(section.IsActive.Invoke() ? "active":"")">
-                    <a title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
-                       href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
-                        <img src="@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)"
-                             alt="@(Html.Translate(section.Name)) Image" />
-                    </a>
-                </li>
-
-            }
-        </ul>
-    </nav>
-    <section id="dashboard">@RenderBody()</section>
+    <div class="contains-floats">
+        @Html.Partial("_Sidebar")
+        <section id="dashboard">@RenderBody()</section>
+    </div>
     <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
     <script src="@Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
     <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
@@ -52,4 +49,3 @@
     @RenderSection("scripts", false)
 </body>
 </html>
-
