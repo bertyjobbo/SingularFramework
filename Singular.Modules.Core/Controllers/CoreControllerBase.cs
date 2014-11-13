@@ -1,3 +1,4 @@
+using System.Threading;
 using Singular.Core.Context;
 using Singular.Modules.Core.ViewModels;
 using System;
@@ -21,6 +22,7 @@ namespace Singular.Modules.Core.Controllers
 
         protected CoreViewModelBase GetCoreModelBaseInstance()
 		{
+            Thread.Sleep(2000);
 			return new CoreViewModelBase(SingularContext, SectionService);
 		}
     }

@@ -31,21 +31,23 @@
     
 
 </head>
-<body data-ng-controller="SingularMasterAppController">
-    <header>
-        @Html.Partial("_Nav")
-    </header>
-    <div id="height_container">
-        @Html.Partial("_Sidebar")
-        <section id="dashboard">@RenderBody()</section>
-    </div>
-    <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    @RenderSection("scripts", false)
-</body>
+    <body data-ng-controller="SingularMasterAppController">
+        <div class="sg-loader-overlay" data-ng-class="{'in':Ui.ShowLoader==true}"></div>
+        <div class="sg-loader-inner" data-ng-class="{'in':Ui.ShowLoader==true}" style="background-image: url('@Url.EmbeddedContent("Core","~/Content/Images/Reload.png")')"></div>
+        <header>
+            @Html.Partial("_Nav")
+        </header>
+        <div id="height_container">
+            @Html.Partial("_Sidebar")
+            <section id="dashboard">@RenderBody()</section>
+        </div>
+        <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        @RenderSection("scripts", false)
+    </body>
 </html>

@@ -1,4 +1,6 @@
-﻿/* Small devices (tabets, 768px and up) */
+﻿/*#region VARS */
+
+/* Small devices (tabets, 768px and up) */
 @screen-sm-min: 768px;
 @screen-sm-min-plusone: 769px;
 @screen-sm-min-minusone: 767px;
@@ -19,10 +21,13 @@
 
 @padding: 16px;
 
+/*#endregion */
+
+/*#region TOP LEVEL AND HELPERS */
 
 html, body {
     height: 100%;
-    min-width: 320px;    
+    min-width: 320px;
 }
 
 
@@ -31,14 +36,94 @@ html, body {
     height: auto;
 }
 
-.in {
+/*#endregion */
+
+/*#region LOADER */
+
+.sg-loader-overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    background: #111;
+    opacity: 0.9;
+    position: fixed;
+    display: none;
 }
+
+.sg-loader-inner {
+    width: 100%;
+    height: 100%;
+    z-index: 100001;
+    position: fixed;
+    background-position: center;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    -moz-animation: spin 1s linear infinite;
+    -o-animation: spin 1s linear infinite;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+.sg-loader-overlay.in{
+    display: block;
+}
+.sg-loader-inner.in{
+    display:block;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/*#endregion LOADER */
+
+/*#region BOOTSTRAP OVERRIDES */
 
 .collapse, .collapse.in {
     display: block !important;
     visibility: visible !important;
     height: 0;
     overflow-y: hidden;
+    -moz-transition: height 0.4s ease;
+    -o-transition: height 0.4s ease;
+    -webkit-transition: height 0.4s ease;
     transition: height 0.4s ease;
 }
 
@@ -93,23 +178,32 @@ a.navbar-brand {
     font-weight: bold;
 }
 
-div#sidebar_hidescroll{
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    background-color: @color-brand-primary-lighten;
+    color: @color-white;
+}
+
+/*#endregion */
+
+/*#region DASHBOARD */
+
+div#sidebar_hidescroll {
     top: 0;
     left: 83px;
     position: fixed;
     height: 100%;
-    background:white;
+    background: white;
     width: 16px;
 }
 
 nav#sidebar {
     height: 100%;
-    top:0;
+    top: 0;
     left: 0;
-    position:fixed;
+    position: fixed;
     padding-top: 50px;
     background: @color-brand-primary;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 nav#sidebar > ul {
@@ -125,16 +219,15 @@ nav#sidebar > ul > li > a {
     background: @color-brand-primary;
 }
 
-
 nav#sidebar > ul > li > a:hover, nav#sidebar > ul > li.active > a {
-    background: lighten(@color-dark, 10%);
+    background: @color-brand-primary-lighten;
 }
 
 nav#sidebar > ul > li > a > img {
     height: 50px;
 }
 
-div#after_sidebar{
+div#after_sidebar {
     border-top: 1px solid @color-brand-primary-lighten;
 }
 
@@ -142,11 +235,16 @@ div#after_sidebar{
 section#dashboard {
     height: 100%;
     padding: 66px @padding @padding 98px;
-    background:@color-white;
+    background: @color-white;
 }
-section#dashboard > h2{
+
+section#dashboard > h2 {
     margin-top: 0;
 }
+
+/*#endregion */
+
+/*#region DESKTOP vs MOBILE */
 
 @media(max-width: @screen-sm-min-minusone) {
     .mb-only {
@@ -157,7 +255,7 @@ section#dashboard > h2{
         display: none !important;
     }
 
-    section#dashboard{
+    section#dashboard {
         padding-left: @padding;
     }
 }
@@ -171,3 +269,5 @@ section#dashboard > h2{
         display: block !important;
     }
 }
+
+/*#endregion */

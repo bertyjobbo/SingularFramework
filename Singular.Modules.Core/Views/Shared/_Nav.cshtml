@@ -15,7 +15,8 @@
             </button>
             <a style="background-image: url('@Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")');"
                class="navbar-brand"
-               href="@Url.Action("Index","Home")">
+               href="@Url.Action("Index", "Home")"
+               data-ng-click="Ui.ShowLoader()">
                 <span class="sr-only">@Html.Translate("Singular Framework")</span>
                 <span class="hidden">S</span>ingular
             </a>
@@ -27,7 +28,7 @@
                 @foreach (var section in Model.Sections)
                 {
                     <li class="@(section.IsActive.Invoke() ? "active":"")">
-                        <a style="background-image: url('@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)');" title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
+                        <a data-ng-click="Ui.ShowLoader()" style="background-image: url('@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)');" title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
                            href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
                             @(Html.Translate(section.Name))
                         </a>

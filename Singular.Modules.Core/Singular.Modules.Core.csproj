@@ -137,6 +137,7 @@
     <EmbeddedResource Include="Content\Ng\Modules\TreeApp.min.js" />
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.js" />
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.min.js" />
+    <EmbeddedResource Include="Content\Images\Reload.png" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
