@@ -1,0 +1,14 @@
+﻿@using Singular.Web.Mvc.HtmlExtensions
+@model Singular.Modules.Core.ViewModels.CoreViewModelBase
+
+@{
+    ViewBag.Title = Html.Translate("User management");
+    ViewBag.NgAppName = "Singular.Modules.SingularUsersApp";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@section scripts
+{
+    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+}

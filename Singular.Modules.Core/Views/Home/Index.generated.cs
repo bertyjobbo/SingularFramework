@@ -57,10 +57,10 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 230), Tuple.Create("\"", 348)
+WriteAttribute("src", Tuple.Create(" src=\"", 230), Tuple.Create("\"", 343)
             
             #line 9 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 236), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/Core/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 236), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
@@ -70,6 +70,37 @@ WriteAttribute("src", Tuple.Create(" src=\"", 230), Tuple.Create("\"", 348)
 WriteLiteral("></script>\r\n");
 
 });
+
+WriteLiteral("\r\n<h2>Welcome to the Singular Framework</h2>\r\n<p>Viral chillwave keytar, next lev" +
+"el Godard master cleanse Pinterest meh aesthetic Pitchfork umami locavore.</p>\r\n" +
+"<div");
+
+WriteLiteral(" class=\"jumbotron text-center\"");
+
+WriteLiteral(">\r\n    <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 565), Tuple.Create("\"", 627)
+            
+            #line 15 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 571), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
+            
+            #line default
+            #line hidden
+, 571), false)
+);
+
+WriteAttribute("alt", Tuple.Create(" alt=\"", 628), Tuple.Create("\"", 671)
+            
+            #line 15 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 634), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
+            
+            #line default
+            #line hidden
+, 634), false)
+);
+
+WriteLiteral("/>\r\n</div>\r\n<p>Fixie bitters fanny pack, flannel 8-bit taxidermy +1 selfies Kicks" +
+"tarter fashion axe mlkshk VHS salvia. IPhone Helvetica cray High Life.</p>\r\n");
 
         }
     }

@@ -46,6 +46,7 @@ namespace Singular.Modules.Core.Views.Tree
             #line 4 "..\..\Views\Tree\Index.cshtml"
   
     ViewBag.Title = Html.Translate("Content tree");
+    ViewBag.NgAppName = "Singular.Modules.SingularTreeApp";
 
             
             #line default
@@ -53,13 +54,31 @@ namespace Singular.Modules.Core.Views.Tree
 WriteLiteral("\r\n\r\n<h2>");
 
             
-            #line 8 "..\..\Views\Tree\Index.cshtml"
+            #line 9 "..\..\Views\Tree\Index.cshtml"
 Write(ViewBag.Title);
 
             
             #line default
             #line hidden
 WriteLiteral("</h2>\r\n\r\n");
+
+DefineSection("scripts", () => {
+
+WriteLiteral("\r\n    <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 283), Tuple.Create("\"", 388)
+            
+            #line 13 "..\..\Views\Tree\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 289), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 289), false)
+);
+
+WriteLiteral("></script>\r\n");
+
+});
 
         }
     }

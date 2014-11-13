@@ -43,7 +43,6 @@ namespace Singular.Modules.Core.Configuration
                 .AddFolder("~/Content/Ng")
                 .AddFolder("~/Content/Ng/Common")
                 .AddFolder("~/Content/Ng/Modules")
-                .AddFolder("~/Content/Ng/Modules/Core")
                 .AddFolder("~/Scripts")
                 .AddFolder("~/Scripts/angularui");
 
@@ -68,11 +67,11 @@ namespace Singular.Modules.Core.Configuration
                     Description = "User management - users, groups, permissions",
                     Action = "Index",
                     AreaName = "Core",
-                    Controller = "User",
+                    Controller = "Users",
                     ImageVirtualPath = "~/Content/Images/User.png",
                     RouteValues = new { area = "Core" },
                     IsActive = () => HttpContext.Current != null &&
-                                     HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/user")
+                                     HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/users")
                 });
         }
 

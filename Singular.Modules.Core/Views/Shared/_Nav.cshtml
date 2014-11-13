@@ -1,7 +1,7 @@
 ﻿@using System.Web.Mvc.Html
 @using Singular.Web.Mvc.HtmlExtensions
 @inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -13,8 +13,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a style="background-image: url('@Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")');" 
-               class="navbar-brand" 
+            <a style="background-image: url('@Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")');"
+               class="navbar-brand"
                href="@Url.Action("Index","Home")">
                 <span class="sr-only">@Html.Translate("Singular Framework")</span>
                 <span class="hidden">S</span>ingular

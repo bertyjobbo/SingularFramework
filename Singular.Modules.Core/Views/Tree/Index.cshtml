@@ -3,7 +3,12 @@
 
 @{
     ViewBag.Title = Html.Translate("Content tree");
+    ViewBag.NgAppName = "Singular.Modules.SingularTreeApp";
 }
 
 <h2>@ViewBag.Title</h2>
 
+@section scripts
+{
+    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+}

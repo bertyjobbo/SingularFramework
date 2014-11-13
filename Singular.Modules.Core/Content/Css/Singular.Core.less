@@ -17,12 +17,12 @@
 @color-brand-primary-lighten: lighten(@color-brand-primary,20%);
 @color-white: #fff;
 
-@padding: 8px;
+@padding: 16px;
 
 
 html, body {
     height: 100%;
-    min-width: 320px;
+    min-width: 320px;    
 }
 
 
@@ -70,37 +70,46 @@ html, body {
     border-color: @color-brand-primary-lighten;
 }
 
-ul.nav.navbar-nav.mb-only > li > a{
+ul.nav.navbar-nav.mb-only > li > a {
     background-size: 40px 40px;
     background-repeat: no-repeat;
-    height: 40px;    
-    display:block; 
-    padding-left: 50px; 
-    overflow-x:hidden;      
+    height: 40px;
+    display: block;
+    padding-left: 50px;
+    overflow-x: hidden;
 }
 
 .navbar {
     margin-bottom: 0;
 }
 
-a.navbar-brand{
+a.navbar-brand {
     background: no-repeat;
     background-size: 40px 40px;
-    display:block;
+    display: block;
     height: 40px;
-    
     margin-top: 2px;
     padding-left: 25px;
-    font-weight:bold;
+    font-weight: bold;
+}
 
+div#sidebar_hidescroll{
+    top: 0;
+    left: 83px;
+    position: fixed;
+    height: 100%;
+    background:white;
+    width: 16px;
 }
 
 nav#sidebar {
-    float: left;
     height: 100%;
-    background: @color-dark;
-    margin-top: -50px;
+    top:0;
+    left: 0;
+    position:fixed;
     padding-top: 50px;
+    background: @color-brand-primary;
+    overflow-y:scroll;
 }
 
 nav#sidebar > ul {
@@ -125,10 +134,18 @@ nav#sidebar > ul > li > a > img {
     height: 50px;
 }
 
+div#after_sidebar{
+    border-top: 1px solid @color-brand-primary-lighten;
+}
+
 
 section#dashboard {
-    padding: @padding;
-    float: left;
+    height: 100%;
+    padding: 66px @padding @padding 98px;
+    background:@color-white;
+}
+section#dashboard > h2{
+    margin-top: 0;
 }
 
 @media(max-width: @screen-sm-min-minusone) {
@@ -138,6 +155,10 @@ section#dashboard {
 
     .dt-only {
         display: none !important;
+    }
+
+    section#dashboard{
+        padding-left: @padding;
     }
 }
 

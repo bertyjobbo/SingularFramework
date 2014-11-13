@@ -137,13 +137,22 @@ WriteLiteral(" />\r\n                </a>\r\n            </li>\r\n");
 
             
             #line 14 "..\..\Views\Shared\_Sidebar.cshtml"
-
         }
 
             
             #line default
             #line hidden
-WriteLiteral("    </ul>\r\n</nav>\r\n\r\n");
+WriteLiteral("    </ul>\r\n    <div");
+
+WriteLiteral(" id=\"after_sidebar\"");
+
+WriteLiteral("></div>\r\n</nav>\r\n<div");
+
+WriteLiteral(" id=\"sidebar_hidescroll\"");
+
+WriteLiteral(" class=\"dt-only\"");
+
+WriteLiteral("></div>\r\n");
 
         }
     }

@@ -68,12 +68,22 @@ a.navbar-brand {
   padding-left: 25px;
   font-weight: bold;
 }
-nav#sidebar {
-  float: left;
+div#sidebar_hidescroll {
+  top: 0;
+  left: 83px;
+  position: fixed;
   height: 100%;
-  background: #111111;
-  margin-top: -50px;
+  background: white;
+  width: 16px;
+}
+nav#sidebar {
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
   padding-top: 50px;
+  background: #563d7c;
+  overflow-y: scroll;
 }
 nav#sidebar > ul {
   list-style-type: none;
@@ -82,7 +92,7 @@ nav#sidebar > ul {
 }
 nav#sidebar > ul > li > a {
   display: block;
-  padding: 8px;
+  padding: 16px;
   border-top: 1px solid #886ab5;
   background: #563d7c;
 }
@@ -93,9 +103,16 @@ nav#sidebar > ul > li.active > a {
 nav#sidebar > ul > li > a > img {
   height: 50px;
 }
+div#after_sidebar {
+  border-top: 1px solid #886ab5;
+}
 section#dashboard {
-  padding: 8px;
-  float: left;
+  height: 100%;
+  padding: 66px 16px 16px 98px;
+  background: #ffffff;
+}
+section#dashboard > h2 {
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .mb-only {
@@ -103,6 +120,9 @@ section#dashboard {
   }
   .dt-only {
     display: none !important;
+  }
+  section#dashboard {
+    padding-left: 16px;
   }
 }
 @media (min-width: 768px) {

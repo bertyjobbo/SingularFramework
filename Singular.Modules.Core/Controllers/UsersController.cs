@@ -6,9 +6,9 @@ using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
-    public class UserController : CoreControllerBase
+    public class UsersController : CoreControllerBase
     {
-        public UserController(ISingularContext ctx, IMvcSectionManager sectionService)
+        public UsersController(ISingularContext ctx, IMvcSectionManager sectionService)
             : base(ctx,  sectionService)
         {
         }
