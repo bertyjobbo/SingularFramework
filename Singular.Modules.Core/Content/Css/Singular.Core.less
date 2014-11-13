@@ -40,21 +40,42 @@ html, body {
 
 /*#region LOADER */
 
-.sg-loader-overlay {
+.sg-loader {
+    opacity: 0;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    visibility: hidden;
+    position:fixed;
     width: 100%;
     height: 100%;
-    z-index: 100000;
+    z-index:100000;
+}
+
+.sg-loader.in {
+    opacity: 1;
+    visibility: visible;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.sg-loader-overlay {
+    width: 100%;
+    height: 100%;    
     background: #111;
-    opacity: 0.9;
-    position: fixed;
-    display: none;
+    opacity: 0.9;   
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    z-index:100001;
 }
 
 .sg-loader-inner {
     width: 100%;
     height: 100%;
-    z-index: 100001;
-    position: fixed;
     background-position: center;
     background-size: 200px 200px;
     background-repeat: no-repeat;
@@ -62,14 +83,10 @@ html, body {
     -o-animation: spin 1s linear infinite;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
-    display: none;
-}
-
-.sg-loader-overlay.in{
-    display: block;
-}
-.sg-loader-inner.in{
-    display:block;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    z-index:100002;
 }
 
 @-moz-keyframes spin {
@@ -178,7 +195,7 @@ a.navbar-brand {
     font-weight: bold;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: @color-brand-primary-lighten;
     color: @color-white;
 }

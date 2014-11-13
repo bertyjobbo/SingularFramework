@@ -19,7 +19,7 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 (function (app) {
 
     // app controller
-    app.controller("SingularMasterAppController", ["$scope", "$rootScope", function ($scope, $rootScope) {
+    app.controller("SingularMasterAppController", ["$scope", "$rootScope", "$timeout", function ($scope, $rootScope, $timeout) {
 
         // ui
         $rootScope.Ui = {
@@ -37,13 +37,19 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 
         // show hide
         $rootScope.$on("SgLoaderShow", function () {
-            $rootScope.Ui.ShowLoader = true;
+            console.log("showLoader")
+            $rootScope.Ui.LoaderVisible = true;
         });
         $rootScope.$on("SgLoaderHide", function () {
-            $rootScope.Ui.ShowLoader = false;
+            console.log("hideLoader")
+            $rootScope.Ui.LoaderVisible = false;
         });
 
 
+        // go
+        $scope.Init = function () {
+            
+        }
 
     }]);
 

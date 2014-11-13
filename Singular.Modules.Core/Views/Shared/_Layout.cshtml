@@ -31,9 +31,8 @@
     
 
 </head>
-    <body data-ng-controller="SingularMasterAppController">
-        <div class="sg-loader-overlay" data-ng-class="{'in':Ui.ShowLoader==true}"></div>
-        <div class="sg-loader-inner" data-ng-class="{'in':Ui.ShowLoader==true}" style="background-image: url('@Url.EmbeddedContent("Core","~/Content/Images/Reload.png")')"></div>
+    <body data-ng-controller="SingularMasterAppController" data-ng-init="Init()">
+        @Html.Partial("_Loader")
         <header>
             @Html.Partial("_Nav")
         </header>

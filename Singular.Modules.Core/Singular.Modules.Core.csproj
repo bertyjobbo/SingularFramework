@@ -138,6 +138,7 @@
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.js" />
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.min.js" />
     <EmbeddedResource Include="Content\Images\Reload.png" />
+    <EmbeddedResource Include="Content\Images\Reload-Purple.png" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -177,6 +178,10 @@
     </Content>
     <EmbeddedResource Include="Content\Ng\Modules\TreeApp.min.js.map" />
     <EmbeddedResource Include="Content\Ng\Modules\UsersApp.min.js.map" />
+    <Content Include="Views\Shared\_Loader.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Loader.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,6 +211,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Loader.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Loader.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\_Nav.generated.cs">
       <AutoGen>True</AutoGen>

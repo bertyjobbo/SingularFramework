@@ -15,20 +15,35 @@ body {
 }
 /*#endregion */
 /*#region LOADER */
-.sg-loader-overlay {
+.sg-loader {
+  opacity: 0;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  visibility: hidden;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 100000;
+}
+.sg-loader.in {
+  opacity: 1;
+  visibility: visible;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.sg-loader-overlay {
   background: #111;
   opacity: 0.9;
   position: fixed;
-  display: none;
-}
-.sg-loader-inner {
   width: 100%;
   height: 100%;
   z-index: 100001;
-  position: fixed;
+}
+.sg-loader-inner {
   background-position: center;
   background-size: 200px 200px;
   background-repeat: no-repeat;
@@ -36,13 +51,10 @@ body {
   -o-animation: spin 1s linear infinite;
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
-  display: none;
-}
-.sg-loader-overlay.in {
-  display: block;
-}
-.sg-loader-inner.in {
-  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100002;
 }
 @-moz-keyframes spin {
   100% {
