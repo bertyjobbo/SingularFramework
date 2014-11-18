@@ -1,0 +1,11 @@
+﻿@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
+@using Singular.Modules.Core.HtmlExtensions
+@using Singular.Web.Mvc.HtmlExtensions
+
+<a style="background-image: url('@Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")');"
+   class="navbar-brand"
+   href="@Url.Action("Index", "Home")"
+   data-ng-click="Ui.ShowLoader()">
+    <span class="sr-only">@Html.Translate(Model.SiteContext.SiteName)</span>
+    <span class="hidden">S</span>ingular
+</a>

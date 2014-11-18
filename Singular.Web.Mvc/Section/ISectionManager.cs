@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Singular.Web.Mvc.Section
 {
-    public interface IMvcSectionManager
+    public interface ISectionManager
     {
-        IList<MvcSection> GetSections();
-        IMvcSectionManager AddSection(MvcSection section);
+        IList<Section> GetSections();
+        ISectionManager AddSection(Section section);
     }
 }

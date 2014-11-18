@@ -87,9 +87,14 @@ namespace Singular.Web.Mvc.Application
 		            .LifestyleSingleton(),
 
 		        Component
-		            .For<IMvcSectionManager>()
-		            .UsingFactoryMethod(() => MvcSectionManager.Current)
-		            .LifestyleSingleton()
+		            .For<ISectionManager>()
+		            .UsingFactoryMethod(() => SectionManager.Current)
+		            .LifestyleSingleton(),
+
+                Component
+                    .For<ISiteContext>()
+                    .UsingFactoryMethod(()=> SiteContext.Current)
+                    .LifestyleSingleton()
 
 		        );
 

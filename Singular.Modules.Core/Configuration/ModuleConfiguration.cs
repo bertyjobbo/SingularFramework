@@ -46,8 +46,8 @@ namespace Singular.Modules.Core.Configuration
                 .AddFolder("~/Scripts")
                 .AddFolder("~/Scripts/angularui");
 
-            MvcSectionManager.Current
-                .AddSection(new MvcSection
+            SectionManager.Current
+                .AddSection(new Section
                 {
                     Order = -10000,
                     Name = "Tree",
@@ -60,7 +60,7 @@ namespace Singular.Modules.Core.Configuration
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/tree")
                 })
-                .AddSection(new MvcSection
+                .AddSection(new Section
                 {
                     Order = -9500,
                     Name = "User Management",
@@ -73,7 +73,7 @@ namespace Singular.Modules.Core.Configuration
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString().ToLower().Contains("/singular/core/users")
                 })
-                .AddSection(new MvcSection
+                .AddSection(new Section
                 {
                     Order = -9000,
                     Name = "Translate",

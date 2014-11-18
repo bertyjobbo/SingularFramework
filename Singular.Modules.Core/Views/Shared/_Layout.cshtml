@@ -8,13 +8,13 @@
 <html data-ng-app="@ViewBag.NgAppName">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Singular | @(ViewBag.Title ?? "[Set ViewBage.Title]")</title>
+    <title>Singular | @(ViewBag.Title ?? "[Set ViewBag.Title]")</title>
     <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
     <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
     @RenderSection("styles", false)
 
     @*
-        DATA-DRIVEN CSS
+        SERVER-DRIVEN CSS
     *@
     <style>
 

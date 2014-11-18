@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Singular.Web.Mvc.Section
 {
-    public class MvcSection
+    public class Section
     {
         public int Order { get; set; }
         public Func<bool> IsActive { get; set; }

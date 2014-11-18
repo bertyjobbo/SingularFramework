@@ -84,7 +84,7 @@ WriteLiteral(" />\r\n    <title>Singular | ");
 
             
             #line 11 "..\..\Views\Shared\_Layout.cshtml"
-                  Write(ViewBag.Title ?? "[Set ViewBage.Title]");
+                  Write(ViewBag.Title ?? "[Set ViewBag.Title]");
 
             
             #line default
@@ -93,28 +93,28 @@ WriteLiteral("</title>\r\n    <link");
 
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 442), Tuple.Create("\"", 554)
+WriteAttribute("href", Tuple.Create(" href=\"", 441), Tuple.Create("\"", 553)
             
             #line 12 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 449), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 448), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 449), false)
+, 448), false)
 );
 
 WriteLiteral(" />\r\n    <link");
 
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 586), Tuple.Create("\"", 692)
+WriteAttribute("href", Tuple.Create(" href=\"", 585), Tuple.Create("\"", 691)
             
             #line 13 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 593), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 592), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 593), false)
+, 592), false)
 );
 
 WriteLiteral(" />\r\n");
@@ -246,86 +246,86 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</section>\r\n        </div>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2035), Tuple.Create("\"", 2129)
+WriteAttribute("src", Tuple.Create(" src=\"", 2036), Tuple.Create("\"", 2130)
             
             #line 43 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2041), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2042), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2041), false)
+, 2042), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2157), Tuple.Create("\"", 2259)
+WriteAttribute("src", Tuple.Create(" src=\"", 2158), Tuple.Create("\"", 2260)
             
             #line 44 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2163), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2164), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2163), false)
+, 2164), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2287), Tuple.Create("\"", 2402)
+WriteAttribute("src", Tuple.Create(" src=\"", 2288), Tuple.Create("\"", 2403)
             
             #line 45 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2293), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2294), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2293), false)
+, 2294), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2430), Tuple.Create("\"", 2523)
+WriteAttribute("src", Tuple.Create(" src=\"", 2431), Tuple.Create("\"", 2524)
             
             #line 46 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2436), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2437), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2436), false)
+, 2437), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2551), Tuple.Create("\"", 2645)
+WriteAttribute("src", Tuple.Create(" src=\"", 2552), Tuple.Create("\"", 2646)
             
             #line 47 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2557), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2558), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2557), false)
+, 2558), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2673), Tuple.Create("\"", 2763)
+WriteAttribute("src", Tuple.Create(" src=\"", 2674), Tuple.Create("\"", 2764)
             
             #line 48 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2679), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2680), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2679), false)
+, 2680), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2791), Tuple.Create("\"", 2905)
+WriteAttribute("src", Tuple.Create(" src=\"", 2792), Tuple.Create("\"", 2906)
             
             #line 49 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2797), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2798), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2797), false)
+, 2798), false)
 );
 
 WriteLiteral("></script>\r\n");
