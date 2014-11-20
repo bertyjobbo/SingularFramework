@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SingularModules", "Singular
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySingularApplication2", "MySingularApplication2\MySingularApplication2.csproj", "{71247444-BDA0-443C-9014-F4853AF066B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity2Test", "Identity2Test\Identity2Test.csproj", "{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{71247444-BDA0-443C-9014-F4853AF066B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71247444-BDA0-443C-9014-F4853AF066B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71247444-BDA0-443C-9014-F4853AF066B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{AE75B047-07C0-4F9C-95EF-C1299452F93B} = {23C9F33E-2FB3-450F-91C2-8AAE63E6F8E0}
 		{EB4C217E-A848-4C62-BC13-B813C3C548A6} = {A7117FA3-88CB-471F-8C86-4F97704A3ED9}
 		{71247444-BDA0-443C-9014-F4853AF066B7} = {B818AD7C-1945-4E87-80BF-F2E74660CFFE}
+		{64CFFE7C-E0BD-4B58-90CB-B32A16A4BC0B} = {B818AD7C-1945-4E87-80BF-F2E74660CFFE}
 	EndGlobalSection
 EndGlobal

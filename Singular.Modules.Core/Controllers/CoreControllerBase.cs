@@ -1,5 +1,6 @@
 using System.Threading;
 using Singular.Core.Context;
+using Singular.Modules.Core.Authentication;
 using Singular.Modules.Core.ViewModels;
 using System;
 using System.Runtime.CompilerServices;
@@ -10,6 +11,7 @@ using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
+    [SingularAuthorize]
     public abstract class CoreControllerBase : Controller
     {
         public ISingularContext SingularContext { get; private set; }
@@ -28,5 +30,6 @@ namespace Singular.Modules.Core.Controllers
             //Thread.Sleep(2000);
 			return new CoreViewModelBase(SingularContext, SectionService, SiteContext);
 		}
+
     }
 }

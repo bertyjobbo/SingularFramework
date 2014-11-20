@@ -1,6 +1,9 @@
+using System.Web;
 using System.Web.Hosting;
+using Castle.Core.Logging;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Singular.Core.Authentication;
 using Singular.Core.Configuration;
 using Singular.Core.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
@@ -38,8 +41,11 @@ namespace Singular.Web.Mvc.Context
 		private List<Assembly> _assemblies;
 		private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
 		private readonly Type _areaRegType = typeof(AreaRegistration);
+	    private IPermissionService _permissionService;
+	    private bool _firstRequestComplete;
+	    private IUserFactory _userFactory;
 
-        // private methods
+	    // private methods
         private void fireModuleAppStartMethods()
         {
             foreach (KeyValuePair<string, ISingularModuleConfiguration> singularModuleConfiguration in Modules)
@@ -114,6 +120,83 @@ namespace Singular.Web.Mvc.Context
 	    {
 	        EmbeddedResourceManager.Current.LoadResources();
 	        return this;
+	    }
+
+        /// <summary>
+        /// User is allowed
+        /// </summary>
+        /// <param name="users"></param>
+        /// <param name="roles"></param>
+        /// <param name="modules"></param>
+        /// <returns></returns>
+	    public bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules)
+        {
+            if (CurrentUser == null) return false;
+            return _permissionService.UserIsAllowed(CurrentUser.LogonName, users, roles, modules);
+        }
+
+        /// <summary>
+        /// Current user
+        /// </summary>
+	    public SingularUser CurrentUser { get; private set; }
+
+        /// <summary>
+        /// Set current user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+	    public ISingularContext SetCurrentUser(SingularUser user)
+	    {
+	        CurrentUser = user;
+	        Session = new SingularSession(user);
+            return this;
+	    }
+
+        /// <summary>
+        /// Remove current user
+        /// </summary>
+        /// <returns></returns>
+	    public ISingularContext RemoveCurrentUser()
+	    {
+	        CurrentUser = null;
+	        Session = null;
+	        return this;
+	    }
+
+        /// <summary>
+        /// Session
+        /// </summary>
+        public SingularSession Session { get; private set; }
+
+        /// <summary>
+        /// Is authenticated
+        /// </summary>
+	    public bool IsAuthenticated { get { return CurrentUser != null && Session != null; } }
+
+        /// <summary>
+        /// On first request
+        /// </summary>
+	    public void OnBeginRequest()
+	    {
+            if (!_firstRequestComplete)
+            {
+                _firstRequestComplete = true;
+                _permissionService = MvcIocManager.Current.GetService<IPermissionService>();
+                _userFactory = MvcIocManager.Current.GetService<IUserFactory>();
+            }
+
+            if (
+                HttpContext.Current.User.Identity.IsAuthenticated && 
+                HttpContext.Current.User.Identity.AuthenticationType == "NTLM" &&
+                !IsAuthenticated)
+            {
+                SetCurrentUser(
+                    _userFactory.Build(
+                        HttpContext.Current.User.Identity.AuthenticationType,
+                        HttpContext.Current.User.Identity.Name
+                    )
+                );
+            }
 	    }
 	}
 }

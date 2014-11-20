@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Authentication\SingularAuthorizeAttribute.cs" />
     <Compile Include="Configuration\ModuleConfiguration.cs" />
     <Compile Include="Controllers\CoreControllerBase.cs" />
     <Compile Include="Controllers\TranslateController.cs" />

@@ -1,4 +1,5 @@
 using Castle.MicroKernel.Registration;
+using Singular.Core.Authentication;
 using Singular.Core.Context;
 using Singular.Web.Mvc.Context;
 using System;
@@ -57,10 +58,9 @@ namespace Singular.Web.Mvc.Application
 
 		protected virtual void SingularApplicationBeginRequest(object sender, EventArgs eventArgs)
 		{
-		    if (Request.Url.ToString().Contains("/Areas/"))
-		    {
-		        var x = 0;
-		    }
+		    // set services
+		    var ctx = (SingularMvcContext) SingularMvcContext.Current;
+            ctx.OnBeginRequest();
 		}
 
 		protected virtual void SingularApplicationEnd(object sender, EventArgs eventArgs)
@@ -94,6 +94,16 @@ namespace Singular.Web.Mvc.Application
                 Component
                     .For<ISiteContext>()
                     .UsingFactoryMethod(()=> SiteContext.Current)
+                    .LifestyleSingleton(),
+
+                Component
+                    .For<IPermissionService>()
+                    .ImplementedBy<PermissionService>()
+                    .LifestylePerWebRequest(),
+
+                Component
+                    .For<IUserFactory>()
+                    .ImplementedBy<UserFactory>()
                     .LifestyleSingleton()
 
 		        );
