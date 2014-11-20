@@ -138,7 +138,13 @@ namespace Singular.Web.Mvc.Context
         /// <summary>
         /// Current user
         /// </summary>
-	    public SingularUser CurrentUser { get; private set; }
+	    public SingularUser CurrentUser {
+            get
+            {
+                var s = Session;
+                if (s == null) return null;
+                return s.User;
+            } }
 
         /// <summary>
         /// Set current user
@@ -147,8 +153,8 @@ namespace Singular.Web.Mvc.Context
         /// <returns></returns>
 	    public ISingularContext SetCurrentUser(SingularUser user)
 	    {
-	        CurrentUser = user;
-	        Session = new SingularSession(user);
+	        var s = new SingularSession(user);
+            HttpContext.Current.Session.Add(session_key, s);
             return this;
 	    }
 
@@ -158,15 +164,22 @@ namespace Singular.Web.Mvc.Context
         /// <returns></returns>
 	    public ISingularContext RemoveCurrentUser()
 	    {
-	        CurrentUser = null;
-	        Session = null;
+	        HttpContext.Current.Session.Remove(session_key);
 	        return this;
 	    }
 
         /// <summary>
         /// Session
         /// </summary>
-        public SingularSession Session { get; private set; }
+        public SingularSession Session {
+            get
+            {
+                var s = HttpContext.Current.Session[session_key];
+                if (s == null) return default(SingularSession);
+                return (SingularSession) s;
+            } 
+        }
+	    private const string session_key = "SINGULAR_USER_SESSION";
 
         /// <summary>
         /// Is authenticated
