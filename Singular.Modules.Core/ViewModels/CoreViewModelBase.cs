@@ -9,6 +9,19 @@ namespace Singular.Modules.Core.ViewModels
 {
 	public class CoreViewModelBase
 	{
+	    public CoreViewModelBase()
+	    {
+	        
+	    }
+
+	    public void Reconstruct(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext)
+	    {
+            SingularContext = ctx;
+            MvcSectionsManager = mvcManager;
+            Sections = MvcSectionsManager.GetSections();
+            SiteContext = siteContext;
+	    }
+
 	    public CoreViewModelBase(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext)
 	    {
 	        SingularContext = ctx;

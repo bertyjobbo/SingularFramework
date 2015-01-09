@@ -15,20 +15,20 @@ namespace Singular.Modules.Core.Controllers
     public abstract class CoreControllerBase : Controller
     {
         public ISingularContext SingularContext { get; private set; }
-        protected ISectionManager SectionService { get; private set; }
+        protected ISectionManager SectionManager { get; private set; }
         public ISiteContext SiteContext { get; private set; }
         
         protected CoreControllerBase(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext)
         {
             SingularContext = ctx;
-            SectionService = sectionService;
+            SectionManager = sectionService;
             SiteContext = siteContext;
         }
 
         protected CoreViewModelBase GetCoreModelBaseInstance()
 		{
             //Thread.Sleep(2000);
-			return new CoreViewModelBase(SingularContext, SectionService, SiteContext);
+			return new CoreViewModelBase(SingularContext, SectionManager, SiteContext);
 		}
 
     }

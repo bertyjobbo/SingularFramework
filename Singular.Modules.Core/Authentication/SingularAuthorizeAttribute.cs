@@ -39,7 +39,7 @@ namespace Singular.Modules.Core.Authentication
                 return;
             }
             
-            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Users/Logon"),true);
+            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Users/Login"),true);
             
         }
     }

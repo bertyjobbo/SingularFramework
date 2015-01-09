@@ -142,7 +142,7 @@ namespace Singular.Web.Mvc.Context
             get
             {
                 var s = Session;
-                if (s == null) return null;
+                if (s == null) return default(SingularUser);
                 return s.User;
             } }
 
@@ -199,6 +199,7 @@ namespace Singular.Web.Mvc.Context
             }
 
             if (
+                HttpContext.Current.User != null &&
                 HttpContext.Current.User.Identity.IsAuthenticated && 
                 HttpContext.Current.User.Identity.AuthenticationType == "NTLM" &&
                 !IsAuthenticated)
