@@ -3,8 +3,10 @@ using Castle.MicroKernel.Registration;
 using Singular.Core.Configuration;
 using System;
 using System.Web.Mvc;
+using Singular.Modules.Core.Data.Services;
 using Singular.Web.Mvc.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Ioc;
 using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Configuration
@@ -19,18 +21,16 @@ namespace Singular.Modules.Core.Configuration
             }
         }
 
-        public IRegistration[] ServiceRegistrations
-        {
-            get
-            {
-                return new IRegistration[]
-			    {
-			    };
-            }
-        }
-
         public void OnAppStart()
         {
+            MvcIocManager.Current.AddServices(new IRegistration[]
+            {
+                Component
+                    .For<ITranslationService>()
+                    .ImplementedBy<TranslationService>()
+                    .LifestylePerWebRequest()
+            });
+
             EmbeddedResourceManager
                 .Current
                 .CreateCollection(this, "Singular.Modules.Core", "Core")

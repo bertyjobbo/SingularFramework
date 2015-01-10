@@ -24,12 +24,13 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
 
         $scope.Model = {
             Email: "",
-            Password: ""
+            Password: "",
+            RememberMe: false
         }
 
         // login
         $scope.Login = function () {
-            alert("TODO: login");
+            console.log($scope.Model)
         };
 
         // valid?

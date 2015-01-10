@@ -15,7 +15,7 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
     /// <summary>
     /// Angular Html Extensions
     /// </summary>
-    public static class NgHtmlExtensions
+    public static class SgMvcHtmlExtensions
     {
         /// <summary>
         /// NgForm
@@ -76,14 +76,14 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                 // begin form group?
                 if (edBuilder.IsBootstrapFormGroup)
                 {
-                    output.Append("<div class=\"form-group\">");
+                    output.AppendFormat("<div class=\"form-group{0}\">", edBuilder.Editor == "UiRadioList" ? " uiradio-formgroup" : "");
                     output.Append(html.Label(propName, edBuilder.LabelTextValue ?? propName));
                 }
 
                 // switch
                 switch (edBuilder.Editor)
                 {
-                    case "TextBox":
+                    case "Input":
                         {
                             output.Append("<input");
                             doNgModel(edBuilder, output, propName, edBuilder.DataPrefix);
@@ -93,6 +93,47 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                             output.Append(" />");
                             break;
                         }
+                    case "UiCheckbox":
+                    {
+                        output.Append(
+                            "<button type=\"button\" btn-checkbox btn-checkbox-true=\"true\" btn-checkbox-false=\"false\"");
+                        doNgModel(edBuilder,output,propName,edBuilder.DataPrefix);
+                        doIdAndName(output, propName);
+                        doAttributes(edBuilder,output);
+                        doClass(edBuilder,output);
+                        output.Append(" >" + (edBuilder.LabelTextValue ?? propName) + "</button>");
+                        break;
+                    }
+                    case "UiRadioList":
+                    {
+                        // start
+                        output.Append("<div class=\"btn-group\">");
+
+                        // loop data
+                        if (edBuilder.ListData.HasItems())
+                        {
+                            foreach (var item in edBuilder.ListData)
+                            {
+                                output.AppendFormat(
+                                    "<button type=\"button\"" +
+                                    " class=\"btn btn-{0}\"" +
+                                    " {1}ng-model=\"{2}{3}\"" +
+                                    " name=\"{2}{3}\""+
+                                    " btn-radio=\"{4}\">{5}</button>", 
+                                    edBuilder.RadioListClass, 
+                                    edBuilder.DataPrefix,
+                                    edBuilder.ModelPrefixValue.HasValue() ? edBuilder.ModelPrefixValue + "." : "Model.",
+                                    propName,
+                                    item.Value,
+                                    item.Text
+                                    );
+                            }
+                        }
+
+                        // end
+                        output.Append("</div>");
+                        break;
+                    }
                     default:
                         break;
                 }
@@ -158,6 +199,27 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
             return new BootstrapFormGroup(html.ViewContext);
         }
 
+        /// <summary>
+        /// Property expression - strongly typed string.format
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="html"></param>
+        /// <param name="formatString"></param>
+        /// <param name="propertyExpressions"></param>
+        /// <returns></returns>
+        public static string PropertyExpression<TModel, TProperty>(this HtmlHelper<TModel> html,
+            string formatString,
+            params Expression<Func<TModel, TProperty>>[] propertyExpressions)
+        {
+            for (var i = 0; i < propertyExpressions.Length; i++)
+            {
+                var expr = propertyExpressions[i];
+                var prop = SingularExpressionHelper.GetPropertyName(expr);
+                formatString = formatString.Replace("{" + i + "}", prop);
+            }
+            return formatString;
+        }
 
         // private
         private static void doAttributes(BuilderBase2 edBuilder, StringBuilder output)
@@ -170,17 +232,23 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                 }
             }
         }
-        private static void doClass(BuilderBase edBuilder, StringBuilder output)
+        private static void doClass(BuilderBase builder, StringBuilder output)
         {
-            var css = edBuilder.CssClassExpression;
-            if (edBuilder is NgEditorBuilder && ((NgEditorBuilder)edBuilder).IsBootstrapFormControl)
+            var css = builder.CssClassExpression;
+         
+            // check editor builder
+            var edBuilder = builder as NgEditorBuilder;
+            if (edBuilder != null)
             {
-                css = "form-control " + css;
+                if(edBuilder.IsBootstrapFormControl) css = "form-control " + css;
+                if (edBuilder.Editor == "UiCheckbox") css = "btn btn-success" + css;
             }
-            var builder = edBuilder as NgButtonBuilder;
-            if (builder != null)
+
+            // check button builder
+            var ngButtonBuilder = builder as NgButtonBuilder;
+            if (ngButtonBuilder != null)
             {
-                var btnBuilder = builder;
+                var btnBuilder = ngButtonBuilder;
                 if (btnBuilder.BootstrapButtonType.HasValue())
                     css = "btn btn-" + btnBuilder.BootstrapButtonType + " " + css;
             }

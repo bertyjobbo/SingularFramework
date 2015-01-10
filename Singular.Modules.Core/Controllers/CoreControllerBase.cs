@@ -1,6 +1,7 @@
 using System.Threading;
 using Singular.Core.Context;
 using Singular.Modules.Core.Authentication;
+using Singular.Modules.Core.Data.Services;
 using Singular.Modules.Core.ViewModels;
 using System;
 using System.Runtime.CompilerServices;
@@ -14,7 +15,7 @@ namespace Singular.Modules.Core.Controllers
     [SingularAuthorize]
     public abstract class CoreControllerBase : CoreControllerBaseNoAuth
     {
-        protected CoreControllerBase(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext) : base(ctx, sectionService, siteContext)
+        protected CoreControllerBase(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, ITranslationService translationService) : base(ctx, sectionService, siteContext, translationService)
         {
         }
     }

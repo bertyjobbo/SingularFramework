@@ -30,5 +30,7 @@ namespace AltNg.SingularConfig
                 .SetProjectFileName("AltNg.csproj")
                 .AddFolder("~/alt");
         }
+
+        
     }
 }

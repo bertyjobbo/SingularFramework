@@ -1,5 +1,6 @@
 using Singular.Core.Context;
 using System.Web.Mvc;
+using Singular.Modules.Core.Data.Services;
 using Singular.Web.Mvc.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
 using Singular.Web.Mvc.Section;
@@ -17,8 +18,9 @@ namespace Singular.Modules.Core.Controllers
         /// <param name="sectionService"></param>
         /// <param name="siteContext"></param>
         /// <param name="mgr"></param>
-        public BuildController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, IEmbeddedResourceManager mgr)
-            : base(ctx, sectionService, siteContext)
+        /// <param name="translationService"></param>
+        public BuildController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, IEmbeddedResourceManager mgr, ITranslationService translationService)
+            : base(ctx, sectionService, siteContext, translationService)
         {
             _resMgr = mgr;
         }

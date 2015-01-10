@@ -75,7 +75,7 @@
     <Compile Include="HtmlExtensions\NgEditorBuilder.cs" />
     <Compile Include="HtmlExtensions\NgForm.cs" />
     <Compile Include="HtmlExtensions\NgFormBuilder.cs" />
-    <Compile Include="HtmlExtensions\NgHtmlExtensions.cs" />
+    <Compile Include="HtmlExtensions\SgMvcHtmlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

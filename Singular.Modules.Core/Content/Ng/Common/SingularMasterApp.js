@@ -45,6 +45,16 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
             $rootScope.Ui.LoaderVisible = false;
         });
 
+        // alert
+        $rootScope.Alert = function (str) {
+            alert($scope.$eval(str));
+        };
+
+        // log
+        $rootScope.Log = function (obj1,obj2) {
+            console.log($scope.$eval(obj1), $scope.$eval(obj2));            
+        };
+
 
         // go
         $scope.Init = function () {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Singular.Web.Mvc.Common.HtmlExtensions
 {
@@ -13,6 +14,7 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
         public bool IsBootstrapFormControl { get; private set; }
         public bool IsBootstrapFormGroup { get; private set; }
         public string ModelPrefixValue { get; private set; }
+        
 
         public NgEditorBuilder BootstrapFormControl()
         {
@@ -32,11 +34,29 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
 
         #region editor choices
 
-        public NgEditorBuilder TextBox()
+        public NgEditorBuilder Input()
         {
-            Editor = "TextBox";
+            Editor = "Input";
             return this;
         }
+
+        public NgEditorBuilder UiCheckbox()
+        {
+            Editor = "UiCheckbox";
+            return this;
+        }
+
+        public NgEditorBuilder UiRadioList(IList<SelectListItem> data, string btnClass)
+        {
+            RadioListClass = btnClass;
+            ListData = data;
+            Editor = "UiRadioList";
+            return this;
+        }
+        public IList<SelectListItem> ListData { get; private set; }
+        public string RadioListClass { get; private set; }
+
+        
 
         #endregion
         

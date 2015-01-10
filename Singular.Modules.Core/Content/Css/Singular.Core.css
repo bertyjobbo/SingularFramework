@@ -305,6 +305,13 @@ select.ng-invalid {
   border: 1px solid #ffcccc;
   background: #fffafa;
 }
+label.active,
+.btn.active {
+  font-weight: bold;
+}
+.form-group.uiradio-formgroup label {
+  display: block;
+}
 /*#endregion*/
 /*#region DESKTOP vs MOBILE */
 @media (max-width: 767px) {

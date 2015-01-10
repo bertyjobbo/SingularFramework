@@ -19,7 +19,12 @@ namespace Singular.Modules.Core.Views.FormsAuth
     using System.Text;
     using System.Web;
     using System.Web.Helpers;
+    
+    #line 1 "..\..\Views\FormsAuth\Index.cshtml"
     using System.Web.Mvc;
+    
+    #line default
+    #line hidden
     using System.Web.Mvc.Ajax;
     using System.Web.Mvc.Html;
     using System.Web.Routing;
@@ -27,19 +32,19 @@ namespace Singular.Modules.Core.Views.FormsAuth
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 1 "..\..\Views\FormsAuth\Index.cshtml"
+    #line 2 "..\..\Views\FormsAuth\Index.cshtml"
     using Singular.Modules.Core.HtmlExtensions;
     
     #line default
     #line hidden
     
-    #line 2 "..\..\Views\FormsAuth\Index.cshtml"
+    #line 3 "..\..\Views\FormsAuth\Index.cshtml"
     using Singular.Web.Mvc.Common.HtmlExtensions;
     
     #line default
     #line hidden
     
-    #line 3 "..\..\Views\FormsAuth\Index.cshtml"
+    #line 4 "..\..\Views\FormsAuth\Index.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -55,7 +60,7 @@ namespace Singular.Modules.Core.Views.FormsAuth
         public override void Execute()
         {
             
-            #line 6 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 7 "..\..\Views\FormsAuth\Index.cshtml"
   
     ViewBag.Title = Html.Translate("Login");
     ViewBag.NgAppName = "Singular.Modules.SingularFormsAuthApp";
@@ -66,7 +71,7 @@ namespace Singular.Modules.Core.Views.FormsAuth
 WriteLiteral("\r\n\r\n<h2>");
 
             
-            #line 11 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 12 "..\..\Views\FormsAuth\Index.cshtml"
 Write(ViewBag.Title);
 
             
@@ -78,14 +83,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 405), Tuple.Create("\"", 524)
+WriteAttribute("src", Tuple.Create(" src=\"", 428), Tuple.Create("\"", 547)
             
-            #line 15 "..\..\Views\FormsAuth\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 411), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularFormsAuthApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 16 "..\..\Views\FormsAuth\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 434), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularFormsAuthApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 411), false)
+, 434), false)
 );
 
 WriteLiteral("></script>\r\n");
@@ -101,17 +106,16 @@ WriteLiteral(">\r\n    ");
 WriteLiteral("\r\n");
 
             
-            #line 19 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 20 "..\..\Views\FormsAuth\Index.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 19 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 20 "..\..\Views\FormsAuth\Index.cshtml"
      using (Html.BeginNgForm(x => x
         .OnSubmit("Login()")
         .CssClass("sg-form")
-        //.UseDataPrefix()
         ))
     {
         
@@ -121,44 +125,67 @@ WriteLiteral("\r\n");
             
             #line 25 "..\..\Views\FormsAuth\Index.cshtml"
    Write(Html.NgEditorFor(x => x.Email, x => x
-                .TextBox()
+                .Input()
                 .ModelPrefix("Model")
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Email"))
                 .Attribute("type", "email")
-                .Attribute("ng-required", "true")
-                .Attribute("autocomplete","off")
-            //.UseDataPrefix()
+                //.Attribute("ng-required", "true")
+                //.Attribute("autocomplete", "off")
         ));
 
             
             #line default
             #line hidden
             
-            #line 35 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 34 "..\..\Views\FormsAuth\Index.cshtml"
          
         
             
             #line default
             #line hidden
             
-            #line 36 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 35 "..\..\Views\FormsAuth\Index.cshtml"
    Write(Html.NgEditorFor(x => x.Password, x => x
-                .TextBox()
+                .Input()
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Password"))
                 .Attribute("type", "password")
-                .Attribute("ng-required", "true")
-            //.UseDataPrefix()
+                //.Attribute("ng-required", "true")
         ));
 
             
             #line default
             #line hidden
             
-            #line 44 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 42 "..\..\Views\FormsAuth\Index.cshtml"
+         
+        
+            
+            #line default
+            #line hidden
+            
+            #line 49 "..\..\Views\FormsAuth\Index.cshtml"
+           
+        
+            
+            #line default
+            #line hidden
+            
+            #line 50 "..\..\Views\FormsAuth\Index.cshtml"
+   Write(Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiRadioList(Model.GetYesNoList(),"default")
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        ));
+
+            
+            #line default
+            #line hidden
+            
+            #line 54 "..\..\Views\FormsAuth\Index.cshtml"
          
         using (Html.BeginBootstrapFormGroup())
         {
@@ -167,7 +194,7 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 47 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 57 "..\..\Views\FormsAuth\Index.cshtml"
        Write(Html.BootstrapButton(x => x
                 .BootstrapButton("primary")
                 .BeforeGlyph("ok")
@@ -175,14 +202,13 @@ WriteLiteral("\r\n");
                 .Attribute("type", "submit")
                 .Attribute("ng-disabled", "!FormIsValid()")
                 .CssClass("margin-right-half")
-                //.UseDataPrefix()
             ));
 
             
             #line default
             #line hidden
             
-            #line 55 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 64 "..\..\Views\FormsAuth\Index.cshtml"
              
 
             
@@ -190,35 +216,28 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 57 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 66 "..\..\Views\FormsAuth\Index.cshtml"
        Write(Html.BootstrapButton(x => x
                 .BootstrapButton("danger")
                 .AfterGlyph("remove")
                 .LabelText(Html.Translate("Reset"))
                 .Attribute("type", "reset")
-                //.UseDataPrefix()
+                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = false;", y=> y.RememberMe))
             ));
 
             
             #line default
             #line hidden
             
-            #line 63 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 72 "..\..\Views\FormsAuth\Index.cshtml"
              
         }
-
     }
 
             
             #line default
             #line hidden
-WriteLiteral("    \r\n    <div>Email: {{ stng.IsNullOrEmpty(Model.Email) ? \"UNDEFINED\":Model.Emai" +
-"l }}</div>\r\n    <div>Password: {{ stng.IsNullOrEmpty(Model.Password) ? \"UNDEFINE" +
-"D\":Model.Password }}</div>\r\n\r\n\r\n    ");
-
-WriteLiteral("\r\n    ");
-
-WriteLiteral("\r\n</div>");
+WriteLiteral("</div>");
 
         }
     }
