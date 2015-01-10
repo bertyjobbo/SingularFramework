@@ -18,8 +18,86 @@
 @color-brand-primary: #563d7c;
 @color-brand-primary-lighten: lighten(@color-brand-primary,20%);
 @color-white: #fff;
+@color-offwhite: darken(@color-white, 4%);
+@color-gray: #ccc;
+@color-pink: lighten(red, 49%);
+@color-red:lighten(red, 40%);
 
 @padding: 16px;
+
+.box-shadow{
+    box-shadow: 0 5px 10px 0 @color-dark-lighten
+}
+.light-border{
+    border: 1px solid @color-gray;
+}
+.bottom-margin{
+    margin-bottom:@padding;
+}
+.top-margin{
+    margin-top: @padding;
+}
+.margin{
+    margin: (@padding);
+}
+.margin-top{
+    margin-top: (@padding);
+}
+.margin-left{
+    margin-left: (@padding);
+}
+.margin-bottom{
+    margin-bottom: (@padding);
+}
+.margin-right{
+    margin-right: (@padding);
+}
+.margin-half{
+    margin: (@padding/2);
+}
+.margin-top-half{
+    margin-top: (@padding/2);
+}
+.margin-left-half{
+    margin-left: (@padding/2);
+}
+.margin-bottom-half{
+    margin-bottom: (@padding/2);
+}
+.margin-right-half{
+    margin-right: (@padding/2);
+}
+.padding{
+    padding: (@padding);
+}
+.padding-top{
+    padding-top: (@padding);
+}
+.padding-left{
+    padding-left: (@padding);
+}
+.padding-bottom{
+    padding-bottom: (@padding);
+}
+.padding-right{
+    padding-right: (@padding);
+}
+.padding-half{
+    padding: (@padding/2);
+}
+.padding-top-half{
+    padding-top: (@padding/2);
+}
+.padding-left-half{
+    padding-left: (@padding/2);
+}
+.padding-bottom-half{
+    padding-bottom: (@padding/2);
+}
+.padding-right-half{
+    padding-right: (@padding/2);
+}
+
 
 /*#endregion */
 
@@ -255,7 +333,7 @@ div#after_sidebar {
 
 section#dashboard {
     height: 100%;
-    padding: 66px @padding @padding 98px;
+    padding: 66px @padding @padding 110px;
     background: @color-white;
 }
 
@@ -264,6 +342,29 @@ section#dashboard > h2 {
 }
 
 /*#endregion */
+
+/*#region COMMON */
+
+h2{
+    padding-bottom: (@padding / 2);
+    margin-bottom: (@padding);
+    border-bottom: 2px solid @color-dark;
+}
+
+.sg-form{
+    background: @color-offwhite;
+    padding: @padding;
+    .box-shadow;
+    .light-border;
+    .bottom-margin;
+}
+
+textarea.ng-invalid, input.ng-invalid, select.ng-invalid{
+    border: 1px solid @color-red;
+    background: @color-pink;
+}
+
+/*#endregion*/
 
 /*#region DESKTOP vs MOBILE */
 
@@ -292,3 +393,4 @@ section#dashboard > h2 {
 }
 
 /*#endregion */
+

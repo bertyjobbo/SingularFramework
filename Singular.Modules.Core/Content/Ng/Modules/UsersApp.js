@@ -1,4 +1,4 @@
-﻿/// <reference path="C:\Git\SingularFramework\Singular.Modules.Core\Scripts/angular.js" />
+﻿/// <reference path="C:\ffd248e91f0c43bbbe5921e4\Git\SingularFramework\Singular.Modules.Core\Scripts/angular.js" />
 'use strict';
 
 /*

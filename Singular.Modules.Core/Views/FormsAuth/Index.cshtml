@@ -1,0 +1,84 @@
+﻿@using Singular.Modules.Core.HtmlExtensions
+@using Singular.Web.Mvc.Common.HtmlExtensions
+@using Singular.Web.Mvc.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.FormsAuthViewModel>
+
+@{
+    ViewBag.Title = Html.Translate("Login");
+    ViewBag.NgAppName = "Singular.Modules.SingularFormsAuthApp";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@section scripts
+{
+    <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularFormsAuthApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+}
+<div ng-controller="FormsAuthController">
+    @*<form class="sg-form" data-ng-submit="Login()">*@
+    @using (Html.BeginNgForm(x => x
+        .OnSubmit("Login()")
+        .CssClass("sg-form")
+        //.UseDataPrefix()
+        ))
+    {
+        @Html.NgEditorFor(x => x.Email, x => x
+                .TextBox()
+                .ModelPrefix("Model")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Email"))
+                .Attribute("type", "email")
+                .Attribute("ng-required", "true")
+                .Attribute("autocomplete","off")
+            //.UseDataPrefix()
+        )
+        @Html.NgEditorFor(x => x.Password, x => x
+                .TextBox()
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Password"))
+                .Attribute("type", "password")
+                .Attribute("ng-required", "true")
+            //.UseDataPrefix()
+        )
+        using (Html.BeginBootstrapFormGroup())
+        {
+            @Html.BootstrapButton(x => x
+                .BootstrapButton("primary")
+                .BeforeGlyph("ok")
+                .LabelText(Html.Translate("Submit"))
+                .Attribute("type", "submit")
+                .Attribute("ng-disabled", "!FormIsValid()")
+                .CssClass("margin-right-half")
+                //.UseDataPrefix()
+            )
+
+            @Html.BootstrapButton(x => x
+                .BootstrapButton("danger")
+                .AfterGlyph("remove")
+                .LabelText(Html.Translate("Reset"))
+                .Attribute("type", "reset")
+                //.UseDataPrefix()
+            )
+        }
+
+    }
+    
+    <div>Email: {{ stng.IsNullOrEmpty(Model.Email) ? "UNDEFINED":Model.Email }}</div>
+    <div>Password: {{ stng.IsNullOrEmpty(Model.Password) ? "UNDEFINED":Model.Password }}</div>
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email, new { type = "email", @class = "form-control", data_ng_model = "Email", data_ng_required = "EmailIsValid()" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Password)
+            @Html.TextBoxFor(x => x.Password, new { type = "password", @class = "form-control", data_ng_model = "Password", data_ng_required="PasswordIsValid()"})
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" data-ng-disabled="!FormIsValid()">@Html.Translate("Go")</button>
+        </div>*@
+    @*</form>*@
+</div>

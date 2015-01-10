@@ -9,13 +9,11 @@ using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.ViewModels
 {
-    public class SingularLoginViewModel : CoreViewModelBase
+    public class FormsAuthViewModel : CoreViewModelBase
     {
-        public SingularLoginViewModel(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext) : base(ctx, mvcManager, siteContext)
+        public FormsAuthViewModel(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext) : base(ctx, mvcManager, siteContext)
         {
         }
-
-
 
         [Required]
         [Display(Name = "Email")]

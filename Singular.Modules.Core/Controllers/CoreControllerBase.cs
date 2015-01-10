@@ -12,24 +12,10 @@ using Singular.Web.Mvc.Section;
 namespace Singular.Modules.Core.Controllers
 {
     [SingularAuthorize]
-    public abstract class CoreControllerBase : Controller
+    public abstract class CoreControllerBase : CoreControllerBaseNoAuth
     {
-        public ISingularContext SingularContext { get; private set; }
-        protected ISectionManager SectionManager { get; private set; }
-        public ISiteContext SiteContext { get; private set; }
-        
-        protected CoreControllerBase(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext)
+        protected CoreControllerBase(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext) : base(ctx, sectionService, siteContext)
         {
-            SingularContext = ctx;
-            SectionManager = sectionService;
-            SiteContext = siteContext;
         }
-
-        protected CoreViewModelBase GetCoreModelBaseInstance()
-		{
-            //Thread.Sleep(2000);
-			return new CoreViewModelBase(SingularContext, SectionManager, SiteContext);
-		}
-
     }
 }

@@ -18,8 +18,8 @@ namespace MySingularApplication2
             EmbeddedResourceManager
                 .Current
                 .SetMsBuildPath(@"C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe")
-                .SetSolutionPath(@"C:\Git\SingularFramework\Singular.sln")
-                .SetRazorGeneratorPsScriptPath(@"C:\Git\SingularFramework\packages\RazorGenerator.Mvc.2.2.3\tools\Init.ps1");
+                .SetSolutionPath(@"C:\ffd248e91f0c43bbbe5921e4\Git\SingularFramework\Singular.sln")
+                .SetRazorGeneratorPsScriptPath(@"C:\ffd248e91f0c43bbbe5921e4\Git\SingularFramework\packages\RazorGenerator.Mvc.2.2.3\tools\Init.ps1");
 
             // override views etc
             SiteContext

@@ -26,7 +26,7 @@ namespace AltNg.SingularConfig
             EmbeddedResourceManager
                 .Current
                 .CreateCollection(this, "AltNg", "AltNg")
-                .SetRouteFolder(@"C:\Git\SingularFramework\AltNg") // replace with appSetting ?
+                .SetRouteFolder(@"C:\ffd248e91f0c43bbbe5921e4\Git\SingularFramework\AltNg") // replace with appSetting ?
                 .SetProjectFileName("AltNg.csproj")
                 .AddFolder("~/alt");
         }

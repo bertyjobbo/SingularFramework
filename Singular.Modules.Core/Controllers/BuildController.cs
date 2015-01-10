@@ -6,7 +6,7 @@ using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
-    public class BuildController : CoreControllerBase
+    public class BuildController : CoreControllerBaseNoAuth
     {
         private readonly IEmbeddedResourceManager _resMgr;
 

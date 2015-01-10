@@ -246,10 +246,10 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</section>\r\n        </div>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2036), Tuple.Create("\"", 2130)
+WriteAttribute("src", Tuple.Create(" src=\"", 2036), Tuple.Create("\"", 2138)
             
             #line 43 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2042), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2042), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
@@ -258,22 +258,22 @@ WriteAttribute("src", Tuple.Create(" src=\"", 2036), Tuple.Create("\"", 2130)
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2158), Tuple.Create("\"", 2260)
+WriteAttribute("src", Tuple.Create(" src=\"", 2166), Tuple.Create("\"", 2260)
             
             #line 44 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2164), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2172), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2164), false)
+, 2172), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2288), Tuple.Create("\"", 2403)
+WriteAttribute("src", Tuple.Create(" src=\"", 2288), Tuple.Create("\"", 2390)
             
             #line 45 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2294), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2294), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
@@ -282,50 +282,62 @@ WriteAttribute("src", Tuple.Create(" src=\"", 2288), Tuple.Create("\"", 2403)
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2431), Tuple.Create("\"", 2524)
+WriteAttribute("src", Tuple.Create(" src=\"", 2418), Tuple.Create("\"", 2533)
             
             #line 46 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2437), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2424), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2437), false)
+, 2424), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2552), Tuple.Create("\"", 2646)
+WriteAttribute("src", Tuple.Create(" src=\"", 2561), Tuple.Create("\"", 2654)
             
             #line 47 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2558), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2567), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2558), false)
+, 2567), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2674), Tuple.Create("\"", 2764)
+WriteAttribute("src", Tuple.Create(" src=\"", 2682), Tuple.Create("\"", 2776)
             
             #line 48 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2680), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2688), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2680), false)
+, 2688), false)
 );
 
 WriteLiteral("></script>\r\n        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2792), Tuple.Create("\"", 2906)
+WriteAttribute("src", Tuple.Create(" src=\"", 2804), Tuple.Create("\"", 2894)
             
             #line 49 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2798), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 2810), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2798), false)
+, 2810), false)
+);
+
+WriteLiteral("></script>\r\n        <script");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2922), Tuple.Create("\"", 3036)
+            
+            #line 50 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2928), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            
+            #line default
+            #line hidden
+, 2928), false)
 );
 
 WriteLiteral("></script>\r\n");
@@ -333,7 +345,7 @@ WriteLiteral("></script>\r\n");
 WriteLiteral("        ");
 
             
-            #line 50 "..\..\Views\Shared\_Layout.cshtml"
+            #line 51 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderSection("scripts", false));
 
             

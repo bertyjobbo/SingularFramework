@@ -34,9 +34,10 @@ namespace Singular.Modules.Core.Configuration
             EmbeddedResourceManager
                 .Current
                 .CreateCollection(this, "Singular.Modules.Core", "Core")
-                .SetRouteFolder(@"C:\Git\SingularFramework\Singular.Modules.Core") // replace with appSetting ?
+                .SetRouteFolder(@"C:\ffd248e91f0c43bbbe5921e4\Git\SingularFramework\Singular.Modules.Core") // replace with appSetting ?
                 .SetProjectFileName("Singular.Modules.Core.csproj")
                 .AddFolder("~/Content/Css")
+                .AddFolder("~/Content/Scripts")
                 .AddFolder("~/Content/Bootstrap/css")
                 .AddFolder("~/Content/Bootstrap/fonts")
                 .AddFolder("~/Content/Images")

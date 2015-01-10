@@ -40,6 +40,7 @@
             @Html.Partial("_Sidebar")
             <section id="dashboard">@RenderBody()</section>
         </div>
+        <script src="@Url.EmbeddedContent("Core","~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
         <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
         <script src="@Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
         <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
