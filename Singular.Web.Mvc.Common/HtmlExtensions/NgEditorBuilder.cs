@@ -40,8 +40,9 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
             return this;
         }
 
-        public NgEditorBuilder UiCheckbox()
+        public NgEditorBuilder UiCheckbox(string labelPos)
         {
+            UiCheckboxLabelPosition = labelPos;
             Editor = "UiCheckbox";
             return this;
         }
@@ -55,8 +56,7 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
         }
         public IList<SelectListItem> ListData { get; private set; }
         public string RadioListClass { get; private set; }
-
-        
+        public string UiCheckboxLabelPosition { get; private set; }
 
         #endregion
         

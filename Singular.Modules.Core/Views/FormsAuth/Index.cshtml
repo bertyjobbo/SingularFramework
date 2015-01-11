@@ -40,18 +40,29 @@
                 .Attribute("type", "password")
                 //.Attribute("ng-required", "true")
         )
-        @*using (Html.BeginBootstrapFormGroup())
-        {
-        @Html.NgEditorFor(x => x.RememberMe, x => x
-                .UiCheckbox()
-                .LabelText(Html.Translate("Remember me?"))
-        )
-        }*@
-        @Html.NgEditorFor(x => x.RememberMe, x => x
-                .UiRadioList(Model.GetYesNoList(),"default")
+        @*@Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("top")
+                .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Stay signed in?"))
         )
+        @Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("right")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )*@
+        @Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("left")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )
+        @*@Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiRadioList(Model.GetYesNoList(),"default")
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )*@
         using (Html.BeginBootstrapFormGroup())
         {
             @Html.BootstrapButton(x => x
@@ -68,7 +79,7 @@
                 .AfterGlyph("remove")
                 .LabelText(Html.Translate("Reset"))
                 .Attribute("type", "reset")
-                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = false;", y=> y.RememberMe))
+                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = true;", y=> y.RememberMe))
             )
         }
     }

@@ -167,16 +167,17 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 49 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 54 "..\..\Views\FormsAuth\Index.cshtml"
            
         
             
             #line default
             #line hidden
             
-            #line 50 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 55 "..\..\Views\FormsAuth\Index.cshtml"
    Write(Html.NgEditorFor(x => x.RememberMe, x => x
-                .UiRadioList(Model.GetYesNoList(),"default")
+                .UiCheckbox("left")
+                .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Stay signed in?"))
         ));
@@ -185,8 +186,15 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 60 "..\..\Views\FormsAuth\Index.cshtml"
          
+        
+            
+            #line default
+            #line hidden
+            
+            #line 65 "..\..\Views\FormsAuth\Index.cshtml"
+           
         using (Html.BeginBootstrapFormGroup())
         {
             
@@ -194,7 +202,7 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 57 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 68 "..\..\Views\FormsAuth\Index.cshtml"
        Write(Html.BootstrapButton(x => x
                 .BootstrapButton("primary")
                 .BeforeGlyph("ok")
@@ -208,7 +216,7 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 64 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 75 "..\..\Views\FormsAuth\Index.cshtml"
              
 
             
@@ -216,20 +224,20 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 77 "..\..\Views\FormsAuth\Index.cshtml"
        Write(Html.BootstrapButton(x => x
                 .BootstrapButton("danger")
                 .AfterGlyph("remove")
                 .LabelText(Html.Translate("Reset"))
                 .Attribute("type", "reset")
-                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = false;", y=> y.RememberMe))
+                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = true;", y=> y.RememberMe))
             ));
 
             
             #line default
             #line hidden
             
-            #line 72 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 83 "..\..\Views\FormsAuth\Index.cshtml"
              
         }
     }

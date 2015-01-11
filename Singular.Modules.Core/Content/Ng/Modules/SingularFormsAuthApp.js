@@ -25,7 +25,7 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
         $scope.Model = {
             Email: "",
             Password: "",
-            RememberMe: false
+            RememberMe: true
         }
 
         // login

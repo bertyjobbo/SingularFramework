@@ -47,12 +47,16 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 
         // alert
         $rootScope.Alert = function (str) {
-            alert($scope.$eval(str));
+            alert(str);
         };
 
         // log
         $rootScope.Log = function (obj1,obj2) {
-            console.log($scope.$eval(obj1), $scope.$eval(obj2));            
+            if (obj2)
+                console.log(obj1, obj2);
+            else
+                console.log(obj1);
+
         };
 
 
