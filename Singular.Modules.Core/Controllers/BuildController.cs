@@ -15,14 +15,10 @@ namespace Singular.Modules.Core.Controllers
         /// Constructor
         /// </summary>
         /// <param name="ctx"></param>
-        /// <param name="sectionService"></param>
-        /// <param name="siteContext"></param>
-        /// <param name="mgr"></param>
-        /// <param name="translationService"></param>
-        public BuildController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, IEmbeddedResourceManager mgr, ITranslationService translationService)
-            : base(ctx, sectionService, siteContext, translationService)
+        public BuildController(ISingularContext ctx)
+            : base(ctx)
         {
-            _resMgr = mgr;
+            _resMgr = ctx.GetService<IEmbeddedResourceManager>();
         }
 
         /// <summary>

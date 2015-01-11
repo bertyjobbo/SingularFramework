@@ -38,7 +38,7 @@ alt.route = angular.module("alt.route", ["ng"]);
 
                 // get expression
                 var urlExpression = attrs.altView;
-
+                
                 // cache
                 var viewCache = {};
 
@@ -57,7 +57,7 @@ alt.route = angular.module("alt.route", ["ng"]);
 
                 // events
                 scope.$on("$routeChangeStart", function (e, newPath) {
-
+                    
                     // lower
                     newPath = newPath.toLowerCase();
 
@@ -91,6 +91,7 @@ alt.route = angular.module("alt.route", ["ng"]);
 
                     // check if controller exists
                     var ctrlExist = altControllerChecker.exists($location.$$route.$$routeController);
+                    
 
                     // if it does, add the attribute
                     if (ctrlExist) {
@@ -122,7 +123,15 @@ alt.route = angular.module("alt.route", ["ng"]);
                         urlExpression
                             .replace(/(\$controller)/g, "'" + $location.$$route.$$routeControllerName + "'")
                             .replace(/(\$action)/g, "'" + $location.$$route.$$routeActionName + "'");
-                    var url = scope.$eval(replacedUrlExpression);
+
+                    try{
+                        var url = scope.$eval(replacedUrlExpression);
+                    }
+                    catch (urlErr) {
+                       
+                            throw "Cannot $eval replaceUrlExpression in Alt-View. Make sure you use both $controller and $action in the URL: " + urlErr;
+                       
+                    }
 
                     // view exists
                     if (viewCache[url]) {

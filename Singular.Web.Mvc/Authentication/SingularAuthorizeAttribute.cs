@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Singular.Core.Context;
 using Singular.Web.Mvc.Context;
 
-namespace Singular.Modules.Core.Authentication
+namespace Singular.Web.Mvc.Authentication
 {
     public class SingularAuthorizeAttribute : AuthorizeAttribute
     {
@@ -35,11 +35,11 @@ namespace Singular.Modules.Core.Authentication
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Users/AccessDenied"),true);
+                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth/#/Login/AccessDenied/"),true);
                 return;
             }
             
-            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth"),true);
+            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth/#/Login/?returnUrl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.Url.ToString()) + "&canlogin=1&isAccessDenied=false"),true);
             
         }
     }

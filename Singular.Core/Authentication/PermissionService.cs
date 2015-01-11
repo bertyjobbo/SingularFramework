@@ -11,7 +11,7 @@ namespace Singular.Core.Authentication
         public bool UserIsAllowed(string userName, IList<string> allowedUsers, IList<string> allowedRoles, IList<string> allowedModules)
         {
             // Todo userisallowed
-            return true;
+            return false;
         }
     }
 }

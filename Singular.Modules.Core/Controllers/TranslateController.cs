@@ -8,8 +8,7 @@ namespace Singular.Modules.Core.Controllers
 {
     public class TranslateController: CoreControllerBase
     {
-        public TranslateController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, ITranslationService translationService)
-            : base(ctx, sectionService, siteContext, translationService)
+        public TranslateController(ISingularContext ctx): base(ctx)
         {
         }
 

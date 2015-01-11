@@ -10,8 +10,7 @@ namespace Singular.Modules.Core.Controllers
 {
     public class HomeController : CoreControllerBase
     {
-        public HomeController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, ITranslationService translationService)
-            : base(ctx,  sectionService, siteContext, translationService)
+        public HomeController(ISingularContext ctx):base(ctx)
         {
         }
 

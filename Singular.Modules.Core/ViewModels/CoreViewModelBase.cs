@@ -15,22 +15,23 @@ namespace Singular.Modules.Core.ViewModels
 	        
 	    }
 
-	    public void Reconstruct(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext, ITranslationService translationService)
+	    public void Reconstruct(ISingularContext ctx)
 	    {
-            SingularContext = ctx;
-            MvcSectionsManager = mvcManager;
-            Sections = MvcSectionsManager.GetSections();
-            SiteContext = siteContext;
-	        TranslationService = translationService;
+            construct(ctx);
 	    }
 
-	    public CoreViewModelBase(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext, ITranslationService translationService)
+	    public CoreViewModelBase(ISingularContext ctx)
+	    {
+	        construct(ctx);
+	    }
+
+	    private void construct(ISingularContext ctx)
 	    {
 	        SingularContext = ctx;
-	        MvcSectionsManager = mvcManager;
-	        Sections = MvcSectionsManager.GetSections();
-	        SiteContext = siteContext;
-	        TranslationService = translationService;
+            MvcSectionsManager = ctx.GetService<ISectionManager>();
+            Sections = MvcSectionsManager.GetSections();
+            SiteContext = ctx.GetService<ISiteContext>();
+            TranslationService = ctx.GetService<ITranslationService>();
 	    }
 
 	    public ITranslationService TranslationService { get; private set; }

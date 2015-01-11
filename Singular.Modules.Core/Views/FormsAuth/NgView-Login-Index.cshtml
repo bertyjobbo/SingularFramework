@@ -1,0 +1,78 @@
+﻿@using Singular.Modules.Core.HtmlExtensions
+@using Singular.Web.Mvc.Common.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.FormsAuthViewModel>
+@{
+    Layout = null;
+}
+
+@using (Html.BeginNgForm(x => x
+        .OnSubmit("Login()")
+        .CssClass("sg-form")
+        ))
+{
+    @Html.NgEditorFor(x => x.Email, x => x
+                .Input()
+                .ModelPrefix("Model")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Email"))
+                .Attribute("type", "email")
+        //.Attribute("ng-required", "true")
+        //.Attribute("autocomplete", "off")
+        )
+    @Html.NgEditorFor(x => x.Password, x => x
+                .Input()
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Password"))
+                .Attribute("type", "password")
+        //.Attribute("ng-required", "true")
+        )
+    @*@Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("top")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )
+        @Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("right")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )*@
+    @Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiCheckbox("left")
+                .BootstrapFormControl()
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )
+    @*@Html.NgEditorFor(x => x.RememberMe, x => x
+                .UiRadioList(Model.GetYesNoList(),"default")
+                .BootstrapFormGroup()
+                .LabelText(Html.Translate("Stay signed in?"))
+        )*@
+    using (Html.BeginBootstrapFormGroup())
+    {
+        @Html.BootstrapButton(x => x
+                .BootstrapButton("primary")
+                .BeforeGlyph("ok")
+                .LabelText(Html.Translate("Submit"))
+                .Attribute("type", "submit")
+                .Attribute("ng-disabled", "!FormIsValid()")
+                .CssClass("margin-right-half")
+            )
+
+        @Html.BootstrapButton(x => x
+                .BootstrapButton("danger")
+                .AfterGlyph("remove")
+                .LabelText(Html.Translate("Reset"))
+                .Attribute("type", "reset")
+                .Attribute("ng-click", Html.PropertyExpression("Model.{0} = true;", y => y.RememberMe))
+            )
+    }
+
+    <hr />
+    <p><a alt-href="Login,Forgot">@Html.Translate("Click here if you have forgotten your password")</a></p>
+}
+
+

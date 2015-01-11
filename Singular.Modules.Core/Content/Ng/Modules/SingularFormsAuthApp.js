@@ -20,29 +20,42 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
 (function (app) {
 
     // add controller
-    app.controller("FormsAuthController", ["$scope", function ($scope) {
+    app.controller("loginController", ["$scope","$location", function ($scope,$location) {
 
-        $scope.Model = {
-            Email: "",
-            Password: "",
-            RememberMe: true
+        $scope.indexAction = function () {
+            
+            // get query string
+            var qstr = $location.search();
+            $location.url($location.path())
+
+            // model
+            $scope.Model = {
+                Email: "",
+                Password: "",
+                RememberMe: true,
+                RedirectUrl: qstr === undefined ? "" : qstr.returnUrl
+            }
+
+            // login
+            $scope.Login = function () {
+                console.log($scope.Model)
+            };
+
+            // valid?
+            $scope.EmailIsValid = function () {
+                return !strng.IsNullOrWhiteSpace($scope.Model.Email);
+            }
+            $scope.PasswordIsValid = function () {
+                return !strng.IsNullOrWhiteSpace($scope.Model.Password);
+            }
+            $scope.FormIsValid = function () {
+                return $scope.EmailIsValid() && $scope.PasswordIsValid();
+            }
         }
 
-        // login
-        $scope.Login = function () {
-            console.log($scope.Model)
-        };
+        
 
-        // valid?
-        $scope.EmailIsValid = function () {
-            return !strng.IsNullOrWhiteSpace($scope.Model.Email);
-        }
-        $scope.PasswordIsValid = function () {
-            return !strng.IsNullOrWhiteSpace($scope.Model.Password);
-        }
-        $scope.FormIsValid = function () {            
-            return $scope.EmailIsValid() && $scope.PasswordIsValid();
-        }
+        
     }]);
 
 })(Singular.Modules.SingularFormsAuthApp);

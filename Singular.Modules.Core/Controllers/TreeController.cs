@@ -13,8 +13,8 @@ namespace Singular.Modules.Core.Controllers
 {
     public class TreeController: CoreControllerBase
     {
-        public TreeController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, ITranslationService translationService)
-            : base(ctx, sectionService, siteContext, translationService)
+        public TreeController(ISingularContext ctx)
+            : base(ctx)
         {
         }
 

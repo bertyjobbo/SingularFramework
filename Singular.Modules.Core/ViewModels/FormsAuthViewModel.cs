@@ -14,7 +14,7 @@ namespace Singular.Modules.Core.ViewModels
 {
     public class FormsAuthViewModel : CoreViewModelBase
     {
-        public FormsAuthViewModel(ISingularContext ctx, ISectionManager mvcManager, ISiteContext siteContext, ITranslationService translationService) : base(ctx, mvcManager, siteContext, translationService)
+        public FormsAuthViewModel(ISingularContext ctx) : base(ctx)
         {
         }
 

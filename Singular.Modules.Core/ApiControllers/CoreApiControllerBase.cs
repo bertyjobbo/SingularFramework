@@ -10,15 +10,15 @@ using Singular.Web.Mvc.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
 using Singular.Web.Mvc.Section;
 
-namespace Singular.Modules.Core.Controllers
+namespace Singular.Modules.Core.ApiControllers
 {
     /// <summary>
     /// Core controller base (authorized)
     /// </summary>
     [SingularAuthorize]
-    public abstract class CoreControllerBase : CoreControllerBaseNoAuth
+    public abstract class CoreApiControllerBase : CoreApiControllerBaseNoAuth
     {
-        protected CoreControllerBase(ISingularContext ctx)
+        protected CoreApiControllerBase(ISingularContext ctx)
             : base(ctx)
         {
         }

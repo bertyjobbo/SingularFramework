@@ -12,7 +12,7 @@ namespace Singular.Modules.Core.Controllers
 {
     public class UsersController: CoreControllerBase
     {
-        public UsersController(ISingularContext ctx, ISectionManager sectionService, ISiteContext siteContext, ITranslationService translationService) : base(ctx, sectionService, siteContext,translationService)
+        public UsersController(ISingularContext ctx) : base(ctx)
         {
 
         }

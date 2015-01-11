@@ -21,8 +21,8 @@ using System.Web.Mvc;
 
 namespace Singular.Web.Mvc.Context
 {
-	public class SingularMvcContext : ISingularContext
-	{
+    public class SingularMvcContext : ISingularContext
+    {
         // singleton
         /// <summary>
         /// Current
@@ -38,14 +38,14 @@ namespace Singular.Web.Mvc.Context
         private static ISingularContext _current;
 
         // fields
-		private List<Assembly> _assemblies;
-		private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
-		private readonly Type _areaRegType = typeof(AreaRegistration);
-	    private IPermissionService _permissionService;
-	    private bool _firstRequestComplete;
-	    private IUserFactory _userFactory;
+        private List<Assembly> _assemblies;
+        private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
+        private readonly Type _areaRegType = typeof(AreaRegistration);
+        private IPermissionService _permissionService;
+        private bool _firstRequestComplete;
+        private IUserFactory _userFactory;
 
-	    // private methods
+        // private methods
         private void fireModuleAppStartMethods()
         {
             foreach (KeyValuePair<string, ISingularModuleConfiguration> singularModuleConfiguration in Modules)
@@ -61,7 +61,7 @@ namespace Singular.Web.Mvc.Context
             {
                 pathToBin = Path.Combine(pathToBin, "bin");
             }
-            var files = Directory.GetFiles(pathToBin, "*.dll").Where(x=>!x.StartsWith("System.")).ToList();
+            var files = Directory.GetFiles(pathToBin, "*.dll").Where(x => !x.StartsWith("System.")).ToList();
             foreach (var dllPath in files)
             {
                 var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
@@ -90,37 +90,48 @@ namespace Singular.Web.Mvc.Context
         /// <summary>
         /// Modules
         /// </summary>
-		public IDictionary<string, ISingularModuleConfiguration> Modules { get; private set; }
+        public IDictionary<string, ISingularModuleConfiguration> Modules { get; private set; }
+
+        /// <summary>
+        /// Get service
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetService<T>()
+        {
+            return MvcIocManager.Current.GetService<T>();
+        }
 
         /// <summary>
         /// Register the modules
         /// </summary>
         /// <returns></returns>
-		public ISingularContext RegisterModules()
-		{
-			AreaRegistration.RegisterAllAreas();
-			GlobalFilters.Filters.Add(new HandleErrorAttribute());
-			GlobalConfiguration.Configure((config) => {
-				config.MapHttpAttributeRoutes();
-				config.Formatters.Clear();
-				config.Formatters.Add(new JsonMediaTypeFormatter());
-			});
-			setAssemblies();
-			setModules();
-			fireModuleAppStartMethods();
+        public ISingularContext RegisterModules()
+        {
+            AreaRegistration.RegisterAllAreas();
+            GlobalFilters.Filters.Add(new HandleErrorAttribute());
+            GlobalConfiguration.Configure((config) =>
+            {
+                config.MapHttpAttributeRoutes();
+                config.Formatters.Clear();
+                config.Formatters.Add(new JsonMediaTypeFormatter());
+            });
+            setAssemblies();
+            setModules();
+            fireModuleAppStartMethods();
             MvcIocManager.Current.FinalizeServices();
-			return this;
-		}
+            return this;
+        }
 
         /// <summary>
         /// Load resources
         /// </summary>
         /// <returns></returns>
-	    public ISingularContext LoadResources()
-	    {
-	        EmbeddedResourceManager.Current.LoadResources();
-	        return this;
-	    }
+        public ISingularContext LoadResources()
+        {
+            EmbeddedResourceManager.Current.LoadResources();
+            return this;
+        }
 
         /// <summary>
         /// User is allowed
@@ -129,7 +140,7 @@ namespace Singular.Web.Mvc.Context
         /// <param name="roles"></param>
         /// <param name="modules"></param>
         /// <returns></returns>
-	    public bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules)
+        public bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules)
         {
             if (CurrentUser == null) return false;
             return _permissionService.UserIsAllowed(CurrentUser.LogonName, users, roles, modules);
@@ -138,59 +149,62 @@ namespace Singular.Web.Mvc.Context
         /// <summary>
         /// Current user
         /// </summary>
-	    public SingularUser CurrentUser {
+        public SingularUser CurrentUser
+        {
             get
             {
                 var s = Session;
                 if (s == null) return default(SingularUser);
                 return s.User;
-            } }
+            }
+        }
 
         /// <summary>
         /// Set current user
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-	    public ISingularContext SetCurrentUser(SingularUser user)
-	    {
-	        var s = new SingularSession(user);
+        public ISingularContext SetCurrentUser(SingularUser user)
+        {
+            var s = new SingularSession(user);
             HttpContext.Current.Session.Add(session_key, s);
             return this;
-	    }
+        }
 
         /// <summary>
         /// Remove current user
         /// </summary>
         /// <returns></returns>
-	    public ISingularContext RemoveCurrentUser()
-	    {
-	        HttpContext.Current.Session.Remove(session_key);
-	        return this;
-	    }
+        public ISingularContext RemoveCurrentUser()
+        {
+            HttpContext.Current.Session.Remove(session_key);
+            return this;
+        }
 
         /// <summary>
         /// Session
         /// </summary>
-        public SingularSession Session {
+        public SingularSession Session
+        {
             get
             {
                 var s = HttpContext.Current.Session[session_key];
                 if (s == null) return default(SingularSession);
-                return (SingularSession) s;
-            } 
+                return (SingularSession)s;
+            }
         }
-	    private const string session_key = "SINGULAR_USER_SESSION";
+        private const string session_key = "SINGULAR_USER_SESSION";
 
         /// <summary>
         /// Is authenticated
         /// </summary>
-	    public bool IsAuthenticated { get { return CurrentUser != null && Session != null; } }
+        public bool IsAuthenticated { get { return CurrentUser != null && Session != null; } }
 
         /// <summary>
         /// On first request
         /// </summary>
-	    public void OnBeginRequest()
-	    {
+        public void OnBeginRequest()
+        {
             if (!_firstRequestComplete)
             {
                 _firstRequestComplete = true;
@@ -200,7 +214,7 @@ namespace Singular.Web.Mvc.Context
 
             if (
                 HttpContext.Current.User != null &&
-                HttpContext.Current.User.Identity.IsAuthenticated && 
+                HttpContext.Current.User.Identity.IsAuthenticated &&
                 HttpContext.Current.User.Identity.AuthenticationType == "NTLM" &&
                 !IsAuthenticated)
             {
@@ -211,6 +225,6 @@ namespace Singular.Web.Mvc.Context
                     )
                 );
             }
-	    }
-	}
+        }
+    }
 }

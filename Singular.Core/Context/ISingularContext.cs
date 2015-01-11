@@ -65,5 +65,12 @@ namespace Singular.Core.Context
         /// Is auth?
         /// </summary>
         bool IsAuthenticated { get; }
+        
+        /// <summary>
+        /// Get a service
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T GetService<T>();
     }
 }
