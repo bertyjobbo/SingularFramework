@@ -51,7 +51,7 @@ namespace Singular.Modules.Core.Views.Home
             
             #line 4 "..\..\Views\Home\Index.cshtml"
   
-    ViewBag.Title = "The Stuff Management system";
+    ViewBag.Title = Html.Translate("The Stuff Management system");
     ViewBag.NgAppName = "Singular.Modules.SingularCoreApp";
 
             
@@ -63,14 +63,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 275), Tuple.Create("\"", 388)
+WriteAttribute("src", Tuple.Create(" src=\"", 291), Tuple.Create("\"", 404)
             
             #line 10 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 281), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 297), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 281), false)
+, 297), false)
 );
 
 WriteLiteral("></script>\r\n");
@@ -85,24 +85,24 @@ WriteLiteral(" class=\"jumbotron text-center\"");
 
 WriteLiteral(">\r\n    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 610), Tuple.Create("\"", 672)
+WriteAttribute("src", Tuple.Create(" src=\"", 626), Tuple.Create("\"", 688)
             
             #line 16 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 616), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
+, Tuple.Create(Tuple.Create("", 632), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
             
             #line default
             #line hidden
-, 616), false)
+, 632), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 673), Tuple.Create("\"", 716)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 689), Tuple.Create("\"", 732)
             
             #line 16 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 679), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
+, Tuple.Create(Tuple.Create("", 695), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
             
             #line default
             #line hidden
-, 679), false)
+, 695), false)
 );
 
 WriteLiteral("/>\r\n</div>\r\n<p>Fixie bitters fanny pack, flannel 8-bit taxidermy +1 selfies Kicks" +

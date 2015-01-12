@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Web.Mvc;
 using Singular.Core.Context;
+using Singular.Modules.Core.HtmlExtensions;
 using Singular.Useful;
 
 namespace Singular.Modules.Core.Controllers
@@ -13,14 +14,18 @@ namespace Singular.Modules.Core.Controllers
             
         }
 
-        public ActionResult Index(string folder, string c, string a, string model)
+        public ActionResult Index(string folder, string c, string a, Guid guid)
         {
+            Thread.Sleep(2000);
+            
             object finalModel = null;
-            if (model.HasValue())
+
+            if (guid.IsNotEmpty() && AltNgExtensions.ViewModelDictionary.ContainsKey(guid))
             {
-                var type = Type.GetType(model);
-                finalModel = Activator.CreateInstance(type, SingularContext);
+                var type = AltNgExtensions.ViewModelDictionary[guid];
+                finalModel = Activator.CreateInstance(type, SingularContext);    
             }
+            
             
             if (folder.EndsWith("/"))
             {

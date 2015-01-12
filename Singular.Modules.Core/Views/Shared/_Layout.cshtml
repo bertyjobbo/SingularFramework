@@ -18,15 +18,15 @@
     *@
     <style>
 
-        .collapse.in {
-            height: @((Model.Sections.Count * 60) + 100)px;
-            overflow: hidden;
-        }
-        @@font-face {
-            font-family: 'Glyphicons Halflings';
-            src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
-            src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
-        }
+                  .collapse.in {
+                      height: @((Model.Sections.Count * 60) + 100)px;
+                      overflow: hidden;
+                  }
+                  @@font-face {
+                      font-family: 'Glyphicons Halflings';
+                      src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
+                      src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
+                  }
     </style>
 
     @*
@@ -43,14 +43,17 @@
         @Html.Partial("_Sidebar")
         <section id="dashboard">@RenderBody()</section>
     </div>
-    <script src="@Url.EmbeddedContent("Core","~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core","~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core","~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+@if (ViewBag.NoNg != true)
+{
+    <script src="@Url.EmbeddedContent("Core", "~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
     <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg","~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+}
     @RenderSection("scripts", false)
 </body>
 </html>

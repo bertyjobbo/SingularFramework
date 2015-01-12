@@ -35,9 +35,10 @@ alt.route = angular.module("alt.route", ["ng"]);
                 // remove attr
                 element.removeAttr("data-alt-view");
                 element.removeAttr("alt-view");
-
+                
                 // get expression
                 var urlExpression = attrs.altView;
+                var doCacheing = attrs.altViewCache != "false";
                 
                 // cache
                 var viewCache = {};
@@ -113,10 +114,8 @@ alt.route = angular.module("alt.route", ["ng"]);
                     } else {
                         element.removeAttr("data-ng-controller");
                         element.removeAttr("ng-controller");
-                    }
-
-                    // get url
-                    //var url = altRouteConfig.viewUrlMethod(splt[0], splt[1], $location.$$route.$$routeParams).toLowerCase();
+                    }                  
+                    
 
                     // get url
                     var replacedUrlExpression =
@@ -133,8 +132,8 @@ alt.route = angular.module("alt.route", ["ng"]);
                        
                     }
 
-                    // view exists
-                    if (viewCache[url]) {
+                    // view exists                    
+                    if (doCacheing && viewCache[url]) {
 
                         // set html
                         element.html(viewCache[url]);

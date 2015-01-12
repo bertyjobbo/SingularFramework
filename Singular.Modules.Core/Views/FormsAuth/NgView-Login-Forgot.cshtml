@@ -1,0 +1,19 @@
+﻿@using Singular.Modules.Core.HtmlExtensions
+@using Singular.Web.Mvc.Common.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = null;
+}
+
+@using (Html.BeginNgForm(x => x
+        .OnSubmit("RetrievePassword()")
+        .CssClass("sg-form")
+        ))
+{
+    <h3>Forgot your password?</h3>    
+}
+
+<hr />
+<p><a alt-href="Login">@Html.Translate("Back to login")</a></p>
+
+

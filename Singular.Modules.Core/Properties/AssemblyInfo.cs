@@ -78,6 +78,8 @@ using System.Web.UI;
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Reload.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Shape51.png", "image/png")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Translate.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Tree.png", "image/png")]
