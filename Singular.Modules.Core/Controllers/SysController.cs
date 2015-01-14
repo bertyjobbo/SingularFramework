@@ -19,5 +19,17 @@ namespace Singular.Modules.Core.Controllers
             Response.StatusCode = 404;
             return View(GetCoreModelBaseInstance());
         }
+
+        public ActionResult AccessDenied()
+        {
+            Response.StatusCode = 403;
+            return View(GetCoreModelBaseInstance());
+        }
+
+        public ActionResult Error()
+        {
+            Response.StatusCode = 500;
+            return View(GetCoreModelBaseInstance());
+        }
     }
 }

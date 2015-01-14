@@ -14,6 +14,7 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
         public bool IsBootstrapFormControl { get; private set; }
         public bool IsBootstrapFormGroup { get; private set; }
         public string ModelPrefixValue { get; private set; }
+        public bool EditorRequired { get; private set; }
         
 
         public NgEditorBuilder BootstrapFormControl()
@@ -29,6 +30,16 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
         public NgEditorBuilder ModelPrefix(string prefix)
         {
             ModelPrefixValue = prefix;
+            return this;
+        }
+        public NgEditorBuilder Required()
+        {
+            EditorRequired = true;
+            return this;
+        }
+        public NgEditorBuilder ValidationErrorsPropertyName(string val)
+        {
+            ValidationErrorsPropertyNameValue = val;
             return this;
         }
 
@@ -57,8 +68,10 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
         public IList<SelectListItem> ListData { get; private set; }
         public string RadioListClass { get; private set; }
         public string UiCheckboxLabelPosition { get; private set; }
+        public string ValidationErrorsPropertyNameValue { get; private set; }
 
         #endregion
+
         
     }
 

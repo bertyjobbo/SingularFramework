@@ -60,8 +60,20 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 
             $rootScope.Ui.LoaderVisible = false;
         });
-        $scope.$on("$routeChangeError", function (rout) {
-            window.location = $rootScope.RootedUrl("Singular/Core/Sys/PageNotFound");
+        $scope.$on("$routeChangeError", function (e, errObj, code, route) {
+
+            if (code === 403) {
+                window.location = $rootScope.RootedUrl("Singular/Core/Sys/AccessDenied");
+                return;
+            }
+            if (code === 404) {
+                window.location = $rootScope.RootedUrl("Singular/Core/Sys/PageNotFound");
+                return;
+            }
+            if (code === 500) {
+                window.location = $rootScope.RootedUrl("Singular/Core/Sys/Error");
+                return;
+            }
         });
 
         // alert
@@ -84,6 +96,93 @@ Singular.Common.MasterApp = angular.module("Singular.Common.MasterApp", ["ng", "
 
         }
 
+    }]);
+
+    // ngValidation directive
+    app.directive("sgValidationErrors", ["$compile", function ($compile) {
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+                
+                // validation prop name
+                var valPropName = attrs.sgValidationErrors;
+
+                // remove attr
+                element.removeAttr("sg-validation-errors");
+                element.removeAttr("data-sg-validation-errors");
+
+                // html
+                var html = "<ul><li ng-repeat=\"(key, sgve) in NonProp" + valPropName + "()\">{{sgve}}</li></ul>";
+                element.html(html);
+
+                // compile
+                $compile(element)(scope);
+            }
+        }
+    }]);
+
+    // sg-property-error 
+    app.directive("sgPropertyError", [function () {
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+
+                // get model prop name                
+                var propName = attrs.sgPropertyError;
+
+                // hide
+                element[0].style.display = "none";
+
+                // watch
+                scope.$watch(function () { return scope.$eval(propName); }, function (newVal, oldVal) {
+                    
+                    if (!strng.IsNullOrEmpty(newVal)) {
+                        
+                        // show
+                        element[0].style.display = "inherit";
+                        element.html(newVal);
+
+                    }
+                    else {
+                        element[0].style.display = "none";
+                        element.html("");
+                    }
+
+                }, true);
+            }
+        }
+    }]);
+
+    // sg-property-error-control 
+    app.directive("sgPropertyErrorControl", [function () {
+        return {
+            restrict: "A",
+            link: function (scope, element, attrs) {
+                
+                // get model prop name                
+                var propName = attrs.sgPropertyErrorControl;
+
+                // watch
+                scope.$watch(function () { return scope.$eval(propName); }, function (newVal, oldVal) {
+                    
+                    if (!strng.IsNullOrEmpty(newVal)) {
+
+                        element.addClass("ng-dirty");
+                        element.addClass("sg-dirty");
+                        element.addClass("ng-invalid");
+                        element.addClass("sg-invalid");
+
+                    }
+                    else {
+                        element.removeClass("ng-dirty");
+                        element.removeClass("sg-dirty");
+                        element.removeClass("ng-invalid");
+                        element.removeClass("sg-invalid");
+                    }
+
+                }, true);
+            }
+        }
     }]);
 
 })(Singular.Common.MasterApp);

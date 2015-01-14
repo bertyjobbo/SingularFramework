@@ -226,6 +226,14 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>PageNotFound.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Sys\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Sys\AccessDenied.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AccessDenied.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -302,6 +310,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Sidebar.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sys\AccessDenied.generated.cs">
+      <DependentUpon>AccessDenied.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Sys\Error.generated.cs">
+      <DependentUpon>Error.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Sys\PageNotFound.generated.cs">
       <AutoGen>True</AutoGen>

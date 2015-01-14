@@ -31,15 +31,15 @@ alt.route = angular.module("alt.route", ["ng"]);
             restrict: "A",
 
             link: function (scope, element, attrs) {
-                
+
                 // remove attr
                 element.removeAttr("data-alt-view");
                 element.removeAttr("alt-view");
-                
+
                 // get expression
                 var urlExpression = attrs.altView;
                 var doCacheing = attrs.altViewCache != "false";
-                
+
                 // cache
                 var viewCache = {};
 
@@ -58,7 +58,7 @@ alt.route = angular.module("alt.route", ["ng"]);
 
                 // events
                 scope.$on("$routeChangeStart", function (e, newPath) {
-                    
+
                     // lower
                     newPath = newPath.toLowerCase();
 
@@ -92,7 +92,7 @@ alt.route = angular.module("alt.route", ["ng"]);
 
                     // check if controller exists
                     var ctrlExist = altControllerChecker.exists($location.$$route.$$routeController);
-                    
+
 
                     // if it does, add the attribute
                     if (ctrlExist) {
@@ -114,8 +114,8 @@ alt.route = angular.module("alt.route", ["ng"]);
                     } else {
                         element.removeAttr("data-ng-controller");
                         element.removeAttr("ng-controller");
-                    }                  
-                    
+                    }
+
 
                     // get url
                     var replacedUrlExpression =
@@ -123,13 +123,13 @@ alt.route = angular.module("alt.route", ["ng"]);
                             .replace(/(\$controller)/g, "'" + $location.$$route.$$routeControllerName + "'")
                             .replace(/(\$action)/g, "'" + $location.$$route.$$routeActionName + "'");
 
-                    try{
+                    try {
                         var url = scope.$eval(replacedUrlExpression);
                     }
                     catch (urlErr) {
-                       
-                            throw "Cannot $eval replaceUrlExpression in Alt-View. Make sure you use both $controller and $action in the URL: " + urlErr;
-                       
+
+                        throw "Cannot $eval replaceUrlExpression in Alt-View. Make sure you use both $controller and $action in the URL: " + urlErr;
+
                     }
 
                     // view exists                    
@@ -161,9 +161,10 @@ alt.route = angular.module("alt.route", ["ng"]);
                                 // end event
                                 scope.$broadcast("$routeChangeSuccess", $location.$$route);
                             })
-                            .error(function () {
+                            .error(function (errObj, code) {
+
                                 // end event
-                                scope.$broadcast("$routeChangeError", $location.$$route);
+                                scope.$broadcast("$routeChangeError", errObj, code, $location.$$route);
                             });
                     }
 
@@ -176,11 +177,11 @@ alt.route = angular.module("alt.route", ["ng"]);
     }]);
 
     // alt-href
-    app.directive("altHref", [function() {
+    app.directive("altHref", [function () {
         return {
             restrict: "A",
             link: function (scope, element, attrs) {
-                
+
                 // check
                 if (attrs.altHref && attrs.altHref !== "") {
 
@@ -188,7 +189,7 @@ alt.route = angular.module("alt.route", ["ng"]);
                     var href = "#/";
                     var splt = attrs.altHref.indexOf(",") > -1 ? attrs.altHref.split(",") : [attrs.altHref];
                     if (splt.length == 1) splt[1] = "index";
-                    angular.forEach(splt, function(slug) {
+                    angular.forEach(splt, function (slug) {
                         href += slug + "/";
                     });
 

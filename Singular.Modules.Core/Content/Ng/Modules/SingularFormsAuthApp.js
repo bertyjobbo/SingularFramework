@@ -20,10 +20,10 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
 (function (app) {
 
     // add controller
-    app.controller("loginController", ["$scope","$location", function ($scope,$location) {
+    app.controller("loginController", ["$scope", "$location", function ($scope, $location) {
 
         $scope.indexAction = function () {
-            
+
             // get query string
             var qstr = $location.search();
             $location.url($location.path())
@@ -35,6 +35,29 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
                 RememberMe: true,
                 RedirectUrl: qstr === undefined ? "" : qstr.returnUrl
             }
+
+
+            /*
+             * OBVIOUSLY THIS ALL NEEDS TO GO IN THE SERVICE!!!
+             * 
+             * (INCLUDING THE "NON PROP" ONE) - add "generalErrors" to TransactionResult
+             * 
+             */
+            $scope.SgValidationErrors = {};
+            $scope.SgValidationErrors["Model.Email"] = "Error email";
+            $scope.SgValidationErrors["Model.Password"] = "Error passowrd";            
+            $scope.SgValidationErrors["NonProp_1"] = "Your username or password are SHITE";
+            $scope.NonPropSgValidationErrors = function () {
+                
+                var output = [];
+                for (var x in $scope.SgValidationErrors) {
+                    if (x.indexOf("NonProp") === 0) {
+                        output.push($scope.SgValidationErrors[x]);
+                    }
+                }
+                return output;
+            }
+
 
             // login
             $scope.Login = function () {
@@ -53,9 +76,9 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
             }
         }
 
-        
 
-        
+
+
     }]);
 
 })(Singular.Modules.SingularFormsAuthApp);

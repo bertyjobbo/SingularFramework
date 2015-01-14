@@ -82,6 +82,7 @@ WriteLiteral("</h2>\r\n\r\n");
             #line 14 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
 Write(Html.NgEditorFor(x => x.Email, x => x
                 .Input()
+                .Required()
                 .ModelPrefix("Model")
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
@@ -95,16 +96,17 @@ Write(Html.NgEditorFor(x => x.Email, x => x
             #line default
             #line hidden
             
-            #line 23 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 24 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
          
     
             
             #line default
             #line hidden
             
-            #line 24 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 25 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
 Write(Html.NgEditorFor(x => x.Password, x => x
                 .Input()
+                .Required()
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Password"))
@@ -116,21 +118,21 @@ Write(Html.NgEditorFor(x => x.Password, x => x
             #line default
             #line hidden
             
-            #line 31 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 33 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
          
     
             
             #line default
             #line hidden
             
-            #line 43 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 45 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
            
     
             
             #line default
             #line hidden
             
-            #line 44 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 46 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
 Write(Html.NgEditorFor(x => x.RememberMe, x => x
                 .UiCheckbox("left")
                 .BootstrapFormControl()
@@ -142,14 +144,14 @@ Write(Html.NgEditorFor(x => x.RememberMe, x => x
             #line default
             #line hidden
             
-            #line 49 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 51 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
          
     
             
             #line default
             #line hidden
             
-            #line 54 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 56 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
            
     using (Html.BeginBootstrapFormGroup())
     {
@@ -158,13 +160,13 @@ Write(Html.NgEditorFor(x => x.RememberMe, x => x
             #line default
             #line hidden
             
-            #line 57 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 59 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
    Write(Html.BootstrapButton(x => x
                 .BootstrapButton("primary")
                 .BeforeGlyph("ok")
                 .LabelText(Html.Translate("Submit"))
                 .Attribute("type", "submit")
-                .Attribute("ng-disabled", "!FormIsValid()")
+                //.Attribute("ng-disabled", "!FormIsValid()")
                 .CssClass("margin-right-half")
             ));
 
@@ -172,7 +174,7 @@ Write(Html.NgEditorFor(x => x.RememberMe, x => x
             #line default
             #line hidden
             
-            #line 64 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 66 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
              
 
         
@@ -180,7 +182,7 @@ Write(Html.NgEditorFor(x => x.RememberMe, x => x
             #line default
             #line hidden
             
-            #line 66 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 68 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
    Write(Html.BootstrapButton(x => x
                 .BootstrapButton("danger")
                 .AfterGlyph("remove")
@@ -193,9 +195,23 @@ Write(Html.NgEditorFor(x => x.RememberMe, x => x
             #line default
             #line hidden
             
-            #line 72 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 74 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
              
     }
+    
+            
+            #line default
+            #line hidden
+            
+            #line 76 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+Write(Html.SgValidationErrors(null));
+
+            
+            #line default
+            #line hidden
+            
+            #line 76 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+                                  
 
 
             
@@ -210,7 +226,7 @@ WriteLiteral(" alt-href=\"Login,Forgot\"");
 WriteLiteral(">");
 
             
-            #line 76 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 79 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
                              Write(Html.Translate("Click here if you have forgotten your password"));
 
             
@@ -219,7 +235,7 @@ WriteLiteral(">");
 WriteLiteral("</a></p>\r\n");
 
             
-            #line 77 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
+            #line 80 "..\..\Views\FormsAuth\NgView-Login-Index.cshtml"
 }
 
             

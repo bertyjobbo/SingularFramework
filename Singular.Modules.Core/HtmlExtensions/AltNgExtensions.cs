@@ -19,11 +19,12 @@ namespace Singular.Modules.Core.HtmlExtensions
         /// <param name="html"></param>
         /// <param name="parentViewFolder"></param>
         /// <param name="useCache"></param>
+        /// <param name="useAuth"></param>
         /// <param name="useDataPrefix"></param>
         /// <returns></returns>
-        public static MvcHtmlString AltView(this HtmlHelper html, string parentViewFolder, bool useCache, bool useDataPrefix = false)
+        public static MvcHtmlString AltView(this HtmlHelper html, string parentViewFolder, bool useCache, bool useAuth, bool useDataPrefix = false)
         {
-            return altView(html, parentViewFolder, useCache, "~/Singular/Core/NgView/", useDataPrefix);
+            return altView(html, parentViewFolder, useCache, useAuth ? "~/Singular/Core/NgView/IndexAuthenticated" : "~/Singular/Core/NgView/", useDataPrefix);
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Singular.Modules.Core.HtmlExtensions
             url.Append(VirtualPathUtility.ToAbsolute(baseUrl));
             url.Append("?folder=" + parentViewFolder);
             url.Append("&c=' + $controller + '&a=' + $action");
-            
+
             // finally
             var output = new StringBuilder("<section");
             output.AppendFormat(" {0}alt-view=\"", useDataPrefix ? "data-" : "");

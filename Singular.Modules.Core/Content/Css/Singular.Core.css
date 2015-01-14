@@ -328,6 +328,15 @@ h2 {
 .sg-form hr {
   border-color: inherit;
 }
+input.ng-dirty.ng-invalid,
+textarea.ng-dirty.ng-invalid,
+select.ng-dirty.ng-invalid,
+input.sg-dirty.sg-invalid,
+textarea.sg-dirty.sg-invalid,
+select.sg-dirty.sg-invalid {
+  border-color: red;
+  background: #fff5f5;
+}
 /*#endregion*/
 /*#region DESKTOP vs MOBILE */
 @media (max-width: 767px) {

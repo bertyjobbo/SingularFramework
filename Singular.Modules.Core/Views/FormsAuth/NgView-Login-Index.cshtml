@@ -13,6 +13,7 @@
 {
     @Html.NgEditorFor(x => x.Email, x => x
                 .Input()
+                .Required()
                 .ModelPrefix("Model")
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
@@ -23,6 +24,7 @@
         )
     @Html.NgEditorFor(x => x.Password, x => x
                 .Input()
+                .Required()
                 .BootstrapFormControl()
                 .BootstrapFormGroup()
                 .LabelText(Html.Translate("Password"))
@@ -59,7 +61,7 @@
                 .BeforeGlyph("ok")
                 .LabelText(Html.Translate("Submit"))
                 .Attribute("type", "submit")
-                .Attribute("ng-disabled", "!FormIsValid()")
+                //.Attribute("ng-disabled", "!FormIsValid()")
                 .CssClass("margin-right-half")
             )
 
@@ -71,6 +73,7 @@
                 .Attribute("ng-click", Html.PropertyExpression("Model.{0} = true;", y => y.RememberMe))
             )
     }
+    @Html.SgValidationErrors(null)
 
     <hr />
     <p><a alt-href="Login,Forgot">@Html.Translate("Click here if you have forgotten your password")</a></p>

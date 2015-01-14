@@ -89,7 +89,7 @@ WriteLiteral("></script>\r\n");
 
             
             #line 15 "..\..\Views\FormsAuth\Index.cshtml"
-Write(Html.AltView("~/Views/FormsAuth",false));
+Write(Html.AltView("~/Views/FormsAuth",false, false));
 
             
             #line default

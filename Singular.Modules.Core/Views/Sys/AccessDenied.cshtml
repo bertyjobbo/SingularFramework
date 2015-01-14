@@ -1,0 +1,9 @@
+﻿@using Singular.Modules.Core.HtmlExtensions
+@inherits System.Web.Mvc.WebViewPage
+@{
+    ViewBag.Title = Html.Translate("Access Denied");
+    ViewBag.NoNg = true;
+}
+<h2>@Html.Translate("Sorry, you do not have access to this page.")</h2>
+<p>@Html.Translate("Please try again. Or just give up.")</p>
+

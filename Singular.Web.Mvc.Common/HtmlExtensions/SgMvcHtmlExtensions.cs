@@ -41,6 +41,8 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                 tagBuilder.Attributes.Add(formBuilder.DataPrefix + "ng-submit", formBuilder.SubmitExpression);
             }
 
+            tagBuilder.Attributes.Add("novalidate","");
+
 
             html.ViewContext.Writer
                             .Write(tagBuilder.ToString(TagRenderMode.StartTag));
@@ -87,7 +89,11 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                 {
                     case "Input":
                         {
-                            output.Append("<input");
+                            output.AppendFormat("<input{0}", edBuilder.EditorRequired ? " required":"");
+                            output.AppendFormat(" sg-property-error-control=\"{0}['{1}{2}']\"",
+                                edBuilder.ValidationErrorsPropertyNameValue ?? "SgValidationErrors",
+                                edBuilder.ModelPrefixValue.HasValue() ? edBuilder.ModelPrefixValue + "." : "Model.", 
+                                propName);
                             doNgModel(edBuilder, output, propName, edBuilder.DataPrefix);
                             doIdAndName(output, propName);
                             doAttributes(edBuilder, output);
@@ -136,6 +142,8 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                                 HttpContext.Current.Items.Add("bt_sg_chk_css",true);
 
                             }
+
+                            
 
                             output.AppendFormat(
                                 "<button style=\"{5}{6}margin-right: 7px;\"" +
@@ -246,6 +254,9 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                     output.Append("</div>");
                 }
 
+                // add error
+                output.AppendFormat("<{2} style=\"color:red; font-size: 9px; padding-{4}: 8px;{5}\" sg-property-error=\"{3}['{0}{1}']\"></{2}>", edBuilder.ModelPrefixValue.HasValue() ? edBuilder.ModelPrefixValue + "." : "Model.", propName, edBuilder.IsBootstrapFormGroup ? "div" : "span", edBuilder.ValidationErrorsPropertyNameValue ?? "SgValidationErrors", edBuilder.IsBootstrapFormControl ? "bottom":"left", edBuilder.IsBootstrapFormControl ? "margin-top: -10px;":"");
+
                 // return
                 var final = output.ToString();
                 return MvcHtmlString.Create(final);
@@ -321,6 +332,21 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
                 formatString = formatString.Replace("{" + i + "}", prop);
             }
             return formatString;
+        }
+
+        /// <summary>
+        /// All validation errors
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="scopePropertyName"></param>
+        /// <param name="useDataPrefix"></param>
+        /// <returns></returns>
+        public static MvcHtmlString SgValidationErrors(this HtmlHelper html, string scopePropertyName, bool useDataPrefix=false)
+        {
+            return
+                MvcHtmlString.Create(string.Format("<div style=\"color:red;\" {0}sg-validation-errors=\"{1}\"></div>",
+                    useDataPrefix ? "data-" : "",
+                    scopePropertyName.HasValue() ? scopePropertyName : "SgValidationErrors"));
         }
 
         // private
