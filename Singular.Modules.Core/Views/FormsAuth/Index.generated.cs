@@ -52,7 +52,7 @@ namespace Singular.Modules.Core.Views.FormsAuth
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/FormsAuth/Index.cshtml")]
-    public partial class Index : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.FormsAuthViewModel>
+    public partial class Index : System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
     {
         public Index()
         {
@@ -62,35 +62,25 @@ namespace Singular.Modules.Core.Views.FormsAuth
             
             #line 7 "..\..\Views\FormsAuth\Index.cshtml"
   
-    ViewBag.Title = Html.Translate("Login");
     ViewBag.NgAppName = "Singular.Modules.SingularFormsAuthApp";
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n<h2>");
-
-            
-            #line 12 "..\..\Views\FormsAuth\Index.cshtml"
-Write(ViewBag.Title);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2>\r\n\r\n");
+WriteLiteral("\r\n\r\n");
 
 DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 428), Tuple.Create("\"", 547)
+WriteAttribute("src", Tuple.Create(" src=\"", 354), Tuple.Create("\"", 473)
             
-            #line 16 "..\..\Views\FormsAuth\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 434), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularFormsAuthApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 13 "..\..\Views\FormsAuth\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 360), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularFormsAuthApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 434), false)
+, 360), false)
 );
 
 WriteLiteral("></script>\r\n");
@@ -98,7 +88,7 @@ WriteLiteral("></script>\r\n");
 });
 
             
-            #line 18 "..\..\Views\FormsAuth\Index.cshtml"
+            #line 15 "..\..\Views\FormsAuth\Index.cshtml"
 Write(Html.AltView("~/Views/FormsAuth",false));
 
             

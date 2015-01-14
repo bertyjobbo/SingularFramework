@@ -2,14 +2,11 @@
 @using Singular.Modules.Core.HtmlExtensions
 @using Singular.Web.Mvc.Common.HtmlExtensions
 @using Singular.Web.Mvc.HtmlExtensions
-@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.FormsAuthViewModel>
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
 
 @{
-    ViewBag.Title = Html.Translate("Login");
     ViewBag.NgAppName = "Singular.Modules.SingularFormsAuthApp";
 }
-
-<h2>@ViewBag.Title</h2>
 
 @section scripts
 {

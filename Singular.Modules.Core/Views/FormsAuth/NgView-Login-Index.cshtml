@@ -1,9 +1,10 @@
 ﻿@using Singular.Modules.Core.HtmlExtensions
 @using Singular.Web.Mvc.Common.HtmlExtensions
-@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.FormsAuthViewModel>
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.Data.Models.FormsAuthModel>
 @{
     Layout = null;
 }
+<h2>@Html.Translate("Login")</h2>
 
 @using (Html.BeginNgForm(x => x
         .OnSubmit("Login()")

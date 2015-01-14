@@ -23,7 +23,7 @@ namespace Singular.Modules.Core.Controllers
 
         public ActionResult Index()
         {
-            return View(new FormsAuthViewModel(SingularContext));
+            return View(GetCoreModelBaseInstance());
         }
     }
 }

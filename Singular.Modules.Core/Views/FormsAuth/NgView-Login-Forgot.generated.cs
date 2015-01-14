@@ -56,36 +56,23 @@ namespace Singular.Modules.Core.Views.FormsAuth
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n");
+WriteLiteral("\r\n\r\n<h2>");
 
             
             #line 8 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
- using (Html.BeginNgForm(x => x
-        .OnSubmit("RetrievePassword()")
-        .CssClass("sg-form")
-        ))
-{
+Write(Html.Translate("Forgot your password?"));
 
             
             #line default
             #line hidden
-WriteLiteral("    <h3>Forgot your password?</h3>    \r\n");
-
-            
-            #line 14 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
-}
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n<hr />\r\n<p><a");
+WriteLiteral("</h2>\r\n\r\n<hr />\r\n<p><a");
 
 WriteLiteral(" alt-href=\"Login\"");
 
 WriteLiteral(">");
 
             
-            #line 17 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
+            #line 11 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
                   Write(Html.Translate("Back to login"));
 
             

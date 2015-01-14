@@ -44,27 +44,6 @@ namespace Singular.Modules.Core.HtmlExtensions
         private static MvcHtmlString altView(this HtmlHelper html, string parentViewFolder, bool useCache, string baseUrl,
             bool useDataPrefix = false)
         {
-            var model = html.ViewData.Model;
-            var guid = Guid.Empty;
-            if (model != null)
-            {
-                // get type
-                var type = model.GetType();
-
-                // get from cache
-                var fromCache = ViewModelDictionary.FirstOrDefault(x => x.Value == type);
-                if (fromCache.IsKeyValuePairNull())
-                {
-                    guid = Guid.NewGuid();
-                    ViewModelDictionary.Add(guid, type);
-                }
-                else
-                {
-                    guid = fromCache.Key;
-                }
-
-            }
-
             if (baseUrl.Last() != '/')
                 baseUrl += "/";
 
@@ -72,9 +51,7 @@ namespace Singular.Modules.Core.HtmlExtensions
             var url = new StringBuilder("'");
             url.Append(VirtualPathUtility.ToAbsolute(baseUrl));
             url.Append("?folder=" + parentViewFolder);
-            url.Append("&c=' + $controller + '&a=' + $action + '&guid=");
-            url.Append(HttpUtility.UrlEncode(guid.ToString()));
-            url.Append("'");
+            url.Append("&c=' + $controller + '&a=' + $action");
             
             // finally
             var output = new StringBuilder("<section");
@@ -86,7 +63,7 @@ namespace Singular.Modules.Core.HtmlExtensions
             return MvcHtmlString.Create(output.ToString());
         }
 
-        public static readonly IDictionary<Guid, Type> ViewModelDictionary = new Dictionary<Guid, Type>();
+        public static readonly IDictionary<string, Type> ViewModelDictionary = new Dictionary<string, Type>();
     }
 
 }

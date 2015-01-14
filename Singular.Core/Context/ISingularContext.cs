@@ -1,3 +1,4 @@
+using System.Reflection;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Singular.Core.Authentication;
@@ -65,6 +66,16 @@ namespace Singular.Core.Context
         /// Is auth?
         /// </summary>
         bool IsAuthenticated { get; }
+
+        /// <summary>
+        /// Assemblies
+        /// </summary>
+        IList<Assembly> Assemblies { get; }
+
+        /// <summary>
+        /// Types
+        /// </summary>
+        IList<Type> Types { get; }
         
         /// <summary>
         /// Get a service

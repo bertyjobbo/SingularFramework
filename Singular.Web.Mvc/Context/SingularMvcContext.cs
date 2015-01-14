@@ -39,6 +39,7 @@ namespace Singular.Web.Mvc.Context
 
         // fields
         private List<Assembly> _assemblies;
+        private List<Type> _types;
         private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
         private readonly Type _areaRegType = typeof(AreaRegistration);
         private IPermissionService _permissionService;
@@ -55,17 +56,20 @@ namespace Singular.Web.Mvc.Context
         }
         private void setAssemblies()
         {
-            _assemblies = new List<Assembly>();
-            var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
-            if (!pathToBin.Contains("bin"))
+            if (_assemblies == null)
             {
-                pathToBin = Path.Combine(pathToBin, "bin");
-            }
-            var files = Directory.GetFiles(pathToBin, "*.dll").Where(x => !x.StartsWith("System.")).ToList();
-            foreach (var dllPath in files)
-            {
-                var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
-                _assemblies.Add(assembly);
+                _assemblies = new List<Assembly>();
+                var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
+                if (!pathToBin.Contains("bin"))
+                {
+                    pathToBin = Path.Combine(pathToBin, "bin");
+                }
+                var files = Directory.GetFiles(pathToBin, "*.dll").Where(x => !x.StartsWith("System.")).ToList();
+                foreach (var dllPath in files)
+                {
+                    var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
+                    _assemblies.Add(assembly);
+                }
             }
         }
         private void setModules()
@@ -91,6 +95,13 @@ namespace Singular.Web.Mvc.Context
         /// Modules
         /// </summary>
         public IDictionary<string, ISingularModuleConfiguration> Modules { get; private set; }
+
+        /// <summary>
+        /// Types
+        /// </summary>
+        public IList<Type> Types {
+            get { return _types ?? (_types = Assemblies.SelectMany(x => x.GetTypes()).ToList()); }
+        }
 
         /// <summary>
         /// Get service
@@ -200,6 +211,21 @@ namespace Singular.Web.Mvc.Context
         /// </summary>
         public bool IsAuthenticated { get { return CurrentUser != null && Session != null; } }
 
+        /// <summary>
+        /// Assemblies
+        /// </summary>
+        public IList<Assembly> Assemblies
+        {
+            get
+            {
+                if (_assemblies == null)
+                {
+                    setAssemblies();
+                }
+                return _assemblies;
+            }
+        }
+        
         /// <summary>
         /// On first request
         /// </summary>

@@ -5,13 +5,7 @@
     Layout = null;
 }
 
-@using (Html.BeginNgForm(x => x
-        .OnSubmit("RetrievePassword()")
-        .CssClass("sg-form")
-        ))
-{
-    <h3>Forgot your password?</h3>    
-}
+<h2>@Html.Translate("Forgot your password?")</h2>
 
 <hr />
 <p><a alt-href="Login">@Html.Translate("Back to login")</a></p>

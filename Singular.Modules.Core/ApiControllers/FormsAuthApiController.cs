@@ -2,6 +2,7 @@
 using Singular.Core.Authentication;
 using Singular.Core.Context;
 using Singular.Core.Transaction;
+using Singular.Modules.Core.Data.Models;
 using Singular.Modules.Core.ViewModels;
 
 namespace Singular.Modules.Core.ApiControllers
@@ -30,7 +31,7 @@ namespace Singular.Modules.Core.ApiControllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public TransactionResult Login(FormsAuthViewModel model)
+        public TransactionResult Login(FormsAuthModel model)
         {
             var result = _authService.Login(model.Email, model.Password);
             return result;
