@@ -27,13 +27,13 @@ namespace Singular.Modules.Core.Views.Shared
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 2 "..\..\Views\Shared\_CoreBrand.cshtml"
+    #line 1 "..\..\Views\Shared\_CoreBrand.cshtml"
     using Singular.Modules.Core.HtmlExtensions;
     
     #line default
     #line hidden
     
-    #line 3 "..\..\Views\Shared\_CoreBrand.cshtml"
+    #line 2 "..\..\Views\Shared\_CoreBrand.cshtml"
     using Singular.Web.Mvc.HtmlExtensions;
     
     #line default
@@ -48,7 +48,7 @@ namespace Singular.Modules.Core.Views.Shared
         }
         public override void Execute()
         {
-WriteLiteral("\r\n<a");
+WriteLiteral("<a");
 
 WriteAttribute("style", Tuple.Create(" style=\"", 179), Tuple.Create("\"", 270)
 , Tuple.Create(Tuple.Create("", 187), Tuple.Create("background-image:", 187), true)
@@ -94,7 +94,7 @@ WriteLiteral("</span>\r\n    <span");
 
 WriteLiteral(" class=\"hidden\"");
 
-WriteLiteral(">S</span>ingular\r\n</a>\r\n");
+WriteLiteral(">S</span>ingular\r\n</a>");
 
         }
     }

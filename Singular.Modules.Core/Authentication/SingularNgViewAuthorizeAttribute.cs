@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http.Results;
+﻿using System.Web;
 using System.Web.Mvc;
 using Singular.Useful;
+using Singular.Web.Mvc.Authentication;
 
-namespace Singular.Web.Mvc.Authentication
+namespace Singular.Modules.Core.Authentication
 {
-    public class SingularNgViewAuthorizeAttribute: SingularAuthorizeAttribute
+    public class SingularNgViewAuthorizeAttribute : SingularAuthorizeAttribute
     {
-        public SingularNgViewAuthorizeAttribute() : base()
+        public SingularNgViewAuthorizeAttribute()
         {
-            
         }
+
         public SingularNgViewAuthorizeAttribute(string modules) : base(modules)
         {
-            
         }
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -42,6 +36,5 @@ namespace Singular.Web.Mvc.Authentication
         {
             // do nothing
         }
-        
     }
 }

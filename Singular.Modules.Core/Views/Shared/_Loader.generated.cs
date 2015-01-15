@@ -60,20 +60,20 @@ WriteLiteral(">\r\n        <div");
 
 WriteLiteral(" class=\"sg-loader-inner-inner\"");
 
-WriteAttribute("style", Tuple.Create(" style=\"", 269), Tuple.Create("\"", 361)
+WriteAttribute("style", Tuple.Create(" style=\"", 269), Tuple.Create("\"", 362)
 , Tuple.Create(Tuple.Create("", 277), Tuple.Create("background-image:", 277), true)
 , Tuple.Create(Tuple.Create(" ", 294), Tuple.Create("url(\'", 295), true)
             
             #line 6 "..\..\Views\Shared\_Loader.cshtml"
-, Tuple.Create(Tuple.Create("", 300), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Shape51.png")
+, Tuple.Create(Tuple.Create("", 300), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Images/Shape51.png")
             
             #line default
             #line hidden
 , 300), false)
-, Tuple.Create(Tuple.Create("", 359), Tuple.Create("\')", 359), true)
+, Tuple.Create(Tuple.Create("", 360), Tuple.Create("\')", 360), true)
 );
 
-WriteLiteral("></div>\r\n    </div>\r\n</div>\r\n");
+WriteLiteral("></div>\r\n    </div>\r\n</div>");
 
         }
     }

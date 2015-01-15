@@ -76,10 +76,10 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("            <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 315), Tuple.Create("\"", 365)
+WriteAttribute("class", Tuple.Create(" class=\"", 315), Tuple.Create("\"", 367)
             
             #line 8 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 323), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active":""
+, Tuple.Create(Tuple.Create("", 323), Tuple.Create<System.Object, System.Int32>(section.IsActive.Invoke() ? "active" : ""
             
             #line default
             #line hidden
@@ -90,55 +90,55 @@ WriteLiteral(">\r\n                <a");
 
 WriteLiteral(" data-ng-click=\"Ui.ShowLoader()\"");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 419), Tuple.Create("\"", 499)
+WriteAttribute("title", Tuple.Create(" title=\"", 421), Tuple.Create("\"", 501)
             
             #line 9 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 427), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+, Tuple.Create(Tuple.Create("", 429), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
             
             #line default
             #line hidden
-, 427), false)
-, Tuple.Create(Tuple.Create(" ", 458), Tuple.Create("|", 459), true)
+, 429), false)
+, Tuple.Create(Tuple.Create(" ", 460), Tuple.Create("|", 461), true)
             
             #line 9 "..\..\Views\Shared\_Sidebar.cshtml"
-             , Tuple.Create(Tuple.Create(" ", 460), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
+             , Tuple.Create(Tuple.Create(" ", 462), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Description)
             
             #line default
             #line hidden
-, 461), false)
+, 463), false)
 );
 
-WriteAttribute("href", Tuple.Create("\r\n                   href=\"", 500), Tuple.Create("\"", 595)
+WriteAttribute("href", Tuple.Create("\r\n                   href=\"", 502), Tuple.Create("\"", 597)
             
             #line 10 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 527), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
+, Tuple.Create(Tuple.Create("", 529), Tuple.Create<System.Object, System.Int32>(Url.Action(section.Action, section.Controller, section.RouteValues)
             
             #line default
             #line hidden
-, 527), false)
+, 529), false)
 );
 
 WriteLiteral(">\r\n                    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 623), Tuple.Create("\"", 693)
+WriteAttribute("src", Tuple.Create(" src=\"", 625), Tuple.Create("\"", 695)
             
             #line 11 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 629), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
+, Tuple.Create(Tuple.Create("", 631), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)
             
             #line default
             #line hidden
-, 629), false)
+, 631), false)
 );
 
-WriteAttribute("alt", Tuple.Create("\r\n                         alt=\"", 694), Tuple.Create("\"", 763)
+WriteAttribute("alt", Tuple.Create("\r\n                         alt=\"", 696), Tuple.Create("\"", 765)
             
             #line 12 "..\..\Views\Shared\_Sidebar.cshtml"
-, Tuple.Create(Tuple.Create("", 726), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
+, Tuple.Create(Tuple.Create("", 728), Tuple.Create<System.Object, System.Int32>(Html.Translate(section.Name)
             
             #line default
             #line hidden
-, 726), false)
-, Tuple.Create(Tuple.Create(" ", 757), Tuple.Create("Image", 758), true)
+, 728), false)
+, Tuple.Create(Tuple.Create(" ", 759), Tuple.Create("Image", 760), true)
 );
 
 WriteLiteral(" />\r\n                </a>\r\n            </li>\r\n");
@@ -160,7 +160,7 @@ WriteLiteral(" id=\"sidebar_hidescroll\"");
 
 WriteLiteral(" class=\"dt-only\"");
 
-WriteLiteral("></div>\r\n");
+WriteLiteral("></div>");
 
         }
     }

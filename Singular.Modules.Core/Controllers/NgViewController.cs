@@ -1,31 +1,28 @@
 ﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Web.Mvc;
 using Singular.Core.Context;
+using Singular.Modules.Core.Authentication;
 using Singular.Modules.Core.HtmlExtensions;
 using Singular.Modules.Core.ViewModels;
-using Singular.Useful;
-using Singular.Web.Mvc.Authentication;
 
 namespace Singular.Modules.Core.Controllers
 {
     /// <summary>
-    /// NgView controller - ties in with "Html.AltView"
+    ///     NgView controller - ties in with "Html.AltView"
     /// </summary>
-    public class NgViewController: CoreControllerBaseNoAuth
+    public class NgViewController : CoreControllerBaseNoAuth
     {
         private readonly Type _typeOfViewModelBase = typeof (CoreViewModelBase);
-        public NgViewController(ISingularContext ctx) : base(ctx)
+
+        public NgViewController(ISingularContext ctx)
+            : base(ctx)
         {
-            
         }
 
         /// <summary>
-        /// Un authenticated
+        ///     Un authenticated
         /// </summary>
         /// <param name="folder"></param>
         /// <param name="c"></param>
@@ -57,9 +54,8 @@ namespace Singular.Modules.Core.Controllers
                     view.ExecuteResult(ControllerContext);
 
                     // it's fine so need to put in dictionary and redirect
-                    AltNgExtensions.ViewModelDictionary.Add(file, typeof(Dummy_Ng_View_Class));
-                    return RedirectToAction(action, new { folder = folder, c = c, a = a });
-
+                    AltNgExtensions.ViewModelDictionary.Add(file, typeof (Dummy_Ng_View_Class));
+                    return RedirectToAction(action, new {folder, c, a});
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -74,9 +70,12 @@ namespace Singular.Modules.Core.Controllers
 
                         var typeMatches =
                             types
-                            .Where(x => x.FullName == typeName)
-                            .ToList();
-                        if (typeMatches.Count > 1) { throw new Exception(string.Format("Type {0} appears more than once in these assemblies.")); }
+                                .Where(x => x.FullName == typeName)
+                                .ToList();
+                        if (typeMatches.Count > 1)
+                        {
+                            throw new Exception(string.Format("Type {0} appears more than once in these assemblies."));
+                        }
                         if (typeMatches.Count == 1)
                         {
                             type = typeMatches[0];
@@ -84,29 +83,28 @@ namespace Singular.Modules.Core.Controllers
                     }
                 }
 
-                AltNgExtensions.ViewModelDictionary.Add(file, type ?? typeof(Dummy_Ng_View_Class));
+                AltNgExtensions.ViewModelDictionary.Add(file, type ?? typeof (Dummy_Ng_View_Class));
             }
             else
             {
                 type = AltNgExtensions.ViewModelDictionary[file];
             }
 
-            if (type == null || type == typeof(Dummy_Ng_View_Class))
+            if (type == null || type == typeof (Dummy_Ng_View_Class))
             {
                 return View(file);
             }
 
             var finalModel =
-                    type.IsSubclassOf(_typeOfViewModelBase) ?
-                        Activator.CreateInstance(type, SingularContext) :
-                        Activator.CreateInstance(type);
+                type.IsSubclassOf(_typeOfViewModelBase)
+                    ? Activator.CreateInstance(type, SingularContext)
+                    : Activator.CreateInstance(type);
 
             return View(file, finalModel);
         }
     }
 
-    class Dummy_Ng_View_Class
+    internal class Dummy_Ng_View_Class
     {
-        
     }
 }

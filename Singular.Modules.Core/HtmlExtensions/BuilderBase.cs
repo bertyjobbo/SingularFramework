@@ -1,37 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Singular.Web.Mvc.Common.HtmlExtensions
+namespace Singular.Modules.Core.HtmlExtensions
 {
     public abstract class BuilderBase
     {
+        public string CssClassExpression { get; private set; }
+
+        public string DataPrefix { get; private set; }
+
         public BuilderBase CssClass(string expression)
         {
             CssClassExpression = expression;
             return this;
         }
-        public string CssClassExpression { get; private set; }
 
         public BuilderBase UseDataPrefix()
         {
             DataPrefix = "data-";
             return this;
         }
-        public string DataPrefix { get; private set; }
     }
 
-    public abstract class BuilderBase2 :BuilderBase
+    public abstract class BuilderBase2 : BuilderBase
     {
         protected BuilderBase2()
         {
-            Attributes=new Dictionary<string, string>();
+            Attributes = new Dictionary<string, string>();
         }
 
         public string LabelTextValue { get; private set; }
-        
+
         public Dictionary<string, string> Attributes { get; private set; }
 
 

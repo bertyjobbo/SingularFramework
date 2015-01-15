@@ -33,12 +33,6 @@ namespace Singular.Modules.Core.Views.FormsAuth
     #line default
     #line hidden
     
-    #line 2 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
-    using Singular.Web.Mvc.Common.HtmlExtensions;
-    
-    #line default
-    #line hidden
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/FormsAuth/NgView-Login-Forgot.cshtml")]
     public partial class NgView_Login_Forgot : System.Web.Mvc.WebViewPage<dynamic>
@@ -49,7 +43,7 @@ namespace Singular.Modules.Core.Views.FormsAuth
         public override void Execute()
         {
             
-            #line 4 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
+            #line 3 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
   
     Layout = null;
 
@@ -59,7 +53,7 @@ namespace Singular.Modules.Core.Views.FormsAuth
 WriteLiteral("\r\n\r\n<h2>");
 
             
-            #line 8 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
+            #line 7 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
 Write(Html.Translate("Forgot your password?"));
 
             
@@ -72,13 +66,13 @@ WriteLiteral(" alt-href=\"Login\"");
 WriteLiteral(">");
 
             
-            #line 11 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
+            #line 10 "..\..\Views\FormsAuth\NgView-Login-Forgot.cshtml"
                   Write(Html.Translate("Back to login"));
 
             
             #line default
             #line hidden
-WriteLiteral("</a></p>\r\n\r\n\r\n");
+WriteLiteral("</a></p>");
 
         }
     }

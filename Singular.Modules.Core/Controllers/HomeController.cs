@@ -1,16 +1,11 @@
-using Singular.Core.Context;
-using System;
 using System.Web.Mvc;
-using Singular.Modules.Core.Data.Services;
-using Singular.Web.Mvc.Context;
-using Singular.Web.Mvc.EmbeddedResourceConfiguration;
-using Singular.Web.Mvc.Section;
+using Singular.Core.Context;
 
 namespace Singular.Modules.Core.Controllers
 {
     public class HomeController : CoreControllerBase
     {
-        public HomeController(ISingularContext ctx):base(ctx)
+        public HomeController(ISingularContext ctx) : base(ctx)
         {
         }
 

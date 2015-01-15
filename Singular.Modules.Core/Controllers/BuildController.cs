@@ -1,9 +1,6 @@
-using Singular.Core.Context;
 using System.Web.Mvc;
-using Singular.Modules.Core.Data.Services;
-using Singular.Web.Mvc.Context;
+using Singular.Core.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
-using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
@@ -12,7 +9,7 @@ namespace Singular.Modules.Core.Controllers
         private readonly IEmbeddedResourceManager _resMgr;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="ctx"></param>
         public BuildController(ISingularContext ctx)
@@ -22,7 +19,7 @@ namespace Singular.Modules.Core.Controllers
         }
 
         /// <summary>
-        /// Build site
+        ///     Build site
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
@@ -33,14 +30,11 @@ namespace Singular.Modules.Core.Controllers
                 Response.Redirect(Url.Content("~/Singular/Core/Build/Success"));
                 return null;
             }
-            else
-            {
-                return Content(msg);
-            }
+            return Content(msg);
         }
 
         /// <summary>
-        /// Success message
+        ///     Success message
         /// </summary>
         /// <returns></returns>
         public ContentResult Success()

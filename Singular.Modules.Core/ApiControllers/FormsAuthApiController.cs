@@ -3,12 +3,11 @@ using Singular.Core.Authentication;
 using Singular.Core.Context;
 using Singular.Core.Transaction;
 using Singular.Modules.Core.Data.Models;
-using Singular.Modules.Core.ViewModels;
 
 namespace Singular.Modules.Core.ApiControllers
 {
     /// <summary>
-    /// Forms auth controller
+    ///     Forms auth controller
     /// </summary>
     [RoutePrefix("~/Singular/Core/Api/FormsAuth")]
     public class FormsAuthApiController : CoreApiControllerBaseNoAuth
@@ -17,7 +16,7 @@ namespace Singular.Modules.Core.ApiControllers
         private readonly IAuthenticationService _authService;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="ctx"></param>
         public FormsAuthApiController(ISingularContext ctx) : base(ctx)
@@ -26,7 +25,7 @@ namespace Singular.Modules.Core.ApiControllers
         }
 
         /// <summary>
-        /// Login
+        ///     Login
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

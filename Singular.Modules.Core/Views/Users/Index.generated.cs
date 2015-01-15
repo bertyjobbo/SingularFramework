@@ -72,14 +72,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 332), Tuple.Create("\"", 438)
+WriteAttribute("src", Tuple.Create(" src=\"", 363), Tuple.Create("\"", 470)
             
             #line 14 "..\..\Views\Users\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 338), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 369), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 338), false)
+, 369), false)
 );
 
 WriteLiteral("></script>\r\n");

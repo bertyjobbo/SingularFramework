@@ -249,9 +249,10 @@
     <Compile Include="ApiControllers\CoreApiControllerBaseNoAuth.cs" />
     <Compile Include="ApiControllers\FormsAuthApiController.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Authentication\SingularNgViewAuthorizeAttribute.cs" />
     <Compile Include="Configuration\ModuleConfiguration.cs" />
-    <Compile Include="Controllers\CoreControllerBaseNoAuth.cs" />
     <Compile Include="Controllers\CoreControllerBase.cs" />
+    <Compile Include="Controllers\CoreControllerBaseNoAuth.cs" />
     <Compile Include="Controllers\FormsAuthController.cs" />
     <Compile Include="Controllers\NgViewController.cs" />
     <Compile Include="Controllers\SysController.cs" />
@@ -263,6 +264,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HtmlExtensions\AltNgExtensions.cs" />
+    <Compile Include="HtmlExtensions\BootstrapFormGroup.cs" />
+    <Compile Include="HtmlExtensions\BuilderBase.cs" />
+    <Compile Include="HtmlExtensions\NgButtonBuilder.cs" />
+    <Compile Include="HtmlExtensions\NgEditorBuilder.cs" />
+    <Compile Include="HtmlExtensions\NgForm.cs" />
+    <Compile Include="HtmlExtensions\NgFormBuilder.cs" />
+    <Compile Include="HtmlExtensions\SgMvcHtmlExtensions.cs" />
     <Compile Include="HtmlExtensions\TranslateExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CoreViewModelBase.cs" />
@@ -363,10 +371,6 @@
     <ProjectReference Include="..\Singular.Useful\Singular.Useful.csproj">
       <Project>{F3C6E12B-A9A3-434A-8EA3-EC87401B360F}</Project>
       <Name>Singular.Useful</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Singular.Web.Mvc.Common\Singular.Web.Mvc.Common.csproj">
-      <Project>{425e5ed4-ba22-49af-9689-829b85bed5c3}</Project>
-      <Name>Singular.Web.Mvc.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Singular.Web.Mvc.EmbeddedResourceConfiguration\Singular.Web.Mvc.EmbeddedResourceConfiguration.csproj">
       <Project>{83E8C23A-8655-4EE4-9CC4-124DA5CF8A4E}</Project>

@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Singular.Web.Mvc.Common.HtmlExtensions
+﻿namespace Singular.Modules.Core.HtmlExtensions
 {
     public class NgButtonBuilder : BuilderBase2
     {
+        public string BootstrapButtonType { get; private set; }
+
+        public string BeforeGlyphValue { get; private set; }
+
+        public string AfterGlyphValue { get; private set; }
+
         public NgButtonBuilder BootstrapButton(string cssName)
         {
             BootstrapButtonType = cssName;
             return this;
         }
-
-        public string BootstrapButtonType { get; private set; }
 
         public NgButtonBuilder BeforeGlyph(string glyph)
         {
@@ -22,14 +20,10 @@ namespace Singular.Web.Mvc.Common.HtmlExtensions
             return this;
         }
 
-        public string BeforeGlyphValue { get; private set; }
-
         public NgButtonBuilder AfterGlyph(string glyph)
         {
             AfterGlyphValue = glyph;
             return this;
         }
-
-        public string AfterGlyphValue { get; private set; }
     }
 }

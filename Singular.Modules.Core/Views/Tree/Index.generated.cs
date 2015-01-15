@@ -72,14 +72,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 328), Tuple.Create("\"", 433)
+WriteAttribute("src", Tuple.Create(" src=\"", 359), Tuple.Create("\"", 465)
             
             #line 14 "..\..\Views\Tree\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 334), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 365), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/TreeApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 334), false)
+, 365), false)
 );
 
 WriteLiteral("></script>\r\n");

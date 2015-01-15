@@ -69,7 +69,7 @@ Write(Html.Translate("Please try again. Or just give up."));
             
             #line default
             #line hidden
-WriteLiteral("</p>\r\n\r\n");
+WriteLiteral("</p>");
 
         }
     }

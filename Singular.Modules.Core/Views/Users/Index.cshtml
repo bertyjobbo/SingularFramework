@@ -1,6 +1,6 @@
 ﻿@using Singular.Modules.Core.HtmlExtensions
 @using Singular.Web.Mvc.HtmlExtensions
-@model Singular.Modules.Core.ViewModels.CoreViewModelBase
+@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
 
 @{
     ViewBag.Title = Html.Translate("User management");
@@ -11,5 +11,5 @@
 
 @section scripts
 {
-    <script src="@Url.EmbeddedContent("Core","~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+    <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Modules/UsersApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
 }

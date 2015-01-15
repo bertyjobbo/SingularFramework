@@ -1,59 +1,59 @@
 ﻿@using System.Web.Mvc.Html
-@using System.Web.UI.WebControls
 @using Singular.Web.Mvc.HtmlExtensions
-@inherits System.Web.Mvc.WebViewPage<Singular.Modules.Core.ViewModels.CoreViewModelBase>
+@inherits System.Web.Mvc.WebViewPage<Singular.Web.Mvc.ViewModels.CoreViewModelBase>
 @{
     Layout = null;
 }<!DOCTYPE html>
 <html data-ng-app="@ViewBag.NgAppName">
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Singular | @(ViewBag.Title ?? "[Set ViewBag.Title]")</title>
-    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
-    <link rel="stylesheet" href="@Url.EmbeddedContent("Core","~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
-    @RenderSection("styles", false)
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Singular | @(ViewBag.Title ?? "[Set ViewBag.Title]")</title>
+        <link rel="stylesheet" href="@Url.EmbeddedContent("Core", "~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+        <link rel="stylesheet" href="@Url.EmbeddedContent("Core", "~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyWhenNotDebug)" />
+        @RenderSection("styles", false)
 
-    @*
+        @*
         SERVER-DRIVEN CSS
     *@
-    <style>
+        <style>
 
-                  .collapse.in {
-                      height: @((Model.Sections.Count * 60) + 100)px;
-                      overflow: hidden;
-                  }
-                  @@font-face {
-                      font-family: 'Glyphicons Halflings';
-                      src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
-                      src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
-                  }
-    </style>
+            .collapse.in {
+                height: @((Model.Sections.Count*60) + 100)px;
+                overflow: hidden;
+            }
 
-    @*
+            @@font-face {
+                font-family: 'Glyphicons Halflings';
+                src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")');
+                src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
+            }
+        </style>
+
+        @*
         ROOT URL
     *@
-    <script>window.ROOT_URL = "@Url.Content("~/")";</script>
-</head>
-<body data-ng-controller="SingularMasterAppController" data-ng-init="Init()">
-    @Html.Partial("_Loader")
-    <header>
-        @Html.Partial("_Nav")
-    </header>
-    <div id="height_container">
-        @Html.Partial("_Sidebar")
-        <section id="dashboard">@RenderBody()</section>
-    </div>
-@if (ViewBag.NoNg != true)
-{
-    <script src="@Url.EmbeddedContent("Core", "~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-    <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
-}
-    @RenderSection("scripts", false)
-</body>
+        <script>window.ROOT_URL = "@Url.Content("~/")";</script>
+    </head>
+    <body data-ng-controller="SingularMasterAppController" data-ng-init="Init()">
+        @Html.Partial("_Loader")
+        <header>
+            @Html.Partial("_Nav")
+        </header>
+        <div id="height_container">
+            @Html.Partial("_Sidebar")
+            <section id="dashboard">@RenderBody()</section>
+        </div>
+        @if (ViewBag.NoNg != true)
+        {
+            <script src="@Url.EmbeddedContent("Core", "~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("Core", "~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("AltNg", "~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+            <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
+        }
+        @RenderSection("scripts", false)
+    </body>
 </html>

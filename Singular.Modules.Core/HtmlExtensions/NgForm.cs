@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Singular.Web.Mvc.Common.HtmlExtensions
+namespace Singular.Modules.Core.HtmlExtensions
 {
     public class NgForm : IDisposable
     {
-         readonly TextWriter _writer;
+        private readonly TextWriter _writer;
 
         public NgForm(ViewContext viewContext)
         {

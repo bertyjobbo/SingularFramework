@@ -72,14 +72,14 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 322), Tuple.Create("\"", 432)
+WriteAttribute("src", Tuple.Create(" src=\"", 353), Tuple.Create("\"", 464)
             
             #line 14 "..\..\Views\Translate\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 328), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/TranslateApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 359), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/TranslateApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 328), false)
+, 359), false)
 );
 
 WriteLiteral("></script>\r\n");

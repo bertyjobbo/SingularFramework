@@ -63,10 +63,10 @@ DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 291), Tuple.Create("\"", 404)
+WriteAttribute("src", Tuple.Create(" src=\"", 291), Tuple.Create("\"", 405)
             
             #line 10 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 297), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+, Tuple.Create(Tuple.Create("", 297), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularCoreApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
@@ -85,28 +85,28 @@ WriteLiteral(" class=\"jumbotron text-center\"");
 
 WriteLiteral(">\r\n    <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 626), Tuple.Create("\"", 688)
+WriteAttribute("src", Tuple.Create(" src=\"", 627), Tuple.Create("\"", 690)
             
             #line 16 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 632), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core","~/Content/Images/Logo.png")
+, Tuple.Create(Tuple.Create("", 633), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")
             
             #line default
             #line hidden
-, 632), false)
+, 633), false)
 );
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 689), Tuple.Create("\"", 732)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 691), Tuple.Create("\"", 734)
             
             #line 16 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 695), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
+, Tuple.Create(Tuple.Create("", 697), Tuple.Create<System.Object, System.Int32>(Html.Translate("Singular Framework")
             
             #line default
             #line hidden
-, 695), false)
+, 697), false)
 );
 
 WriteLiteral("/>\r\n</div>\r\n<p>Fixie bitters fanny pack, flannel 8-bit taxidermy +1 selfies Kicks" +
-"tarter fashion axe mlkshk VHS salvia. IPhone Helvetica cray High Life.</p>\r\n");
+"tarter fashion axe mlkshk VHS salvia. IPhone Helvetica cray High Life.</p>");
 
         }
     }

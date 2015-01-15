@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Singular.Useful;
 
 namespace Singular.Modules.Core.HtmlExtensions
 {
     /// <summary>
-    /// Alt-ng extensions
+    ///     Alt-ng extensions
     /// </summary>
     public static class AltNgExtensions
     {
+        public static readonly IDictionary<string, Type> ViewModelDictionary = new Dictionary<string, Type>();
+
         /// <summary>
-        /// Alt View
+        ///     Alt View
         /// </summary>
         /// <param name="html"></param>
         /// <param name="parentViewFolder"></param>
@@ -22,13 +23,15 @@ namespace Singular.Modules.Core.HtmlExtensions
         /// <param name="useAuth"></param>
         /// <param name="useDataPrefix"></param>
         /// <returns></returns>
-        public static MvcHtmlString AltView(this HtmlHelper html, string parentViewFolder, bool useCache, bool useAuth, bool useDataPrefix = false)
+        public static MvcHtmlString AltView(this HtmlHelper html, string parentViewFolder, bool useCache, bool useAuth,
+            bool useDataPrefix = false)
         {
-            return altView(html, parentViewFolder, useCache, useAuth ? "~/Singular/Core/NgView/IndexAuthenticated" : "~/Singular/Core/NgView/", useDataPrefix);
+            return altView(html, parentViewFolder, useCache,
+                useAuth ? "~/Singular/Core/NgView/IndexAuthenticated" : "~/Singular/Core/NgView/", useDataPrefix);
         }
 
         /// <summary>
-        /// Alt view (customisable)
+        ///     Alt view (customisable)
         /// </summary>
         /// <param name="html"></param>
         /// <param name="parentViewFolder"></param>
@@ -42,7 +45,8 @@ namespace Singular.Modules.Core.HtmlExtensions
             return altView(html, parentViewFolder, useCache, baseUrl, useDataPrefix);
         }
 
-        private static MvcHtmlString altView(this HtmlHelper html, string parentViewFolder, bool useCache, string baseUrl,
+        private static MvcHtmlString altView(this HtmlHelper html, string parentViewFolder, bool useCache,
+            string baseUrl,
             bool useDataPrefix = false)
         {
             if (baseUrl.Last() != '/')
@@ -63,8 +67,5 @@ namespace Singular.Modules.Core.HtmlExtensions
 
             return MvcHtmlString.Create(output.ToString());
         }
-
-        public static readonly IDictionary<string, Type> ViewModelDictionary = new Dictionary<string, Type>();
     }
-
 }
