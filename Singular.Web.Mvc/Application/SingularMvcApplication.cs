@@ -1,3 +1,4 @@
+using System.Threading;
 using Castle.MicroKernel.Registration;
 using Singular.Core.Authentication;
 using Singular.Core.Context;
@@ -58,6 +59,7 @@ namespace Singular.Web.Mvc.Application
 
 		protected virtual void SingularApplicationBeginRequest(object sender, EventArgs eventArgs)
 		{
+            
 		    // set services
 		    var ctx = (SingularMvcContext) SingularMvcContext.Current;
             ctx.OnBeginRequest();

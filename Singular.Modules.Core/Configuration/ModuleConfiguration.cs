@@ -23,6 +23,10 @@ namespace Singular.Modules.Core.Configuration
                 Component
                     .For<ITranslationService>()
                     .ImplementedBy<TranslationService>()
+                    .LifestylePerWebRequest(),
+                Component
+                    .For<IAuthenticationService>()
+                    .ImplementedBy<AuthenticationService>()
                     .LifestylePerWebRequest()
             });
 
@@ -95,7 +99,7 @@ namespace Singular.Modules.Core.Configuration
         public override void RegisterArea(AreaRegistrationContext context)
         {
             var routeObj = new {controller = "Home", action = "Index", id = UrlParameter.Optional};
-            var strArrays = new[] {"Singular.Modules.Core.Controllers", "Singular.Modules.Core.Mvc.Controllers"};
+            var strArrays = new[] {"Singular.Modules.Core.Controllers", "Singular.Modules.Core.ApiControllers"};
             context.MapRoute("Core", "Singular/Core/{controller}/{action}/{id}", routeObj, strArrays);
         }
     }

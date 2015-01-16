@@ -14,19 +14,24 @@ if (Singular == undefined) var Singular = {};
 if (Singular.Modules == undefined) Singular.Modules = {};
 
 // master app
-Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.SingularFormsAuthApp", ["Singular.Common.MasterApp"]);
+Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.SingularFormsAuthApp",
+    ["Singular.Common.SingularCommon", "Singular.Common.MasterApp"]);
 
 // closure
 (function (app) {
 
     // add controller
-    app.controller("loginController", ["$scope", "$location", function ($scope, $location) {
+    app.controller("loginController", ["$scope", "$location", "sgCrudService", function ($scope, $location, sgCrudService) {
 
         $scope.indexAction = function () {
-
+            
             // get query string
             var qstr = $location.search();
-            $location.url($location.path())
+            
+            if (!objct.IsNullOrEmpty(qstr)) {                
+                $location.url($location.path())                               
+            }
+            
 
             // model
             $scope.Model = {
@@ -34,35 +39,18 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
                 Password: "",
                 RememberMe: true,
                 RedirectUrl: qstr === undefined ? "" : qstr.returnUrl
-            }
-
-
-            /*
-             * OBVIOUSLY THIS ALL NEEDS TO GO IN THE SERVICE!!!
-             * 
-             * (INCLUDING THE "NON PROP" ONE) - add "generalErrors" to TransactionResult
-             * 
-             */
-            $scope.SgValidationErrors = {};
-            $scope.SgValidationErrors["Model.Email"] = "Error email";
-            $scope.SgValidationErrors["Model.Password"] = "Error passowrd";            
-            $scope.SgValidationErrors["NonProp_1"] = "Your username or password are SHITE";
-            $scope.NonPropSgValidationErrors = function () {
-                
-                var output = [];
-                for (var x in $scope.SgValidationErrors) {
-                    if (x.indexOf("NonProp") === 0) {
-                        output.push($scope.SgValidationErrors[x]);
-                    }
-                }
-                return output;
-            }
+            }           
 
 
             // login
             $scope.Login = function () {
-                console.log($scope.Model)
-            };
+                var url = $scope.RootedUrl("Singular/Core/Api/FormsAuth/Login");                
+                sgCrudService
+                    .Post($scope, url, $scope.Model)
+                    .then(function (d) {                        
+                        console.log(d);
+                    });
+                };
 
             // valid?
             $scope.EmailIsValid = function () {

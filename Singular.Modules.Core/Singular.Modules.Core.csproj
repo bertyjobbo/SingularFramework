@@ -156,6 +156,8 @@
     <EmbeddedResource Include="Content\Scripts\Helpers.js" />
     <EmbeddedResource Include="Content\Scripts\Helpers.min.js" />
     <EmbeddedResource Include="Content\Images\Shape51.png" />
+    <EmbeddedResource Include="Content\Ng\Common\SingularCommon.js" />
+    <EmbeddedResource Include="Content\Ng\Common\SingularCommon.min.js" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -234,6 +236,7 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>AccessDenied.generated.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Content\Ng\Common\SingularCommon.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -266,6 +269,7 @@
     <Compile Include="HtmlExtensions\AltNgExtensions.cs" />
     <Compile Include="HtmlExtensions\BootstrapFormGroup.cs" />
     <Compile Include="HtmlExtensions\BuilderBase.cs" />
+    <Compile Include="HtmlExtensions\DebugExtensions.cs" />
     <Compile Include="HtmlExtensions\NgButtonBuilder.cs" />
     <Compile Include="HtmlExtensions\NgEditorBuilder.cs" />
     <Compile Include="HtmlExtensions\NgForm.cs" />

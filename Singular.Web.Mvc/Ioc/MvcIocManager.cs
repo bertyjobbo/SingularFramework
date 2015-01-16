@@ -31,11 +31,13 @@ namespace Singular.Web.Mvc.Ioc
             ControllerContainer = windsorContainer.Install(controllerInstaller);
             ControllerContainer.Register(_tmpRegistrations.ToArray());
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(ControllerContainer.Kernel));
+            
+            
             var windsorContainer1 = new WindsorContainer();
-            controllerInstaller = new IWindsorInstaller[] { new ApiControllerInstaller() };
-            ApiControllerContainer = windsorContainer1.Install(controllerInstaller);
-            GlobalConfiguration.Configuration.DependencyResolver = new WindsorWebApiDependencyResolver(ApiControllerContainer);
+            var controllerInstaller1 = new IWindsorInstaller[] { new ApiControllerInstaller() };
+            ApiControllerContainer = windsorContainer1.Install(controllerInstaller1);
             ApiControllerContainer.Register(_tmpRegistrations.ToArray());
+            GlobalConfiguration.Configuration.DependencyResolver = new WindsorWebApiDependencyResolver(ApiControllerContainer);
         }
 
         /// <summary>

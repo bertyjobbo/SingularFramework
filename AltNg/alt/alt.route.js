@@ -52,12 +52,12 @@ alt.route = angular.module("alt.route", ["ng"]);
                 scope.$watch(function () { return $location.$$path; }, function (newPath) {
 
                     // emit
-                    scope.$broadcast("$routeChangeStart", newPath);
+                    $rootScope.$broadcast("$routeChangeStart", newPath);
 
                 });
 
                 // events
-                scope.$on("$routeChangeStart", function (e, newPath) {
+                $rootScope.$on("$routeChangeStart", function (e, newPath) {
 
                     // lower
                     newPath = newPath.toLowerCase();
@@ -142,7 +142,7 @@ alt.route = angular.module("alt.route", ["ng"]);
                         $compile(element)(scope);
 
                         // end event
-                        scope.$broadcast("$routeChangeSuccess", $location.$$route);
+                        $rootScope.$broadcast("$routeChangeSuccess", $location.$$route);
 
                     } else {
                         $http
@@ -159,12 +159,12 @@ alt.route = angular.module("alt.route", ["ng"]);
                                 $compile(element)(scope);
 
                                 // end event
-                                scope.$broadcast("$routeChangeSuccess", $location.$$route);
+                                $rootScope.$broadcast("$routeChangeSuccess", $location.$$route);
                             })
                             .error(function (errObj, code) {
 
                                 // end event
-                                scope.$broadcast("$routeChangeError", errObj, code, $location.$$route);
+                                $rootScope.$broadcast("$routeChangeError", errObj, code, $location.$$route);
                             });
                     }
 

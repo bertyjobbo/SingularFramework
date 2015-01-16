@@ -123,9 +123,9 @@ namespace Singular.Web.Mvc.Context
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             GlobalConfiguration.Configure((config) =>
             {
-                config.MapHttpAttributeRoutes();
                 config.Formatters.Clear();
                 config.Formatters.Add(new JsonMediaTypeFormatter());
+                config.MapHttpAttributeRoutes();
             });
             setAssemblies();
             setModules();

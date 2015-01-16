@@ -28,13 +28,10 @@ namespace Singular.Web.Mvc.HtmlExtensions
             // char array
             var chrArray = new[] { ',' };
 
-            // get name
-            var name = string.Concat(fullName.Split(chrArray)[0], virtualPath.Replace("~", "").Replace("/", "."));
-
             // check behaviour
             if (behaviour == IncludeBehaviour.MinifyAlways)
             {
-                name = name.Replace(".css", ".min.css").Replace(".js", ".min.js");
+                virtualPath = virtualPath.Replace(".css", ".min.css").Replace(".js", ".min.js");
             }
 
 #if (DEBUG)
@@ -43,9 +40,12 @@ namespace Singular.Web.Mvc.HtmlExtensions
             // check behaviour
             if (behaviour == IncludeBehaviour.MinifyWhenNotDebug)
             {
-                name = name.Replace(".css", ".min.css").Replace(".js", ".min.js");
+                virtualPath = virtualPath.Replace(".css", ".min.css").Replace(".js", ".min.js");
             }
 #endif
+
+            // get name
+            var name = string.Concat(fullName.Split(chrArray)[0], virtualPath.Replace("~", "").Replace("/", "."));
 
             return _page.ClientScript.GetWebResourceUrl(type, name);
         }

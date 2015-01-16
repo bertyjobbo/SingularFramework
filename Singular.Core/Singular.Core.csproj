@@ -31,7 +31,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Authentication\IPermissionService.cs" />
     <Compile Include="Authentication\IUserFactory.cs" />
     <Compile Include="Authentication\PermissionService.cs" />
@@ -44,6 +43,7 @@
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Transaction\PropertyError.cs" />
     <Compile Include="Transaction\TransactionResult.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +62,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Singular.Useful\Singular.Useful.csproj">
+      <Project>{F3C6E12B-A9A3-434A-8EA3-EC87401B360F}</Project>
+      <Name>Singular.Useful</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
