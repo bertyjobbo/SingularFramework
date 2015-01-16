@@ -11,7 +11,7 @@ namespace Singular.Modules.Core.ApiControllers
     /// <summary>
     ///     Forms auth controller
     /// </summary>
-    [RoutePrefix("Singular/Core/Api/FormsAuth")]
+    [RoutePrefix("SingularApi/Core/FormsAuth")]
     public class FormsAuthApiController : CoreApiControllerBaseNoAuth
     {
         // fields

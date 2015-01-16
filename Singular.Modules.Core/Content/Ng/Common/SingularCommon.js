@@ -22,7 +22,7 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
     app.service("sgCrudService", ["$q", "$http", function ($q, $http) {
 
         var ts = this;
-        ts.Post = function ($scope, url, data) {
+        ts.Post = function ($scope, url, data, modelPrefix) {
 
             // check $scope
             if ($scope.NonPropSgValidationErrors === undefined) {
@@ -43,14 +43,17 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
             // send
             $http
                 .post(url, data)
-                .success(function (d) {
-                    var errors = convertResponseToErrors(d);
-                    if (!objct.IsEmpty(errors)) {
+                .success(function (d) {                    
+                    var prfx = strng.IsNullOrWhiteSpace(modelPrefix) ? "Model." : modelPrefix;
+                    var errors = convertResponseToErrors(d, prfx);                    
+                    if (!objct.IsNullOrEmpty(errors)) {
                         $scope.SgValidationErrors = errors;
-                    };
-
-
-                    deferred.resolve(d);
+                        errors.Success = function () { return false; };
+                        deferred.resolve(errors);                        
+                    } else {
+                        d.Success = function () { return true; };
+                        deferred.resolve(d);
+                    }
 
 
                 })
@@ -60,16 +63,32 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
                     deferred.resolve({
                         Error: err,
                         StatusCode: code,
-                        Request: request
+                        Request: request,
+                        Success: function () { return false;}
                     });
 
                 });
 
             return deferred.promise;
         }
-        var convertResponseToErrors = function (resp) {
+        var convertResponseToErrors = function (resp, prfx) {
+
+            // start
             var output = {};
-            // todo - convert errors
+
+            // check
+            if (resp.Success) return output;
+
+            // we've got errors
+            for (var i = 0; i < resp.Errors.length; i++) {
+                output["NonProp_sgCrudService.Post.Error" + i] = resp.Errors[i];
+            }
+            for (var i = 0; i < resp.PropertyErrors.length; i++) {
+                var err = resp.PropertyErrors[i];
+                output[prfx + err.PropertyName] = err.ErrorMessage;
+            }
+
+            // end
             return output;
         }
 
@@ -125,7 +144,7 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
             restrict: "A",
             link: function (scope, element, attrs) {
 
-                // get model prop name                
+                // get model prop name                  
                 var propName = attrs.sgPropertyError;
 
                 // hide
@@ -133,7 +152,11 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
 
                 // watch
                 scope.$watch(function () { return scope.$eval(propName); }, function (newVal, oldVal) {
-
+                    
+                    if (newVal !== undefined && !strng.IsString(newVal)) {
+                        throw 'sgPropertyError parameter ' + propName + ' is not a string on this scope'
+                    }
+                    //console.log(strng.IsString(newVal), newVal);
                     if (!strng.IsNullOrEmpty(newVal)) {
 
                         // show
@@ -162,6 +185,11 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
 
                 // watch
                 scope.$watch(function () { return scope.$eval(propName); }, function (newVal, oldVal) {
+
+                    if (newVal !== undefined && !strng.IsString(newVal)) {
+                        throw 'sgPropertyError parameter ' + propName + ' is not a string on this scope'
+                    }
+                    //console.log(strng.IsString(newVal), newVal);
 
                     if (!strng.IsNullOrEmpty(newVal)) {
 

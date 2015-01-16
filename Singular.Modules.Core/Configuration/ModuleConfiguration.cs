@@ -30,6 +30,18 @@ namespace Singular.Modules.Core.Configuration
                     .LifestylePerWebRequest()
             });
 
+            MvcIocManager.Current.AddWebApiServices(new IRegistration[]
+            {
+                Component
+                    .For<ITranslationService>()
+                    .ImplementedBy<TranslationService>()
+                    .LifestylePerWebRequest(),
+                Component
+                    .For<IAuthenticationService>()
+                    .ImplementedBy<AuthenticationService>()
+                    .LifestylePerWebRequest()
+            });
+
             EmbeddedResourceManager
                 .Current
                 .CreateCollection(this, "Singular.Modules.Core", "Core")

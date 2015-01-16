@@ -119,6 +119,8 @@ namespace Singular.Web.Mvc.Context
         /// <returns></returns>
         public ISingularContext RegisterModules()
         {
+            
+            // standard mvc
             AreaRegistration.RegisterAllAreas();
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
             GlobalConfiguration.Configure((config) =>
@@ -126,11 +128,20 @@ namespace Singular.Web.Mvc.Context
                 config.Formatters.Clear();
                 config.Formatters.Add(new JsonMediaTypeFormatter());
                 config.MapHttpAttributeRoutes();
+                //config.Routes.MapHttpRoute(
+                //name: "DefaultApi",
+                //routeTemplate: "SingularApi/{controller}/{id}",
+                //defaults: new { id = RouteParameter.Optional }
+                //);
             });
+
+            // singular
             setAssemblies();
             setModules();
             fireModuleAppStartMethods();
             MvcIocManager.Current.FinalizeServices();
+
+            //
             return this;
         }
 

@@ -9,19 +9,26 @@ namespace Singular.Web.Mvc.Ioc
         /// <summary>
         /// Api container
         /// </summary>
-        IWindsorContainer ApiControllerContainer { get; } // MOVE THIS TO MvcIocManager
+        IWindsorContainer ApiControllerContainer { get; }
 
         /// <summary>
         /// Container
         /// </summary>
-        IWindsorContainer ControllerContainer { get; } // MOVE THIS TO MvcIocManager
+        IWindsorContainer ControllerContainer { get; } 
 
         /// <summary>
-        /// Add services
+        /// Add services for controllers
         /// </summary>
         /// <param name="registrations"></param>
         /// <returns></returns>
-        IMvcIocManager AddServices(params IRegistration[] registrations); // MOVE THIS TO MvcIocManager
+        IMvcIocManager AddServices(params IRegistration[] registrations);
+
+        /// <summary>
+        /// Add services for webapi controllers
+        /// </summary>
+        /// <param name="registrations"></param>
+        /// <returns></returns>
+        IMvcIocManager AddWebApiServices(params IRegistration[] registrations);
 
         /// <summary>
         /// Get a service

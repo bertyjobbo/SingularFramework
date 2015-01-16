@@ -9,10 +9,6 @@ namespace Singular.Web.Mvc.Ioc
 {
 	public class ControllerInstaller : IWindsorInstaller
 	{
-		public ControllerInstaller()
-		{
-		}
-
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 			var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
@@ -20,7 +16,7 @@ namespace Singular.Web.Mvc.Ioc
 			{
 				pathToBin = Path.Combine(pathToBin, "bin");
 			}
-			var registrationArray = new IRegistration[] { Classes.FromAssemblyInDirectory(new AssemblyFilter(pathToBin, null)).BasedOn<IController>().LifestyleTransient() };
+			var registrationArray = new IRegistration[] { Classes.FromAssemblyInDirectory(new AssemblyFilter(pathToBin, null)).BasedOn<Controller>().LifestyleTransient() };
 			container.Register(registrationArray);
 		}
 	}

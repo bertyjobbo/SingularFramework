@@ -102,6 +102,7 @@
     <Compile Include="Ioc\ControllerInstaller.cs" />
     <Compile Include="Ioc\IMvcIocManager.cs" />
     <Compile Include="Ioc\MvcIocManager.cs" />
+    <Compile Include="Ioc\WindsorCompositionRoot.cs" />
     <Compile Include="Ioc\WindsorControllerFactory.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyResolver.cs" />
     <Compile Include="Ioc\WindsorWebApiDependencyScope.cs" />

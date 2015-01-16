@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
 using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
+using Singular.Useful;
 
 namespace Singular.Web.Mvc.Ioc
 {
@@ -19,26 +22,35 @@ namespace Singular.Web.Mvc.Ioc
         #endregion
 
         // fields
-        private readonly List<IRegistration> _tmpRegistrations = new List<IRegistration>();
+        private readonly List<IRegistration> _registrations = new List<IRegistration>();
+        private readonly List<IRegistration> _apiRegistrations = new List<IRegistration>();
+
 
         /// <summary>
         /// Finalize
         /// </summary>
         public void FinalizeServices()
         {
-            var windsorContainer = new WindsorContainer();
+            var container = new WindsorContainer();
             var controllerInstaller = new IWindsorInstaller[] { new ControllerInstaller() };
-            ControllerContainer = windsorContainer.Install(controllerInstaller);
-            ControllerContainer.Register(_tmpRegistrations.ToArray());
+            ControllerContainer = container.Install(controllerInstaller);
+            ControllerContainer.Register(_registrations.ToArray());
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(ControllerContainer.Kernel));
-            
-            
-            var windsorContainer1 = new WindsorContainer();
+
+
+            var container2 = new WindsorContainer();
             var controllerInstaller1 = new IWindsorInstaller[] { new ApiControllerInstaller() };
-            ApiControllerContainer = windsorContainer1.Install(controllerInstaller1);
-            ApiControllerContainer.Register(_tmpRegistrations.ToArray());
+            ApiControllerContainer = container2.Install(controllerInstaller1);
+            ApiControllerContainer.Register(_apiRegistrations.ToArray());
+            //ApiControllerContainer.Kernel.Resolver.AddSubResolver(new CollectionResolver(ApiControllerContainer.Kernel, true));
             GlobalConfiguration.Configuration.DependencyResolver = new WindsorWebApiDependencyResolver(ApiControllerContainer);
+            //GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new WindsorCompositionRoot(ApiControllerContainer));
         }
+
+        /// <summary>
+        /// Widn
+        /// </summary>
+        public IWindsorContainer WindsorContainer { get; private set; }
 
         /// <summary>
         /// Api container
@@ -57,7 +69,18 @@ namespace Singular.Web.Mvc.Ioc
         /// <returns></returns>
         public IMvcIocManager AddServices(params IRegistration[] registrations)
         {
-            _tmpRegistrations.AddRange(registrations);
+            _registrations.AddRange(registrations);
+            return this;
+        }
+
+        /// <summary>
+        /// Add services
+        /// </summary>
+        /// <param name="registrations"></param>
+        /// <returns></returns>
+        public IMvcIocManager AddWebApiServices(params IRegistration[] registrations)
+        {
+            _apiRegistrations.AddRange(registrations);
             return this;
         }
 

@@ -12,7 +12,7 @@ namespace Singular.Core.Transaction
             Errors = new List<string>();
         }
         public IList<string> Errors { get; private set; }
-        public virtual bool Success { get { return Errors != null && Errors.Count > 0; } }
+        public virtual bool Success { get { return Errors == null || Errors.Count < 1; } }
 
         public void AddError(string err)
         {
@@ -32,7 +32,7 @@ namespace Singular.Core.Transaction
 
         public override bool Success
         {
-            get { return base.Success && PropertyErrors != null && PropertyErrors.Count > 0; }
+            get { return base.Success && (PropertyErrors == null || PropertyErrors.Count <1); }
         }
 
         public void AddPropertyError<TProperty>(Expression<Func<T,TProperty>> expression, string err)

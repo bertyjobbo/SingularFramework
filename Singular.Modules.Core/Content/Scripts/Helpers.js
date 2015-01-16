@@ -19,11 +19,13 @@ console.log = function (a, b) {
 // string helpers
 var strng = {
     IsNullOrEmpty: function (str) {
+
         if (str === undefined || str === null)
             return true;
-        if (!strng.IsString(str))
+        if (!strng.IsString(str)) {            
             console.log(str);
-        throw "Parameter 'str' in not a string - see preceding console.log entry.";
+            throw "Parameter 'str' in not a string - see preceding console.log entry.";
+        }
         return str === "";
     },
     IsNullOrWhiteSpace: function (str) {
@@ -32,7 +34,7 @@ var strng = {
         return str.match(/^\s*$/);
     },
     IsString: function (str) {
-        return typeof str == "string";
+        return typeof str == 'string' || str instanceof String
     }
 };
 

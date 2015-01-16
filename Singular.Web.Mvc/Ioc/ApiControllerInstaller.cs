@@ -14,19 +14,15 @@ namespace Singular.Web.Mvc.Ioc
 {
 	public class ApiControllerInstaller : IWindsorInstaller
 	{
-		public ApiControllerInstaller()
-		{
-		}
-
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
-			if (!pathToBin.Contains("bin"))
-			{
-				pathToBin = Path.Combine(pathToBin, "bin");
-			}
-			var registrationArray = new IRegistration[] { Classes.FromAssemblyInDirectory(new AssemblyFilter(pathToBin, null)).BasedOn<IHttpController>().LifestyleTransient() };
-			container.Register(registrationArray);
-		}
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
+            if (!pathToBin.Contains("bin"))
+            {
+                pathToBin = Path.Combine(pathToBin, "bin");
+            }
+            var registrationArray = new IRegistration[] { Classes.FromAssemblyInDirectory(new AssemblyFilter(pathToBin, null)).BasedOn<ApiController>().LifestyleTransient() };
+            container.Register(registrationArray);
+        }
 	}
 }

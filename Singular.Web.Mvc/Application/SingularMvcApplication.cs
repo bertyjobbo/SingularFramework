@@ -110,6 +110,40 @@ namespace Singular.Web.Mvc.Application
 
 		        );
 
+            MvcIocManager.Current.AddWebApiServices(
+
+                Component
+                    .For<IEmbeddedResourceManager>()
+                    .UsingFactoryMethod(() => EmbeddedResourceManager.Current)
+                    .LifestyleSingleton(),
+
+                Component
+                    .For<ISingularContext>()
+                    .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
+                    .LifestyleSingleton(),
+
+                Component
+                    .For<ISectionManager>()
+                    .UsingFactoryMethod(() => SectionManager.Current)
+                    .LifestyleSingleton(),
+
+                Component
+                    .For<ISiteContext>()
+                    .UsingFactoryMethod(() => SiteContext.Current)
+                    .LifestyleSingleton(),
+
+                Component
+                    .For<IPermissionService>()
+                    .ImplementedBy<PermissionService>()
+                    .LifestylePerWebRequest(),
+
+                Component
+                    .For<IUserFactory>()
+                    .ImplementedBy<UserFactory>()
+                    .LifestyleSingleton()
+
+                );
+
 		    SingularMvcContext
 		        .Current
 		        .RegisterModules()
