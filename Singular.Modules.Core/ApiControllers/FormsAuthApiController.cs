@@ -2,7 +2,7 @@
 using System.Web.Http;
 using Singular.Core.Authentication;
 using Singular.Core.Context;
-using Singular.Core.Transaction;
+using Singular.Core.Data.Transaction;
 using Singular.Modules.Core.Data.Models;
 using Singular.Modules.Core.Data.Services;
 

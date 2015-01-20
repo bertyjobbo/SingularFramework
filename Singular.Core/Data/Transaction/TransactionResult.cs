@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Singular.Useful;
 
-namespace Singular.Core.Transaction
+namespace Singular.Core.Data.Transaction
 {
     public class TransactionResult
     {
