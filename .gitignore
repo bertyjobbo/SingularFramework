@@ -49,3 +49,5 @@
 /Singular.Web.Mvc/obj/Release
 /Singular.Useful/obj/Release
 /Singular.Web.Mvc.EmbeddedResourceConfiguration/obj/Release
+/Singular.Core.Data/bin/Debug
+/Singular.Core.Data/obj/Debug

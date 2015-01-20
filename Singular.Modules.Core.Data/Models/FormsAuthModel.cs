@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Singular.Modules.Core.Data.Services;
-
-namespace Singular.Modules.Core.Data.Models
+﻿namespace Singular.Modules.Core.Data.Models
 {
     public class FormsAuthModel
     {
