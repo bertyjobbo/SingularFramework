@@ -35,7 +35,7 @@ namespace Singular.Web.Mvc.Authentication
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth/#/Login/AccessDenied/"),true);
+                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Sys/AccessDenied/"),true);
                 return;
             }
             

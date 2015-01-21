@@ -5,6 +5,7 @@ using Singular.Core.Authentication;
 using Singular.Core.Configuration;
 using System;
 using System.Collections.Generic;
+using Singular.Core.Data.Entities;
 
 namespace Singular.Core.Context
 {

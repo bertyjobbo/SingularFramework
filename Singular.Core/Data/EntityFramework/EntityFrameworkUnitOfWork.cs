@@ -45,12 +45,19 @@ namespace Singular.Core.Data.EntityFramework
                         {
                             modCast.Active = true;
                             modCast.Created = DateTime.UtcNow;
-                            modCast.CreatedBy = _sCtx.CurrentUser.Id;
+
+                            if (_sCtx.CurrentUser != null)
+                            {
+                                modCast.CreatedBy = _sCtx.CurrentUser.Id;
+                            }
                         }
                         if (mod.State == EntityState.Modified)
                         {
-                            modCast.UpdatedBy = _sCtx.CurrentUser.Id;
-                            modCast.Updated = DateTime.UtcNow;
+                            if (_sCtx.CurrentUser != null)
+                            {
+                                modCast.UpdatedBy = _sCtx.CurrentUser.Id;
+                                modCast.Updated = DateTime.UtcNow;
+                            }
                         }
                     }
                 }

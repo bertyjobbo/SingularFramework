@@ -31,19 +31,22 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Authentication\IPermissionService.cs" />
-    <Compile Include="Authentication\IUserFactory.cs" />
-    <Compile Include="Authentication\PermissionService.cs" />
+    <Compile Include="Encryption\EncryptionHelper.cs" />
+    <Compile Include="Data\Enums\AuthenticationType.cs" />
+    <Compile Include="Data\Service\IPermissionService.cs" />
+    <Compile Include="Data\Service\IUserService.cs" />
+    <Compile Include="Data\Service\PermissionService.cs" />
     <Compile Include="Authentication\SingularSession.cs" />
-    <Compile Include="Authentication\SingularUser.cs" />
-    <Compile Include="Authentication\UserFactory.cs" />
     <Compile Include="Configuration\ISingularModuleConfiguration.cs" />
     <Compile Include="Context\ISingularContext.cs" />
+    <Compile Include="Data\DataContext\SingularEntityFrameworkContext.cs" />
     <Compile Include="Data\Entities\EntityBase.cs" />
+    <Compile Include="Data\Entities\SingularUser.cs" />
     <Compile Include="Data\EntityFramework\EntityFrameworkRepository.cs" />
     <Compile Include="Data\EntityFramework\EntityFrameworkRepositoryExtensions.cs" />
     <Compile Include="Data\Repository\IRepository.cs" />
     <Compile Include="Data\EntityFramework\EntityFrameworkUnitOfWork.cs" />
+    <Compile Include="Data\Service\UserService.cs" />
     <Compile Include="Data\Transaction\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>

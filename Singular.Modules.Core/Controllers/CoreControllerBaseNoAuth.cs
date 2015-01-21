@@ -9,23 +9,21 @@ namespace Singular.Modules.Core.Controllers
 {
     public abstract class CoreControllerBaseNoAuth : Controller
     {
-        protected CoreControllerBaseNoAuth(ISingularContext ctx)
+        protected CoreControllerBaseNoAuth(ISingularContext ctx, ISectionManager sectionManager, ISiteContext siteContext)
         {
             SingularContext = ctx;
-            SectionManager = ctx.GetService<ISectionManager>();
-            SiteContext = ctx.GetService<ISiteContext>();
-            TranslationService = ctx.GetService<ITranslationService>();
+            SectionManager = sectionManager;
+            SiteContext = siteContext;
         }
 
         public ISingularContext SingularContext { get; private set; }
         protected ISectionManager SectionManager { get; private set; }
         public ISiteContext SiteContext { get; private set; }
-        public ITranslationService TranslationService { get; private set; }
 
         protected CoreViewModelBase GetCoreModelBaseInstance()
         {
             //Thread.Sleep(2000);
-            return new CoreViewModelBase(SingularContext);
+            return new CoreViewModelBase(SingularContext,SectionManager,SiteContext);
         }
     }
 }

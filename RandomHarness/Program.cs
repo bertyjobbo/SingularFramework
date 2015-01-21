@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Singular.Core.Authentication;
+using Singular.Core.Encryption;
 
 namespace RandomHarness
 {
@@ -13,10 +15,16 @@ namespace RandomHarness
     {
         static void Main(string[] args)
         {
-            var message = "REDO-RAZORGENERATOR";
-            var runspace = Runspace.DefaultRunspace;
-            var pipeline = runspace.CreateNestedPipeline("Write-Host '" + message + "'", false);
-            pipeline.Invoke();
+            var password = "testTTT";
+            var helper = new EncryptionHelper();
+            var hash = helper.EncryptToString(password);
+
+            Console.WriteLine("Password in: {0}",password);
+            Console.WriteLine("Password out: {0}", hash);
+            password = helper.DecryptString(hash);
+            Console.WriteLine("Password out: {0}", password);
+
+
         }
     }
 }

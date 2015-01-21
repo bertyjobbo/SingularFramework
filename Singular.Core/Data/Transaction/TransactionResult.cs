@@ -56,5 +56,7 @@ namespace Singular.Core.Data.Transaction
                 PropertyName = prop, ErrorMessage = err
             });
         }
+
+        public T Model { get; set; }
     }
 }

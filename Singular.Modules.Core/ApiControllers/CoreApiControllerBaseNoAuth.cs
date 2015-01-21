@@ -9,10 +9,8 @@ namespace Singular.Modules.Core.ApiControllers
         protected CoreApiControllerBaseNoAuth(ISingularContext ctx)
         {
             SingularContext = ctx;
-            TranslationService = ctx.GetService<ITranslationService>();
         }
 
         public ISingularContext SingularContext { get; private set; }
-        public ITranslationService TranslationService { get; private set; }
     }
 }

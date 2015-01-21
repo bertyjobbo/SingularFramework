@@ -1,6 +1,8 @@
 using System.Web.Mvc;
 using Singular.Core.Context;
+using Singular.Web.Mvc.Context;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
@@ -12,8 +14,10 @@ namespace Singular.Modules.Core.Controllers
         ///     Constructor
         /// </summary>
         /// <param name="ctx"></param>
-        public BuildController(ISingularContext ctx)
-            : base(ctx)
+        /// <param name="sectionManager"></param>
+        /// <param name="siteContext"></param>
+        public BuildController(ISingularContext ctx, ISectionManager sectionManager, ISiteContext siteContext)
+            : base(ctx, sectionManager, siteContext)
         {
             _resMgr = ctx.GetService<IEmbeddedResourceManager>();
         }

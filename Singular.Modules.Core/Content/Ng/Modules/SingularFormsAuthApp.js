@@ -44,12 +44,12 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
 
             // login
             $scope.Login = function () {
-                var url = $scope.RootedUrl("SingularApi/Core/FormsAuth/Login");
+                var url = $scope.RootedUrl("SingularApi/Core/FormsAuth/Login/");
                 sgCrudService
                     .Post($scope, url, $scope.Model)
                     .then(function (data) {                        
                         if (data.Success()) {
-                            window.location = $scope.Model.ReturnUrl;
+                            window.location = $scope.Model.ReturnUrl || $scope.RootedUrl("Singular/Core/");
                         }
                     });
             };

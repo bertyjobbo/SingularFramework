@@ -4,8 +4,8 @@ using Singular.Core.Data.Entities;
 
 namespace Singular.Core.Data.DataContext
 {
-    public class CoreEntityFrameworkContext : DbContext
+    public class SingularEntityFrameworkContext : DbContext
     {
-        public DbSet<User> SingularUsers { get; set; }
+        public DbSet<SingularUser> SingularUsers { get; set; }
     }
 }

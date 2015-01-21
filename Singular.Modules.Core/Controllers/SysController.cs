@@ -1,11 +1,14 @@
 ﻿using System.Web.Mvc;
 using Singular.Core.Context;
+using Singular.Web.Mvc.Context;
+using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
     public class SysController : CoreControllerBaseNoAuth
     {
-        public SysController(ISingularContext ctx) : base(ctx)
+        public SysController(ISingularContext ctx, ISectionManager sectionManager, ISiteContext siteContext)
+            : base(ctx,sectionManager,siteContext)
         {
         }
 

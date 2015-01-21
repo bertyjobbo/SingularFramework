@@ -1,3 +1,4 @@
+using System.Data.Entity;
 using System.Web;
 using System.Web.Hosting;
 using Castle.Core.Logging;
@@ -6,6 +7,12 @@ using Castle.Windsor;
 using Singular.Core.Authentication;
 using Singular.Core.Configuration;
 using Singular.Core.Context;
+using Singular.Core.Data.DataContext;
+using Singular.Core.Data.Entities;
+using Singular.Core.Data.EntityFramework;
+using Singular.Core.Data.Repository;
+using Singular.Core.Data.Service;
+using Singular.Core.Data.Transaction;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
 using Singular.Web.Mvc.Ioc;
 using System;
@@ -42,9 +49,6 @@ namespace Singular.Web.Mvc.Context
         private List<Type> _types;
         private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
         private readonly Type _areaRegType = typeof(AreaRegistration);
-        private IPermissionService _permissionService;
-        private bool _firstRequestComplete;
-        private IUserFactory _userFactory;
 
         // private methods
         private void fireModuleAppStartMethods()
@@ -99,7 +103,8 @@ namespace Singular.Web.Mvc.Context
         /// <summary>
         /// Types
         /// </summary>
-        public IList<Type> Types {
+        public IList<Type> Types
+        {
             get { return _types ?? (_types = Assemblies.SelectMany(x => x.GetTypes()).ToList()); }
         }
 
@@ -119,7 +124,7 @@ namespace Singular.Web.Mvc.Context
         /// <returns></returns>
         public ISingularContext RegisterModules()
         {
-            
+
             // standard mvc
             AreaRegistration.RegisterAllAreas();
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
@@ -165,7 +170,14 @@ namespace Singular.Web.Mvc.Context
         public bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules)
         {
             if (CurrentUser == null) return false;
-            return _permissionService.UserIsAllowed(CurrentUser.LogonName, users, roles, modules);
+
+            // so we need to add the current user
+            using (var permissionService = new PermissionService())
+            {
+                return permissionService.UserIsAllowed(CurrentUser.Id, users, roles, modules);
+            }
+
+
         }
 
         /// <summary>
@@ -188,6 +200,10 @@ namespace Singular.Web.Mvc.Context
         /// <returns></returns>
         public ISingularContext SetCurrentUser(SingularUser user)
         {
+            if (HttpContext.Current.Session == null)
+            {
+                throw new Exception("HttpContext.Current.Session is null at ISingularContext.SetCurrentUser");
+            }
             var s = new SingularSession(user);
             HttpContext.Current.Session.Add(session_key, s);
             return this;
@@ -210,6 +226,7 @@ namespace Singular.Web.Mvc.Context
         {
             get
             {
+                if (HttpContext.Current == null || HttpContext.Current.Session == null) return default(SingularSession);
                 var s = HttpContext.Current.Session[session_key];
                 if (s == null) return default(SingularSession);
                 return (SingularSession)s;
@@ -236,31 +253,29 @@ namespace Singular.Web.Mvc.Context
                 return _assemblies;
             }
         }
-        
+
         /// <summary>
         /// On first request
         /// </summary>
         public void OnBeginRequest()
         {
-            if (!_firstRequestComplete)
+            // these conditions mean that it's windows logon
+            if (!IsAuthenticated && HttpContext.Current != null && HttpContext.Current.User != null && HttpContext.Current.User.Identity != null && HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                _firstRequestComplete = true;
-                _permissionService = MvcIocManager.Current.GetService<IPermissionService>();
-                _userFactory = MvcIocManager.Current.GetService<IUserFactory>();
-            }
-
-            if (
-                HttpContext.Current.User != null &&
-                HttpContext.Current.User.Identity.IsAuthenticated &&
-                HttpContext.Current.User.Identity.AuthenticationType == "NTLM" &&
-                !IsAuthenticated)
-            {
-                SetCurrentUser(
-                    _userFactory.Build(
-                        HttpContext.Current.User.Identity.AuthenticationType,
-                        HttpContext.Current.User.Identity.Name
-                    )
-                );
+                // so we need to add the current user
+                var ctx = (DbContext) new SingularEntityFrameworkContext();
+                using (var uow = (IUnitOfWork) new EntityFrameworkUnitOfWork(ctx, this))
+                {
+                    var repo = (IRepository<SingularUser>)new EntityFrameworkRepository<SingularUser>(ctx, uow);
+                    var userService = (IUserService)new UserService(repo, uow);
+                    var user = userService.GetUserByDomainLogon(HttpContext.Current.User.Identity.Name);
+                    if (user == null)
+                    {
+                        // user doesn't exist in database yet, so redirect to register page
+                        // todo: HttpContext.Current.Response.Redirect("~/Singular/Core/Users/RegisterDomainUser",true);
+                        throw new NotImplementedException("Domain logon is not currently supported");
+                    }    
+                }
             }
         }
     }

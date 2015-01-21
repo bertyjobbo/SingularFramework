@@ -12,7 +12,7 @@ namespace Singular.Core.Data.EntityFramework
     /// Entity framework IRepository
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class EntityFramework<T> : IRepository<T> where T : EntityBase
+    public class EntityFrameworkRepository<T> : IRepository<T> where T : EntityBase
     {
         // fields
         private readonly DbContext _ctx;
@@ -23,7 +23,7 @@ namespace Singular.Core.Data.EntityFramework
         /// </summary>
         /// <param name="ctx"></param>
         /// <param name="uow"></param>
-        public EntityFramework(DbContext ctx, IUnitOfWork uow)
+        public EntityFrameworkRepository(DbContext ctx, IUnitOfWork uow)
         {
             _ctx = ctx;
             _ctx.Configuration.LazyLoadingEnabled = true;

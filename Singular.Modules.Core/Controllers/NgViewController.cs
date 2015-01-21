@@ -7,6 +7,8 @@ using Singular.Core.Context;
 using Singular.Modules.Core.Authentication;
 using Singular.Modules.Core.HtmlExtensions;
 using Singular.Modules.Core.ViewModels;
+using Singular.Web.Mvc.Context;
+using Singular.Web.Mvc.Section;
 
 namespace Singular.Modules.Core.Controllers
 {
@@ -17,8 +19,8 @@ namespace Singular.Modules.Core.Controllers
     {
         private readonly Type _typeOfViewModelBase = typeof (CoreViewModelBase);
 
-        public NgViewController(ISingularContext ctx)
-            : base(ctx)
+        public NgViewController(ISingularContext ctx, ISectionManager sectionManager, ISiteContext siteContext)
+            : base(ctx, sectionManager, siteContext)
         {
         }
 

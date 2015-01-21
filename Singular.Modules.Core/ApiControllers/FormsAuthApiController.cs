@@ -1,7 +1,9 @@
 ﻿using System.Threading;
 using System.Web.Http;
+using System.Web.Security;
 using Singular.Core.Authentication;
 using Singular.Core.Context;
+using Singular.Core.Data.Entities;
 using Singular.Core.Data.Transaction;
 using Singular.Modules.Core.Data.Models;
 using Singular.Modules.Core.Data.Services;
@@ -21,9 +23,10 @@ namespace Singular.Modules.Core.ApiControllers
         ///     Constructor
         /// </summary>
         /// <param name="ctx"></param>
-        public FormsAuthApiController(ISingularContext ctx) : base(ctx)
+        /// <param name="authService"></param>
+        public FormsAuthApiController(ISingularContext ctx, IAuthenticationService authService) : base(ctx)
         {
-            _authService = ctx.GetService<IAuthenticationService>();
+            _authService = authService;
         }
 
         /// <summary>
@@ -35,7 +38,13 @@ namespace Singular.Modules.Core.ApiControllers
         [HttpPost]
         public TransactionResult<FormsAuthModel> Login(FormsAuthModel model)
         {
-            var result = _authService.Login(model.Email, model.Password);
+            SingularUser user;
+            var result = _authService.CheckLogin(model.Email, model.Password, out user);
+            if (result.Success)
+            {
+                // login
+                FormsAuthentication.SetAuthCookie(user.Email, model.RememberMe);
+            }
             return result;
         }
     }

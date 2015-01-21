@@ -1,7 +1,9 @@
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using Castle.MicroKernel.Registration;
 using Singular.Core.Configuration;
+using Singular.Core.Encryption;
 using Singular.Modules.Core.Data.Services;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
 using Singular.Web.Mvc.Ioc;
@@ -18,6 +20,7 @@ namespace Singular.Modules.Core.Configuration
 
         public void OnAppStart()
         {
+            
             MvcIocManager.Current.AddServices(new IRegistration[]
             {
                 Component
@@ -25,9 +28,9 @@ namespace Singular.Modules.Core.Configuration
                     .ImplementedBy<TranslationService>()
                     .LifestylePerWebRequest(),
                 Component
-                    .For<IAuthenticationService>()
-                    .ImplementedBy<AuthenticationService>()
-                    .LifestylePerWebRequest()
+                    .For<EncryptionHelper>()
+                    .ImplementedBy<EncryptionHelper>()
+                    .LifestyleSingleton()
             });
 
             MvcIocManager.Current.AddWebApiServices(new IRegistration[]
@@ -37,10 +40,47 @@ namespace Singular.Modules.Core.Configuration
                     .ImplementedBy<TranslationService>()
                     .LifestylePerWebRequest(),
                 Component
-                    .For<IAuthenticationService>()
-                    .ImplementedBy<AuthenticationService>()
-                    .LifestylePerWebRequest()
+                    .For<EncryptionHelper>()
+                    .ImplementedBy<EncryptionHelper>()
+                    .LifestyleSingleton()
             });
+
+            // get setting
+            var configSetting = ConfigurationManager.AppSettings["AuthenticationType"];
+            if (configSetting == "ActiveDirectory")
+            {
+                MvcIocManager.Current.AddServices(new IRegistration[]
+                {
+                    Component
+                        .For<IAuthenticationService>()
+                        .ImplementedBy<ActiveDirectoryAuthenticationService>()
+                        .LifestylePerWebRequest()
+                });
+                MvcIocManager.Current.AddWebApiServices(new IRegistration[]
+                {
+                    Component
+                        .For<IAuthenticationService>()
+                        .ImplementedBy<ActiveDirectoryAuthenticationService>()
+                        .LifestylePerWebRequest()
+                });
+            }
+            else
+            {
+                MvcIocManager.Current.AddServices(new IRegistration[]
+                {
+                    Component
+                        .For<IAuthenticationService>()
+                        .ImplementedBy<FormsAuthenticationService>()
+                        .LifestylePerWebRequest()
+                });
+                MvcIocManager.Current.AddWebApiServices(new IRegistration[]
+                {
+                    Component
+                        .For<IAuthenticationService>()
+                        .ImplementedBy<FormsAuthenticationService>()
+                        .LifestylePerWebRequest()
+                });
+            }
 
             EmbeddedResourceManager
                 .Current
