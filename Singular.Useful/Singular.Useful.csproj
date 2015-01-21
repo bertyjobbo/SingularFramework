@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CloneExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="GuidExtensions.cs" />
     <Compile Include="KeyValuePairExtensions.cs" />
     <Compile Include="SingularExpressionHelper.cs" />

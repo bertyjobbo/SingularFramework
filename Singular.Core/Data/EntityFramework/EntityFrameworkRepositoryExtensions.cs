@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Singular.Core.Data.EntityFramework
 {
-    public static class EfRepositoryExtensions
+    public static class EntityFrameworkRepositoryExtensions
     {
         
         public static T QueryableFind<T>(this IQueryable<T> set, string primaryKeyName, string primaryKeyValue)

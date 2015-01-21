@@ -9,9 +9,9 @@ namespace Singular.Core.Authentication
     public class SingularUser
     {
         /// <summary>
-        /// Logon name
+        /// Id
         /// </summary>
-        public string LogonName { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Email address
@@ -22,5 +22,10 @@ namespace Singular.Core.Authentication
         /// Name
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Active
+        /// </summary>
+        public bool Active { get; set; }
     }
 }

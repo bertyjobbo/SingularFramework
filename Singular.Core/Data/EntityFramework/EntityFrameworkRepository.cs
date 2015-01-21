@@ -12,19 +12,22 @@ namespace Singular.Core.Data.EntityFramework
     /// Entity framework IRepository
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class EfRepository<T> : IRepository<T>, IDisposable where T : EntityBase
+    public class EntityFramework<T> : IRepository<T> where T : EntityBase
     {
         // fields
         private readonly DbContext _ctx;
+        private readonly IUnitOfWork _uow;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="ctx"></param>
-        public EfRepository(DbContext ctx)
+        /// <param name="uow"></param>
+        public EntityFramework(DbContext ctx, IUnitOfWork uow)
         {
             _ctx = ctx;
             _ctx.Configuration.LazyLoadingEnabled = true;
+            _uow = uow;
         }
 
         /// <summary>
@@ -82,24 +85,12 @@ namespace Singular.Core.Data.EntityFramework
         /// Create
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        public virtual TransactionResult<T> Create(T model, bool commit = true)
+        public virtual T Create(T model)
         {
-            var res = new TransactionResult<T>();
-            try
-            {
-                _ctx.Set<T>().Add(model);
-                if (commit)
-                {
-                    Commit();
-                }
-            }
-            catch (Exception ex)
-            {
-                res.AddError(ex.Message);
-            }
-            return res;
+            var output = _ctx.Set<T>().Add(model);
+            _ctx.Entry(output).State = EntityState.Added;
+            return output;
         }
 
         /// <summary>
@@ -116,67 +107,24 @@ namespace Singular.Core.Data.EntityFramework
         /// Update
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        public virtual TransactionResult<T> Update(T model, bool commit = true)
+        public virtual T Update(T model)
         {
-            var res = new TransactionResult<T>();
-            try
-            {
-                _ctx.Set<T>().Attach(model);
-                _ctx.Entry(model).State = EntityState.Modified;
-                if (commit)
-                {
-                    Commit();
-                }
-            }
-            catch (Exception ex)
-            {
-                res.AddError(ex.Message);
-            }
-            return res;
+            var output = _ctx.Set<T>().Attach(model);
+            _ctx.Entry(output).State = EntityState.Modified;
+            return output;
         }
 
         /// <summary>
         /// Delete
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        public virtual TransactionResult<T> Delete(T model, bool commit = true)
+        public virtual T Delete(T model)
         {
-            var res = new TransactionResult<T>();
-            try
-            {
-                _ctx.Set<T>().Attach(model);
-                _ctx.Entry(model).State = EntityState.Deleted;
-                if (commit)
-                {
-                    Commit();
-                }
-            }
-            catch (Exception ex)
-            {
-                res.AddError(ex.Message);
-            }
-            return res;
-        }
-
-        /// <summary>
-        /// Commit
-        /// </summary>
-        /// <returns></returns>
-        public virtual int Commit()
-        {
-            return _ctx.SaveChanges();
-        }
-
-        /// <summary>
-        /// Dispose
-        /// </summary>
-        public virtual void Dispose()
-        {
-            _ctx.Dispose();
+            var output = _ctx.Set<T>().Attach(model);
+            _ctx.Entry(output).State = EntityState.Deleted;
+            return output;
         }
     }
 }

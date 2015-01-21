@@ -6,7 +6,7 @@ using Singular.Core.Data.Transaction;
 
 namespace Singular.Core.Data.Repository
 {
-    public interface IRepository<T>: IDisposable where T : EntityBase
+    public interface IRepository<T> where T : EntityBase
     {
         /// <summary>
         /// Entities
@@ -38,9 +38,8 @@ namespace Singular.Core.Data.Repository
         /// Create
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        TransactionResult<T> Create(T model, bool commit = true);
+        T Create(T model);
 
         /// <summary>
         /// Read
@@ -53,22 +52,14 @@ namespace Singular.Core.Data.Repository
         /// Update
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        TransactionResult<T> Update(T model, bool commit = true);
+        T Update(T model);
 
         /// <summary>
         /// Delete
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="commit"></param>
         /// <returns></returns>
-        TransactionResult<T> Delete(T model, bool commit = true);
-
-        /// <summary>
-        /// Commit
-        /// </summary>
-        /// <returns></returns>
-        int Commit();
+        T Delete(T model);
     }
 }

@@ -10,14 +10,27 @@ namespace Singular.Core.Data.Transaction
         public TransactionResult()
         {
             Errors = new List<string>();
+            Exceptions = new List<Exception>();
         }
         public IList<string> Errors { get; private set; }
-        public virtual bool Success { get { return Errors == null || Errors.Count < 1; } }
+
+        public virtual bool Success
+        {
+            get { return (Errors.Count + Exceptions.Count) < 1; }
+        }
 
         public void AddError(string err)
         {
             Errors.Add(err);
         }
+
+        public void AddException(Exception ex)
+        {
+            Exceptions.Add(ex);
+            Errors.Add(ex.MessageIncludingInnerException());
+        }
+
+        public IList<Exception> Exceptions { get; private set; }
     }
 
     public class TransactionResult<T> : TransactionResult where T:class

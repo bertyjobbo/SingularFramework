@@ -40,11 +40,11 @@
     <Compile Include="Configuration\ISingularModuleConfiguration.cs" />
     <Compile Include="Context\ISingularContext.cs" />
     <Compile Include="Data\Entities\EntityBase.cs" />
-    <Compile Include="Data\EntityFramework\EfRepository.cs" />
-    <Compile Include="Data\EntityFramework\EfRepositoryExtensions.cs" />
+    <Compile Include="Data\EntityFramework\EntityFrameworkRepository.cs" />
+    <Compile Include="Data\EntityFramework\EntityFrameworkRepositoryExtensions.cs" />
     <Compile Include="Data\Repository\IRepository.cs" />
-    <Compile Include="Data\Service\StandardDataService.cs" />
-    <Compile Include="Data\Service\IDataService.cs" />
+    <Compile Include="Data\EntityFramework\EntityFrameworkUnitOfWork.cs" />
+    <Compile Include="Data\Transaction\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
