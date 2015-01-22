@@ -1,8 +1,13 @@
 ﻿@using Singular.Modules.Core.HtmlExtensions
+@using Singular.Web.Mvc.HtmlExtensions
 @inherits System.Web.Mvc.WebViewPage
 @{
     ViewBag.Title = Html.Translate("Page Not Found");
-    ViewBag.NoNg = true;
+    ViewBag.NgAppName = "Singular.Modules.SingularSysApp";
+}
+@section scripts
+{
+    <script src="@Url.EmbeddedContent("Core", "~/Content/Ng/Modules/SingularSysApp.js", IncludeBehaviour.MinifyWhenNotDebug)"></script>
 }
 <h2>@Html.Translate("Ooops... we couldn't find that page!")</h2>
 <p>@Html.Translate("Please try again. Or just give up.")</p>

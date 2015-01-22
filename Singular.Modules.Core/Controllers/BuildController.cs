@@ -19,7 +19,12 @@ namespace Singular.Modules.Core.Controllers
         public BuildController(ISingularContext ctx, ISectionManager sectionManager, ISiteContext siteContext)
             : base(ctx, sectionManager, siteContext)
         {
+#if DEBUG
             _resMgr = ctx.GetService<IEmbeddedResourceManager>();
+#else
+            throw new Exception("");
+#endif
+            
         }
 
         /// <summary>

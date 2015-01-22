@@ -31,5 +31,6 @@ namespace Singular.Core.Data.Entities
         public int FailedLoginAttempts { get; set; }
         public bool IsLockedOut { get; set; }
         public AuthenticationType AuthenticationType { get; set; }
+        public bool IsSuperUser { get; set; }
     }
 }

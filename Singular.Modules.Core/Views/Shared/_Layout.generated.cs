@@ -128,24 +128,38 @@ Write(RenderSection("styles", false));
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n    ");
+WriteLiteral("\r\n    ");
 
 WriteLiteral("\r\n    <style>\r\n\r\n            .collapse.in {\r\n                height: ");
 
             
-            #line 22 "..\..\Views\Shared\_Layout.cshtml"
-                    Write((Model.Sections.Count*60) + 100);
+            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+                    Write((Model.Sections.Count*60)+8);
 
             
             #line default
             #line hidden
 WriteLiteral("px;\r\n                overflow: hidden;\r\n            }\r\n\r\n            ");
 
+WriteLiteral(@"@media(max-width: 767px) {
+                div.user-info {
+                    float: none;
+                    display: block;
+                    margin-left: -12px;
+                    margin-right: -15px;
+                }
+                div.user-info-inner {
+                    float: right;
+                }
+            }
+
+            ");
+
 WriteLiteral("@font-face {\r\n                font-family: \'Glyphicons Halflings\';\r\n             " +
 "   src: url(\'");
 
             
-            #line 28 "..\..\Views\Shared\_Layout.cshtml"
+            #line 39 "..\..\Views\Shared\_Layout.cshtml"
                      Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot"));
 
             
@@ -154,7 +168,7 @@ WriteLiteral("@font-face {\r\n                font-family: \'Glyphicons Halfling
 WriteLiteral("\');\r\n                src: url(\'");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 40 "..\..\Views\Shared\_Layout.cshtml"
                      Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot"));
 
             
@@ -163,7 +177,7 @@ WriteLiteral("\');\r\n                src: url(\'");
 WriteLiteral("?#iefix\') format(\'embedded-opentype\'), url(\'");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 40 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                                            Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff"));
 
             
@@ -172,7 +186,7 @@ WriteLiteral("?#iefix\') format(\'embedded-opentype\'), url(\'");
 WriteLiteral("\') format(\'woff\'), url(\'");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 40 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                                                                                                                                                               Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf"));
 
             
@@ -181,19 +195,18 @@ WriteLiteral("\') format(\'woff\'), url(\'");
 WriteLiteral("\') format(\'truetype\'), url(\'");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 40 "..\..\Views\Shared\_Layout.cshtml"
                                                                                                                                                                                                                                                                                                                                                                                                     Write(Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg"));
 
             
             #line default
             #line hidden
-WriteLiteral("#glyphicons_halflingsregular\') format(\'svg\');\r\n            }\r\n    </style>\r\n\r\n   " +
-" ");
+WriteLiteral("#glyphicons_halflingsregular\') format(\'svg\');\r\n            }\r\n    </style>\r\n    ");
 
 WriteLiteral("\r\n    <script>\r\n        window.ROOT_URL = \"");
 
             
-            #line 37 "..\..\Views\Shared\_Layout.cshtml"
+            #line 47 "..\..\Views\Shared\_Layout.cshtml"
                       Write(Url.Content("~/"));
 
             
@@ -202,7 +215,7 @@ WriteLiteral("\r\n    <script>\r\n        window.ROOT_URL = \"");
 WriteLiteral("\";\r\n        window.GENERAL_ERROR_MESSAGE = \"");
 
             
-            #line 38 "..\..\Views\Shared\_Layout.cshtml"
+            #line 48 "..\..\Views\Shared\_Layout.cshtml"
                                    Write(Html.Translate("A general error has occured"));
 
             
@@ -213,7 +226,7 @@ WriteLiteral("\";\r\n");
 WriteLiteral("        ");
 
             
-            #line 39 "..\..\Views\Shared\_Layout.cshtml"
+            #line 49 "..\..\Views\Shared\_Layout.cshtml"
    Write(Html.DebugOnlyWrite("window.DEBUG_MODE = true;"));
 
             
@@ -230,7 +243,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("    ");
 
             
-            #line 43 "..\..\Views\Shared\_Layout.cshtml"
+            #line 53 "..\..\Views\Shared\_Layout.cshtml"
 Write(Html.Partial("_Loader"));
 
             
@@ -241,7 +254,7 @@ WriteLiteral("\r\n    <header>\r\n");
 WriteLiteral("        ");
 
             
-            #line 45 "..\..\Views\Shared\_Layout.cshtml"
+            #line 55 "..\..\Views\Shared\_Layout.cshtml"
    Write(Html.Partial("_Nav"));
 
             
@@ -256,7 +269,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 48 "..\..\Views\Shared\_Layout.cshtml"
+            #line 58 "..\..\Views\Shared\_Layout.cshtml"
    Write(Html.Partial("_Sidebar"));
 
             
@@ -269,7 +282,7 @@ WriteLiteral(" id=\"dashboard\"");
 WriteLiteral(">");
 
             
-            #line 49 "..\..\Views\Shared\_Layout.cshtml"
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
                            Write(RenderBody());
 
             
@@ -278,13 +291,13 @@ WriteLiteral(">");
 WriteLiteral("</section>\r\n    </div>\r\n");
 
             
-            #line 51 "..\..\Views\Shared\_Layout.cshtml"
+            #line 61 "..\..\Views\Shared\_Layout.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 51 "..\..\Views\Shared\_Layout.cshtml"
+            #line 61 "..\..\Views\Shared\_Layout.cshtml"
      if (ViewBag.NoNg != true)
     {
 
@@ -293,132 +306,132 @@ WriteLiteral("</section>\r\n    </div>\r\n");
             #line hidden
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2346), Tuple.Create("\"", 2449)
+WriteAttribute("src", Tuple.Create(" src=\"", 2695), Tuple.Create("\"", 2798)
             
-            #line 53 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2352), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2701), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Scripts/Helpers.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2352), false)
+, 2701), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2477), Tuple.Create("\"", 2572)
+WriteAttribute("src", Tuple.Create(" src=\"", 2826), Tuple.Create("\"", 2921)
             
-            #line 54 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2483), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 64 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2832), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angular.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2483), false)
+, 2832), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2600), Tuple.Create("\"", 2703)
+WriteAttribute("src", Tuple.Create(" src=\"", 2949), Tuple.Create("\"", 3052)
             
-            #line 55 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2606), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 65 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2955), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angular-animate.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2606), false)
+, 2955), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2731), Tuple.Create("\"", 2846)
+WriteAttribute("src", Tuple.Create(" src=\"", 3080), Tuple.Create("\"", 3195)
             
-            #line 56 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2737), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 66 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3086), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Scripts/angularui/ui-bootstrap-tpls.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2737), false)
+, 3086), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2874), Tuple.Create("\"", 2968)
+WriteAttribute("src", Tuple.Create(" src=\"", 3223), Tuple.Create("\"", 3317)
             
-            #line 57 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2880), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3229), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.route.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 2880), false)
+, 3229), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2996), Tuple.Create("\"", 3091)
+WriteAttribute("src", Tuple.Create(" src=\"", 3345), Tuple.Create("\"", 3440)
             
-            #line 58 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3002), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3351), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.repeat.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 3002), false)
+, 3351), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3119), Tuple.Create("\"", 3210)
+WriteAttribute("src", Tuple.Create(" src=\"", 3468), Tuple.Create("\"", 3559)
             
-            #line 59 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3125), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3474), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("AltNg", "~/alt/alt.ui.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 3125), false)
+, 3474), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3238), Tuple.Create("\"", 3350)
+WriteAttribute("src", Tuple.Create(" src=\"", 3587), Tuple.Create("\"", 3699)
             
-            #line 60 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3244), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularCommon.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 70 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3593), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularCommon.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 3244), false)
+, 3593), false)
 );
 
 WriteLiteral("></script>\r\n");
 
 WriteLiteral("        <script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 3378), Tuple.Create("\"", 3493)
+WriteAttribute("src", Tuple.Create(" src=\"", 3727), Tuple.Create("\"", 3842)
             
-            #line 61 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3384), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
+            #line 71 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 3733), Tuple.Create<System.Object, System.Int32>(Url.EmbeddedContent("Core", "~/Content/Ng/Common/SingularMasterApp.js", IncludeBehaviour.MinifyWhenNotDebug)
             
             #line default
             #line hidden
-, 3384), false)
+, 3733), false)
 );
 
 WriteLiteral("></script>\r\n");
 
             
-            #line 62 "..\..\Views\Shared\_Layout.cshtml"
+            #line 72 "..\..\Views\Shared\_Layout.cshtml"
     }
 
             
@@ -427,7 +440,7 @@ WriteLiteral("></script>\r\n");
 WriteLiteral("    ");
 
             
-            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+            #line 73 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("scripts", false));
 
             

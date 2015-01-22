@@ -6,7 +6,7 @@ using Singular.Core.Context;
 using Singular.Core.Data.Entities;
 using Singular.Core.Data.Transaction;
 using Singular.Modules.Core.Data.Models;
-using Singular.Modules.Core.Data.Services;
+using Singular.Modules.Core.Data.Service;
 
 namespace Singular.Modules.Core.ApiControllers
 {

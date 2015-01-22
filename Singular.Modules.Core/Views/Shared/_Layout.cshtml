@@ -12,15 +12,26 @@
     <link rel="stylesheet" href="@Url.EmbeddedContent("Core", "~/Content/Bootstrap/css/bootstrap.css", IncludeBehaviour.MinifyAlways)" />
     <link rel="stylesheet" href="@Url.EmbeddedContent("Core", "~/Content/Css/Singular.Core.css", IncludeBehaviour.MinifyAlways)" />
     @RenderSection("styles", false)
-
     @*
         SERVER-DRIVEN CSS
     *@
     <style>
 
             .collapse.in {
-                height: @((Model.Sections.Count*60) + 100)px;
+                height: @((Model.Sections.Count*60)+8)px;
                 overflow: hidden;
+            }
+
+            @@media(max-width: 767px) {
+                div.user-info {
+                    float: none;
+                    display: block;
+                    margin-left: -12px;
+                    margin-right: -15px;
+                }
+                div.user-info-inner {
+                    float: right;
+                }
             }
 
             @@font-face {
@@ -29,7 +40,6 @@
                 src: url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.eot")?#iefix') format('embedded-opentype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.woff")') format('woff'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.ttf")') format('truetype'), url('@Url.EmbeddedContent("Core", "~/Content/Bootstrap/fonts/glyphicons-halflings-regular.svg")#glyphicons_halflingsregular') format('svg');
             }
     </style>
-
     @*
         SERVER-DRIVEN JS VALUES
     *@

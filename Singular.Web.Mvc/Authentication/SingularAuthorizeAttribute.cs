@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Singular.Core.Context;
+using Singular.Core.Data.Service;
 using Singular.Web.Mvc.Context;
 
 namespace Singular.Web.Mvc.Authentication
@@ -25,10 +26,21 @@ namespace Singular.Web.Mvc.Authentication
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            return _ctx.UserIsAllowed(
-                Users.Contains(",") ? Users.Split(',').ToList() : new List<string>(1){ Users },
-                Roles.Contains(",") ? Roles.Split(',').ToList() : new List<string>(1) { Roles }, 
-                Modules);
+            // TODO: make user permission cached? Don't want to go to DB everytime - cache should be updated when either this method is accessed or when permissions change
+            
+
+            // check
+            if (!_ctx.IsAuthenticated) return false;
+            // get service
+            var service = _ctx.GetService<IPermissionService>();
+            if (service == null) return false;
+            using (service)
+            {
+                return service.UserIsAllowed(_ctx.CurrentUser.Id,
+                    Users.Contains(",") ? Users.Split(',').ToList() : new List<string>(1) {Users},
+                    Roles.Contains(",") ? Roles.Split(',').ToList() : new List<string>(1) {Roles},
+                    Modules);
+            }
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)

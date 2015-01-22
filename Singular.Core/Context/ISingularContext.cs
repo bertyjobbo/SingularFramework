@@ -32,15 +32,6 @@ namespace Singular.Core.Context
         ISingularContext LoadResources();
 
         /// <summary>
-        /// User is allowed?
-        /// </summary>
-        /// <param name="users"></param>
-        /// <param name="roles"></param>
-        /// <param name="modules"></param>
-        /// <returns></returns>
-        bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules);
-
-        /// <summary>
         /// Current user
         /// </summary>
         SingularUser CurrentUser { get; }

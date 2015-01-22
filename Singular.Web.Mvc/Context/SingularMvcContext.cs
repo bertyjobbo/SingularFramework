@@ -161,26 +161,6 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// User is allowed
-        /// </summary>
-        /// <param name="users"></param>
-        /// <param name="roles"></param>
-        /// <param name="modules"></param>
-        /// <returns></returns>
-        public bool UserIsAllowed(IList<string> users, IList<string> roles, IList<string> modules)
-        {
-            if (CurrentUser == null) return false;
-
-            // so we need to add the current user
-            using (var permissionService = new PermissionService())
-            {
-                return permissionService.UserIsAllowed(CurrentUser.Id, users, roles, modules);
-            }
-
-
-        }
-
-        /// <summary>
         /// Current user
         /// </summary>
         public SingularUser CurrentUser

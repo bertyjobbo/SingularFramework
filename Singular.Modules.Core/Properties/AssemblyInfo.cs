@@ -133,6 +133,8 @@ using System.Web.UI;
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Logo.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Man.png", "image/png")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Reload-Purple.png", "image/png")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Images.Reload.png", "image/png")]
@@ -168,6 +170,12 @@ using System.Web.UI;
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularFormsAuthApp.min.js", "application/x-javascript")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularFormsAuthApp.min.js.map", "text/plain")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularSysApp.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularSysApp.min.js", "application/x-javascript")]
+/* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
+[assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.SingularSysApp.min.js.map", "text/plain")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */
 [assembly: System.Web.UI.WebResource("Singular.Modules.Core.Content.Ng.Modules.TranslateApp.js", "application/x-javascript")]
 /* WEBRESOURCE_AUTO_GENERATED_BY_SINGULAR */

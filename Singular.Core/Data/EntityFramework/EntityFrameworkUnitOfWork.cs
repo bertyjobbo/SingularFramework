@@ -43,7 +43,7 @@ namespace Singular.Core.Data.EntityFramework
                         var modCast = (EntityBase)mod.Entity;
                         if (mod.State == EntityState.Added)
                         {
-                            modCast.Active = true;
+                            modCast.IsActive = true;
                             modCast.Created = DateTime.UtcNow;
 
                             if (_sCtx.CurrentUser != null)

@@ -4,7 +4,8 @@ using System.Web.Mvc;
 using Castle.MicroKernel.Registration;
 using Singular.Core.Configuration;
 using Singular.Core.Encryption;
-using Singular.Modules.Core.Data.Services;
+using Singular.Modules.Core.Data.Configuration;
+using Singular.Modules.Core.Data.Service;
 using Singular.Web.Mvc.EmbeddedResourceConfiguration;
 using Singular.Web.Mvc.Ioc;
 using Singular.Web.Mvc.Section;
@@ -20,7 +21,19 @@ namespace Singular.Modules.Core.Configuration
 
         public void OnAppStart()
         {
-            
+            // auth config object
+            var passwordAttemptsStr = ConfigurationManager.AppSettings["AllowedFailedLogins"];
+            var passwordAttempts = 10;
+            int.TryParse(passwordAttemptsStr, out passwordAttempts);
+            var mustApproveStr = ConfigurationManager.AppSettings["RegistrationApproval"];
+            var mustApprove = true;
+            bool.TryParse(mustApproveStr, out mustApprove);
+            var authConfig = new SingularFormsAuthenticationConfiguration
+            {
+                NumberOfAllowedFailedPasswordAttempts = passwordAttempts, RegistrationMustBeApproved = mustApprove 
+            };
+
+
             MvcIocManager.Current.AddServices(new IRegistration[]
             {
                 Component
@@ -30,6 +43,10 @@ namespace Singular.Modules.Core.Configuration
                 Component
                     .For<EncryptionHelper>()
                     .ImplementedBy<EncryptionHelper>()
+                    .LifestyleSingleton(),
+                Component
+                    .For<SingularFormsAuthenticationConfiguration>()
+                    .UsingFactoryMethod(()=> authConfig)
                     .LifestyleSingleton()
             });
 
@@ -42,6 +59,10 @@ namespace Singular.Modules.Core.Configuration
                 Component
                     .For<EncryptionHelper>()
                     .ImplementedBy<EncryptionHelper>()
+                    .LifestyleSingleton(),
+                Component
+                    .For<SingularFormsAuthenticationConfiguration>()
+                    .UsingFactoryMethod(()=> authConfig)
                     .LifestyleSingleton()
             });
 
@@ -109,7 +130,7 @@ namespace Singular.Modules.Core.Configuration
                     AreaName = "Core",
                     Controller = "Tree",
                     ImageVirtualPath = "~/Content/Images/Tree.png",
-                    RouteValues = new {area = "Core"},
+                    RouteValues = new { area = "Core" },
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString()
                                          .ToLower()
@@ -124,7 +145,7 @@ namespace Singular.Modules.Core.Configuration
                     AreaName = "Core",
                     Controller = "Users",
                     ImageVirtualPath = "~/Content/Images/User.png",
-                    RouteValues = new {area = "Core"},
+                    RouteValues = new { area = "Core" },
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString()
                                          .ToLower()
@@ -139,7 +160,7 @@ namespace Singular.Modules.Core.Configuration
                     AreaName = "Core",
                     Controller = "Translate",
                     ImageVirtualPath = "~/Content/Images/Translate.png",
-                    RouteValues = new {area = "Core"},
+                    RouteValues = new { area = "Core" },
                     IsActive = () => HttpContext.Current != null &&
                                      HttpContext.Current.Request.Url.ToString()
                                          .ToLower()
@@ -150,8 +171,8 @@ namespace Singular.Modules.Core.Configuration
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            var routeObj = new {controller = "Home", action = "Index", id = UrlParameter.Optional};
-            var strArrays = new[] {"Singular.Modules.Core.Controllers", "Singular.Modules.Core.ApiControllers"};
+            var routeObj = new { controller = "Home", action = "Index", id = UrlParameter.Optional };
+            var strArrays = new[] { "Singular.Modules.Core.Controllers", "Singular.Modules.Core.ApiControllers" };
             context.MapRoute("Core", "Singular/Core/{controller}/{action}/{id}", routeObj, strArrays);
         }
     }

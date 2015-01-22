@@ -1,6 +1,5 @@
 using System.Web.Http;
 using Singular.Core.Context;
-using Singular.Modules.Core.Data.Services;
 
 namespace Singular.Modules.Core.ApiControllers
 {

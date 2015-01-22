@@ -30,7 +30,7 @@ namespace MySingularApplication
         }
     }
 
-    public class MyInitializer: DropCreateDatabaseAlways<SingularEntityFrameworkContext>
+    public class MyInitializer: DropCreateDatabaseIfModelChanges<SingularEntityFrameworkContext>
     {
         protected override void Seed(SingularEntityFrameworkContext context)
         {
@@ -38,10 +38,11 @@ namespace MySingularApplication
             var user1 = new SingularUser
             {
                 Email = "robjohnson1978@gmail.com", 
-                Active = true,
+                IsActive = true,
                 AuthenticationType = AuthenticationType.Forms,
                 Created = DateTime.UtcNow,
-                CreatedBy = null, Name = "Rob Johnson"
+                CreatedBy = null, Name = "Rob Johnson",
+                IsSuperUser = true
             };
 
             var helper = new EncryptionHelper();
@@ -52,7 +53,7 @@ namespace MySingularApplication
             var user2 = new SingularUser
             {
                 Email = "robjohnsondeveloper@gmail.com",
-                Active = true,
+                IsActive = true,
                 AuthenticationType = AuthenticationType.Forms,
                 Created = DateTime.UtcNow,
                 CreatedBy = null,

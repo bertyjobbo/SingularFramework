@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -166,6 +166,9 @@
     <EmbeddedResource Include="Content\Images\Shape51.png" />
     <EmbeddedResource Include="Content\Ng\Common\SingularCommon.js" />
     <EmbeddedResource Include="Content\Ng\Common\SingularCommon.min.js" />
+    <EmbeddedResource Include="Content\Ng\Modules\SingularSysApp.js" />
+    <EmbeddedResource Include="Content\Ng\Modules\SingularSysApp.min.js" />
+    <EmbeddedResource Include="Content\Images\Man.png" />
     <Content Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -245,6 +248,7 @@
       <LastGenOutput>AccessDenied.generated.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="Content\Ng\Common\SingularCommon.min.js.map" />
+    <EmbeddedResource Include="Content\Ng\Modules\SingularSysApp.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -368,6 +368,7 @@ h2{
     padding-bottom: (@padding / 2);
     margin-bottom: (@padding);
     border-bottom: 2px solid @color-dark;
+    margin-top: 0;
 }
 
 .sg-form{
@@ -419,4 +420,34 @@ input.sg-dirty.sg-invalid, textarea.sg-dirty.sg-invalid, select.sg-dirty.sg-inva
 }
 
 /*#endregion */
+
+/*#region USERINFO*/
+
+div.user-info {
+    float:right;
+    padding: 6px;
+    overflow:hidden;
+    background: @color-brand-primary-lighten;
+    display: inline-block;    
+    margin-left: -3px;
+}
+
+div.user-info-click{
+    float:left;
+}
+div.user-info-click a{
+    display:block;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position-x: 4px;    
+}
+div.user-info-logout{
+    float: left;
+    padding-top: 9px;
+    margin-right: 6px;
+}
+/*#endregion*/
 

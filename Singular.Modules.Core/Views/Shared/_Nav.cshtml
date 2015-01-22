@@ -18,7 +18,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse collapse ">
+        <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav mb-only">
                 @foreach (var section in Model.Sections)
                 {
@@ -33,8 +33,19 @@
             @if (Model.SingularContext.IsAuthenticated)
             {
                 <div class="user-info">
-                    Hello @Model.SingularContext.CurrentUser.Name!<br/>
-                    <a href="@Url.Action("Logout", "FormsAuth")">Logout >></a>
+                    <div class="user-info-inner">
+                        <div class="user-info-logout">
+                            <a ng-click="Ui.ShowLoader()" title="@(Html.Translate("Logout"))"
+                               href="@Url.Action( "Logout",new{area="Core",controller="FormsAuth"})">
+                                @(Html.Translate("Logout"))
+                            </a>
+                        </div>
+                        <div class="user-info-click">
+                            <a ng-click="Ui.ShowLoader()" href="@Url.Action("MyInfo","Users")" style="background-image: url('@Url.EmbeddedContent("Core","~/Content/Images/Man.png")');" title="@Html.Translate("Your information")">
+                                <span class="sr-only">@Html.Translate("Your information")</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             }
         </div><!-- /.navbar-collapse -->
