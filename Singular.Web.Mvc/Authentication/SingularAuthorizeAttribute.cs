@@ -26,8 +26,8 @@ namespace Singular.Web.Mvc.Authentication
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            // TODO: make user permission cached? Don't want to go to DB everytime - cache should be updated when either this method is accessed or when permissions change
-
+            // ping session first to make sure
+            var ping = _ctx.Session;
 
             // check
             if (!_ctx.IsAuthenticated) return false;

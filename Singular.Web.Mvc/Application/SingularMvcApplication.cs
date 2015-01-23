@@ -94,22 +94,22 @@ namespace Singular.Web.Mvc.Application
                 Component
                     .For<IEmbeddedResourceManager>()
                     .UsingFactoryMethod(() => EmbeddedResourceManager.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISingularContext>()
                     .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISectionManager>()
                     .UsingFactoryMethod(() => SectionManager.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISiteContext>()
                     .UsingFactoryMethod(() => SiteContext.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<DbContext>()
@@ -135,7 +135,7 @@ namespace Singular.Web.Mvc.Application
                 Component
                     .For<IUserService>()
                     .ImplementedBy<UserService>()
-                    .LifestyleSingleton()
+                    .LifestylePerWebRequest()
 
                 );
 
@@ -144,22 +144,22 @@ namespace Singular.Web.Mvc.Application
                 Component
                     .For<IEmbeddedResourceManager>()
                     .UsingFactoryMethod(() => EmbeddedResourceManager.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISingularContext>()
                     .UsingFactoryMethod<ISingularContext>(() => SingularMvcContext.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISectionManager>()
                     .UsingFactoryMethod(() => SectionManager.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<ISiteContext>()
                     .UsingFactoryMethod(() => SiteContext.Current)
-                    .LifestyleSingleton(),
+                    .LifestylePerWebRequest(),
 
                 Component
                     .For<DbContext>()
@@ -185,7 +185,7 @@ namespace Singular.Web.Mvc.Application
                 Component
                     .For<IUserService>()
                     .ImplementedBy<UserService>()
-                    .LifestyleSingleton()
+                    .LifestylePerWebRequest()
 
                 );
 

@@ -28,19 +28,22 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
             // get query string
             var qstr = $location.search();
 
+            // redirect to path only
             if (!objct.IsNullOrEmpty(qstr)) {
                 $location.url($location.path())
             }
+
+            // return url            
+            var returnUrl = qstr === undefined ? undefined : qstr.returnUrl
 
 
             // model
             $scope.Model = {
                 Email: "",
                 Password: "",
-                RememberMe: true,
-                RedirectUrl: qstr === undefined ? "" : qstr.returnUrl
+                RememberMe: true
             }
-
+                       
 
             // login
             $scope.Login = function () {
@@ -48,8 +51,8 @@ Singular.Modules.SingularFormsAuthApp = angular.module("Singular.Modules.Singula
                 sgCrudService
                     .Post($scope, url, $scope.Model)
                     .then(function (data) {                        
-                        if (data.Success()) {
-                            window.location = $scope.Model.ReturnUrl || $scope.RootedUrl("Singular/Core/");
+                        if (data.Success()) {                            
+                            window.location = returnUrl || $scope.RootedUrl("Singular/Core/");
                         }
                     });
             };

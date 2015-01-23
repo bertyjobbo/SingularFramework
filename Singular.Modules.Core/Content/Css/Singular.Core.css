@@ -260,8 +260,10 @@ a.navbar-brand {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  background-color: #886ab5;
-  color: #ffffff;
+  /*background-color: @color-brand-primary-lighten;
+    color: @color-white;*/
+  color: #886ab5;
+  background-color: #563d7c;
 }
 /*#endregion */
 /*#region DASHBOARD */
