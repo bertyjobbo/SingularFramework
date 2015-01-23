@@ -23,7 +23,7 @@
                 @foreach (var section in Model.Sections)
                 {
                     <li class="@(section.IsActive.Invoke() ? "active" : "")">
-                        <a data-ng-click="Ui.ShowLoader()" style="background-image: url('@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)');" title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
+                        <a data-ng-click="Ui.ShowLoader('@Url.Action(section.Action, section.Controller, section.RouteValues)')" style="background-image: url('@Url.EmbeddedContent(section.AreaName, section.ImageVirtualPath)');" title="@(Html.Translate(section.Name)) | @(Html.Translate(section.Description))"
                            href="@Url.Action(section.Action, section.Controller, section.RouteValues)">
                             @(Html.Translate(section.Name))
                         </a>
@@ -35,13 +35,13 @@
                 <div class="user-info">
                     <div class="user-info-inner">
                         <div class="user-info-logout">
-                            <a ng-click="Ui.ShowLoader()" title="@(Html.Translate("Logout"))"
+                            <a ng-click="Ui.ShowLoader('@Url.Action( "Logout",new{area="Core",controller="FormsAuth"})')" title="@(Html.Translate("Logout"))"
                                href="@Url.Action( "Logout",new{area="Core",controller="FormsAuth"})">
                                 @(Html.Translate("Logout"))
                             </a>
                         </div>
                         <div class="user-info-click">
-                            <a ng-click="Ui.ShowLoader()" href="@Url.Action("MyInfo","Users")" style="background-image: url('@Url.EmbeddedContent("Core","~/Content/Images/Man.png")');" title="@Html.Translate("Your information")">
+                            <a ng-click="Ui.ShowLoader('@Url.Action("MyInfo","Users")')" href="@Url.Action("MyInfo","Users")" style="background-image: url('@Url.EmbeddedContent("Core","~/Content/Images/Man.png")');" title="@Html.Translate("Your information")">
                                 <span class="sr-only">@Html.Translate("Your information")</span>
                             </a>
                         </div>

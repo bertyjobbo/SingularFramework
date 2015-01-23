@@ -92,27 +92,6 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
             return output;
         }
 
-        ///*
-        // * OBVIOUSLY THIS ALL NEEDS TO GO IN THE SERVICE!!!
-        // * 
-        // * (INCLUDING THE "NON PROP" ONE) - add "generalErrors" to TransactionResult
-        // * 
-        // */
-        //$scope.SgValidationErrors = {};
-        //$scope.SgValidationErrors["Model.Email"] = "Error email";
-        //$scope.SgValidationErrors["Model.Password"] = "Error passowrd";            
-        //$scope.SgValidationErrors["NonProp_1"] = "Your username or password are SHITE";
-        //$scope.NonPropSgValidationErrors = function () {
-
-        //    var output = [];
-        //    for (var x in $scope.SgValidationErrors) {
-        //        if (x.indexOf("NonProp") === 0) {
-        //            output.push($scope.SgValidationErrors[x]);
-        //        }
-        //    }
-        //    return output;
-        //}
-
     }]);
 
     // ngValidation directive
@@ -291,8 +270,16 @@ Singular.Common.SingularCommon = angular.module("Singular.Common.SingularCommon"
 
             // show loader?
             LoaderVisible: false,
-            ShowLoader: function () {
-                $rootScope.$broadcast("SgLoaderShow");
+            ShowLoader: function (url) {                
+                if (!strng.IsNullOrWhiteSpace(url)) {                    
+                    if (window.location.pathname.toLowerCase() != url.toLowerCase()) {
+                        $rootScope.$broadcast("SgLoaderShow");
+                    }
+                }
+                else {
+                    $rootScope.$broadcast("SgLoaderShow");
+                }
+                
             },
             HideLoader: function () {
                 $rootScope.$broadcast("SgLoaderHide");

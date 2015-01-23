@@ -27,32 +27,32 @@ namespace Singular.Web.Mvc.Authentication
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             // TODO: make user permission cached? Don't want to go to DB everytime - cache should be updated when either this method is accessed or when permissions change
-            
+
 
             // check
             if (!_ctx.IsAuthenticated) return false;
             // get service
             var service = _ctx.GetService<IPermissionService>();
+            // check service
             if (service == null) return false;
-            using (service)
-            {
-                return service.UserIsAllowed(_ctx.CurrentUser.Id,
-                    Users.Contains(",") ? Users.Split(',').ToList() : new List<string>(1) {Users},
-                    Roles.Contains(",") ? Roles.Split(',').ToList() : new List<string>(1) {Roles},
-                    Modules);
-            }
+            // go
+            return service.UserIsAllowed(_ctx.CurrentUser.Id,
+                Users.Contains(",") ? Users.Split(',').ToList() : new List<string>(1) { Users },
+                Roles.Contains(",") ? Roles.Split(',').ToList() : new List<string>(1) { Roles },
+                Modules);
+
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Sys/AccessDenied/"),true);
+                filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/Sys/AccessDenied/"), true);
                 return;
             }
-            
-            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth/#/Login/?returnUrl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.Url.ToString()) + "&canlogin=1&isAccessDenied=false"),true);
-            
+
+            filterContext.HttpContext.Response.Redirect(VirtualPathUtility.ToAppRelative("~/Singular/Core/FormsAuth/#/Login/?returnUrl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.Url.ToString()) + "&canlogin=1&isAccessDenied=false"), true);
+
         }
     }
 }

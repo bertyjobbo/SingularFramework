@@ -48,6 +48,7 @@
     <Compile Include="Data\EntityFramework\EntityFrameworkUnitOfWork.cs" />
     <Compile Include="Data\Service\UserService.cs" />
     <Compile Include="Data\Transaction\IUnitOfWork.cs" />
+    <Compile Include="Exceptions\SingularServiceResolverException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>

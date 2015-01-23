@@ -100,6 +100,8 @@
   <ItemGroup>
     <Compile Include="Application\SingularMvcApplication.cs" />
     <Compile Include="Authentication\SingularAuthorizeAttribute.cs" />
+    <Compile Include="Context\ISingularMvcAuthenticationContext.cs" />
+    <Compile Include="Context\SingularMvcAuthenticationContext.cs" />
     <Compile Include="Context\SingularMvcContext.cs" />
     <Compile Include="Context\ISiteContext.cs" />
     <Compile Include="Context\SiteContext.cs" />

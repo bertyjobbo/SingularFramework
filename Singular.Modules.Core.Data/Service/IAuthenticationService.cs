@@ -6,7 +6,6 @@ namespace Singular.Modules.Core.Data.Service
 {
     public interface IAuthenticationService
     {
-        TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user, bool setSingularSession = true);
-        void AddUserToContextByLogonName(string name);
+        TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user);
     }
 }

@@ -1,107 +1,58 @@
-using System.Data.Entity;
-using System.Web;
-using System.Web.Hosting;
-using Castle.Core.Logging;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using Singular.Core.Authentication;
-using Singular.Core.Configuration;
-using Singular.Core.Context;
-using Singular.Core.Data.DataContext;
-using Singular.Core.Data.Entities;
-using Singular.Core.Data.EntityFramework;
-using Singular.Core.Data.Repository;
-using Singular.Core.Data.Service;
-using Singular.Core.Data.Transaction;
-using Singular.Web.Mvc.EmbeddedResourceConfiguration;
-using Singular.Web.Mvc.Ioc;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Security;
+using Singular.Core.Authentication;
+using Singular.Core.Configuration;
+using Singular.Core.Context;
+using Singular.Core.Data.Entities;
+using Singular.Core.Data.Enums;
+using Singular.Core.Data.Service;
+using Singular.Core.Exceptions;
+using Singular.Web.Mvc.EmbeddedResourceConfiguration;
+using Singular.Web.Mvc.Ioc;
 
 namespace Singular.Web.Mvc.Context
 {
     public class SingularMvcContext : ISingularContext
     {
         // singleton
+
+        private const string session_key = "SINGULAR_USER_SESSION";
+        private static ISingularContext _current;
+        private readonly Type _areaRegType = typeof (AreaRegistration);
+        private readonly Type _moduleConfigType = typeof (ISingularModuleConfiguration);
+
+        // fields
+        private List<Assembly> _assemblies;
+        private List<Type> _types;
+
+        private SingularMvcContext()
+        {
+            Modules = new Dictionary<string, ISingularModuleConfiguration>();
+        }
+
         /// <summary>
-        /// Current
+        ///     Current
         /// </summary>
         public static ISingularContext Current
         {
             get { return _current ?? (_current = new SingularMvcContext()); }
         }
-        private SingularMvcContext()
-        {
-            Modules = new Dictionary<string, ISingularModuleConfiguration>();
-        }
-        private static ISingularContext _current;
-
-        // fields
-        private List<Assembly> _assemblies;
-        private List<Type> _types;
-        private readonly Type _moduleConfigType = typeof(ISingularModuleConfiguration);
-        private readonly Type _areaRegType = typeof(AreaRegistration);
-
-        // private methods
-        private void fireModuleAppStartMethods()
-        {
-            foreach (KeyValuePair<string, ISingularModuleConfiguration> singularModuleConfiguration in Modules)
-            {
-                singularModuleConfiguration.Value.OnAppStart();
-            }
-        }
-        private void setAssemblies()
-        {
-            if (_assemblies == null)
-            {
-                _assemblies = new List<Assembly>();
-                var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
-                if (!pathToBin.Contains("bin"))
-                {
-                    pathToBin = Path.Combine(pathToBin, "bin");
-                }
-                var files = Directory.GetFiles(pathToBin, "*.dll").Where(x => !x.StartsWith("System.")).ToList();
-                foreach (var dllPath in files)
-                {
-                    var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
-                    _assemblies.Add(assembly);
-                }
-            }
-        }
-        private void setModules()
-        {
-            foreach (Assembly assembly in _assemblies)
-            {
-                IEnumerable<Type> appTypes =
-                     assembly.GetTypes().Where(
-                        x => (x.GetInterfaces().Contains(_moduleConfigType) && x != _moduleConfigType));
-                foreach (var appType in appTypes)
-                {
-                    if (!appType.IsSubclassOf(_areaRegType))
-                    {
-                        throw new Exception("An implementaiton of ISingularModuleConfiguration must inherit from AreaRegistration");
-                    }
-                    var module = (ISingularModuleConfiguration)Activator.CreateInstance(appType);
-                    Modules.Add(module.AreaName, module);
-                }
-            }
-        }
 
         /// <summary>
-        /// Modules
+        ///     Modules
         /// </summary>
         public IDictionary<string, ISingularModuleConfiguration> Modules { get; private set; }
 
         /// <summary>
-        /// Types
+        ///     Types
         /// </summary>
         public IList<Type> Types
         {
@@ -109,7 +60,7 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// Get service
+        ///     Get service
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -119,16 +70,15 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// Register the modules
+        ///     Register the modules
         /// </summary>
         /// <returns></returns>
         public ISingularContext RegisterModules()
         {
-
             // standard mvc
             AreaRegistration.RegisterAllAreas();
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
-            GlobalConfiguration.Configure((config) =>
+            GlobalConfiguration.Configure(config =>
             {
                 config.Formatters.Clear();
                 config.Formatters.Add(new JsonMediaTypeFormatter());
@@ -151,7 +101,7 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// Load resources
+        ///     Load resources
         /// </summary>
         /// <returns></returns>
         public ISingularContext LoadResources()
@@ -161,24 +111,23 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// Current user
+        ///     Current user
         /// </summary>
         public SingularUser CurrentUser
         {
             get
             {
-                var s = Session;
-                if (s == null) return default(SingularUser);
-                return s.User;
+                if (Session == null) return default(SingularUser);
+                return Session.User;
             }
         }
 
         /// <summary>
-        /// Set current user
+        ///     Set current user
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ISingularContext SetCurrentUser(SingularUser user)
+        public ISingularContext CreateSingularSession(SingularUser user)
         {
             if (HttpContext.Current.Session == null)
             {
@@ -190,37 +139,51 @@ namespace Singular.Web.Mvc.Context
         }
 
         /// <summary>
-        /// Remove current user
+        ///     Remove current user
         /// </summary>
         /// <returns></returns>
-        public ISingularContext RemoveCurrentUser()
+        public ISingularContext DestroySingularSession()
         {
+            if (HttpContext.Current.Session == null)
+            {
+                throw new Exception("HttpContext.Current.Session is null at ISingularContext.SetCurrentUser");
+            }
             HttpContext.Current.Session.Remove(session_key);
             return this;
         }
 
         /// <summary>
-        /// Session
+        ///     Session
         /// </summary>
         public SingularSession Session
         {
             get
             {
+                // check no possible session
                 if (HttpContext.Current == null || HttpContext.Current.Session == null) return default(SingularSession);
+
+                // now try to get session
                 var s = HttpContext.Current.Session[session_key];
-                if (s == null) return default(SingularSession);
-                return (SingularSession)s;
+                if (s == null)
+                {
+                    // check aspnet auth token exists but user doesn't
+                    checkAuthenticatedButNoSingularSession();
+                }
+                
+                return (SingularSession) s;
             }
         }
-        private const string session_key = "SINGULAR_USER_SESSION";
 
         /// <summary>
-        /// Is authenticated
+        ///     Is authenticated
         /// </summary>
-        public bool IsAuthenticated { get { return CurrentUser != null && Session != null; } }
+        public bool IsAuthenticated
+        {
+            get { return Session != null; }
+        }
 
         /// <summary>
-        /// Assemblies
+        ///     Assemblies
         /// </summary>
         public IList<Assembly> Assemblies
         {
@@ -234,28 +197,98 @@ namespace Singular.Web.Mvc.Context
             }
         }
 
-        /// <summary>
-        /// On first request
-        /// </summary>
-        public void OnBeginRequest()
+        private void fireModuleAppStartMethods()
         {
-            // these conditions mean that it's windows logon
-            if (!IsAuthenticated && HttpContext.Current != null && HttpContext.Current.User != null && HttpContext.Current.User.Identity != null && HttpContext.Current.User.Identity.IsAuthenticated)
+            foreach (var singularModuleConfiguration in Modules)
             {
-                // so we need to add the current user
-                var ctx = (DbContext) new SingularEntityFrameworkContext();
-                using (var uow = (IUnitOfWork) new EntityFrameworkUnitOfWork(ctx, this))
+                singularModuleConfiguration.Value.OnAppStart();
+            }
+        }
+
+        private void setAssemblies()
+        {
+            if (_assemblies == null)
+            {
+                _assemblies = new List<Assembly>();
+                var pathToBin = AppDomain.CurrentDomain.BaseDirectory;
+                if (!pathToBin.Contains("bin"))
                 {
-                    var repo = (IRepository<SingularUser>)new EntityFrameworkRepository<SingularUser>(ctx, uow);
-                    var userService = (IUserService)new UserService(repo, uow);
-                    var user = userService.GetUserByDomainLogon(HttpContext.Current.User.Identity.Name);
-                    if (user == null)
+                    pathToBin = Path.Combine(pathToBin, "bin");
+                }
+                var files = Directory.GetFiles(pathToBin, "*.dll").Where(x => !x.StartsWith("System.")).ToList();
+                foreach (var dllPath in files)
+                {
+                    var assembly = Assembly.Load(AssemblyName.GetAssemblyName(dllPath));
+                    _assemblies.Add(assembly);
+                }
+            }
+        }
+
+        private void setModules()
+        {
+            foreach (var assembly in _assemblies)
+            {
+                var appTypes =
+                    assembly.GetTypes().Where(
+                        x => (x.GetInterfaces().Contains(_moduleConfigType) && x != _moduleConfigType));
+                foreach (var appType in appTypes)
+                {
+                    if (!appType.IsSubclassOf(_areaRegType))
+                    {
+                        throw new Exception(
+                            "An implementaiton of ISingularModuleConfiguration must inherit from AreaRegistration");
+                    }
+                    var module = (ISingularModuleConfiguration) Activator.CreateInstance(appType);
+                    Modules.Add(module.AreaName, module);
+                }
+            }
+        }
+
+        private void checkAuthenticatedButNoSingularSession()
+        {
+            // check if aspnet login exists, but Singular one doesn't
+            if (HttpContext.Current != null && HttpContext.Current.User != null &&
+                HttpContext.Current.User.Identity != null && HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                var isWindowsLogon = SingularMvcAuthenticationContext.Current.AuthenticationType ==
+                                     AuthenticationType.Domain;
+                var isFormsLogon = SingularMvcAuthenticationContext.Current.AuthenticationType ==
+                                   AuthenticationType.Forms;
+                var isAdLogon = SingularMvcAuthenticationContext.Current.AuthenticationType ==
+                                AuthenticationType.ActiveDirectory;
+
+                var service = GetService<IUserService>();
+                if (service == null)
+                {
+                    throw new SingularServiceResolverException<IUserService>("At SingularMvcContext.Session");
+                }
+                SingularUser user = null;
+                if (isWindowsLogon)
+                    user = service.GetUserByDomainLogon(HttpContext.Current.User.Identity.Name, false);
+                if (isAdLogon)
+                    user = service.GetUserByActiveDirectoryLogon(HttpContext.Current.User.Identity.Name, false);
+                if (isFormsLogon)
+                    user = service.GetUserByEmail(HttpContext.Current.User.Identity.Name, false);
+
+                if (user == null)
+                {
+                    if (isWindowsLogon)
                     {
                         // user doesn't exist in database yet, so redirect to register page
                         // todo: HttpContext.Current.Response.Redirect("~/Singular/Core/Users/RegisterDomainUser",true);
                         throw new NotImplementedException("Domain logon is not currently supported");
-                    }    
+                    }
+                    throw new Exception("Cannot find user");
                 }
+                if (user.IsLockedOut || !user.IsActive)
+                {
+                    if (!isWindowsLogon)
+                    {
+                        FormsAuthentication.SignOut();
+                    }
+                    throw new HttpException(403, "Access Denied");
+                }
+                CreateSingularSession(user);
             }
         }
     }

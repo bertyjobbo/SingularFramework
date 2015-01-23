@@ -5,7 +5,7 @@
 <a style="background-image: url('@Url.EmbeddedContent("Core", "~/Content/Images/Logo.png")');"
    class="navbar-brand"
    href="@Url.Action("Index", "Home")"
-   data-ng-click="Ui.ShowLoader()">
+   data-ng-click="Ui.ShowLoader('@Url.Action("Index", "Home")')">
     <span class="sr-only">@Html.Translate(Model.SiteContext.SiteName)</span>
     <span class="hidden">S</span>ingular
 </a>

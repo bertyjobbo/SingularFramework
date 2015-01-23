@@ -7,7 +7,7 @@ namespace Singular.Modules.Core.Data.Service
 {
     public class ActiveDirectoryAuthenticationService : IAuthenticationService
     {
-        public TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user, bool setSingularSession = true)
+        public TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user)
         {
             throw new NotImplementedException("Active Directory login not yet available");
         }

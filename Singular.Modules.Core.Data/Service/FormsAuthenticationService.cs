@@ -47,9 +47,8 @@ namespace Singular.Modules.Core.Data.Service
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="user"></param>
-        /// <param name="setSingularSession"></param>
         /// <returns></returns>
-        public TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user, bool setSingularSession = true)
+        public TransactionResult<FormsAuthModel> CheckLogin(string email, string password, out SingularUser user)
         {
             var res = new TransactionResult<FormsAuthModel>();
 
@@ -100,33 +99,8 @@ namespace Singular.Modules.Core.Data.Service
                 //}
             }
 
-            if (res.Success && setSingularSession)
-            {
-                _ctx.SetCurrentUser(user);
-            }
-
 
             return res;
-        }
-
-        /// <summary>
-        /// Add user to context by login name
-        /// </summary>
-        /// <param name="name"></param>
-        public void AddUserToContextByLogonName(string name)
-        {
-            var user = 
-                _repo
-                .EntitiesReadOnly
-                .FirstOrDefault(x => 
-                    x.Email.ToLower() == name.ToLower() &&
-                    x.IsActive &&
-                    !x.IsLockedOut
-                );
-            if (user != null)
-            {
-                _ctx.SetCurrentUser(user);
-            }
         }
     }
 }

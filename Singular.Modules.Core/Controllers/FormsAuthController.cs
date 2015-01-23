@@ -33,22 +33,8 @@ namespace Singular.Modules.Core.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            SingularContext.RemoveCurrentUser();
+            SingularContext.DestroySingularSession();
             return Redirect("~/Singular/Core/FormsAuth/#/Login");
-        }
-
-        [HttpGet]
-        public ActionResult AddUserToContext(string returnUrl)
-        {
-            if (Request.IsAuthenticated && !SingularContext.IsAuthenticated)
-            {
-                _authService.AddUserToContextByLogonName(User.Identity.Name);
-                if (!SingularContext.IsAuthenticated)
-                {
-                    FormsAuthentication.SignOut();
-                }
-            }
-            return Redirect(returnUrl);
         }
     }
 }

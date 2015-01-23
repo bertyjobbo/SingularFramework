@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Singular.Core.Data.Entities;
 using Singular.Core.Data.Enums;
 using Singular.Core.Data.Repository;
@@ -33,15 +29,66 @@ namespace Singular.Core.Data.Service
         /// Get user by domain logon
         /// </summary>
         /// <param name="fullDomainLogon"></param>
+        /// <param name="activeAndUnlockedOnly"></param>
         /// <returns></returns>
-        public SingularUser GetUserByDomainLogon(string fullDomainLogon)
+        public SingularUser GetUserByDomainLogon(string fullDomainLogon, bool activeAndUnlockedOnly = true)
         {
-            var user =
-                _repo.EntitiesReadOnly.FirstOrDefault(
-                    x =>
-                        (x.Domain + "\\" + x.DomainUsername).ToLower() == fullDomainLogon.ToLower() &&
-                        x.AuthenticationType == AuthenticationType.Domain);
+            return getUser(fullDomainLogon, AuthenticationType.Domain, activeAndUnlockedOnly); 
+        }
 
+        /// <summary>
+        /// Get user by domain logon
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <param name="activeAndUnlockedOnly"></param>
+        /// <returns></returns>
+        public SingularUser GetUserByActiveDirectoryLogon(string identity, bool activeAndUnlockedOnly = true)
+        {
+            return getUser(identity, AuthenticationType.ActiveDirectory, activeAndUnlockedOnly);
+        }
+
+        /// <summary>
+        /// Get user by domain logon
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="activeAndUnlockedOnly"></param>
+        /// <returns></returns>
+        public SingularUser GetUserByEmail(string email, bool activeAndUnlockedOnly = true)
+        {
+           return getUser(email, AuthenticationType.Forms, activeAndUnlockedOnly);
+        }
+
+        private SingularUser getUser(string identity, AuthenticationType authType, bool activeAndUnlockedOnly)
+        {
+            var active = activeAndUnlockedOnly;
+            var locked = !activeAndUnlockedOnly;
+            SingularUser user;
+
+
+            switch (authType)
+            {
+                case AuthenticationType.ActiveDirectory:
+                {
+                    user = _repo.Entities.FirstOrDefault(x => x.DomainUsername.ToLower() == identity.ToLower());
+                    break;
+                }
+                case AuthenticationType.Domain:
+                {
+                    user = _repo.Entities.FirstOrDefault(x=>(x.Domain.ToLower() + "\\" + x.DomainUsername.ToLower()) == identity.ToLower());
+                    break;
+                }
+                default:
+                {
+                    user = _repo.Entities.FirstOrDefault(x => x.Email.ToLower() == identity.ToLower());
+                    break;
+                }
+                
+            }
+
+            if (user != null && activeAndUnlockedOnly && (user.IsLockedOut || !user.IsActive))
+            {
+                return default(SingularUser);
+            }
             
             return user;
         }

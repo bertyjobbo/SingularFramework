@@ -10,7 +10,7 @@ namespace Singular.Core.Data.Service
     {
         private readonly IUnitOfWork _uow;
         private readonly IRepository<SingularUser> _repo;
-        private ISingularContext _ctx;
+        private readonly ISingularContext _ctx;
 
         public PermissionService(ISingularContext ctx, IRepository<SingularUser> repo,IUnitOfWork uow)
         {
@@ -45,11 +45,6 @@ namespace Singular.Core.Data.Service
         private bool permissionCheck(SingularUser currentUser, IList<string> allowedUsers, IList<string> allowedRoles, IList<string> allowedModules)
         {
             throw new System.NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            _uow.Dispose();
         }
     }
 }

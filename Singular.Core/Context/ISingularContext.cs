@@ -41,13 +41,13 @@ namespace Singular.Core.Context
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        ISingularContext SetCurrentUser(SingularUser user);
+        ISingularContext CreateSingularSession(SingularUser user);
 
         /// <summary>
         /// Remove current user
         /// </summary>
         /// <returns></returns>
-        ISingularContext RemoveCurrentUser();
+        ISingularContext DestroySingularSession();
 
         /// <summary>
         /// Session

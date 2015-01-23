@@ -25,23 +25,5 @@ namespace Singular.Modules.Core.Controllers
             //Thread.Sleep(2000);
             return new CoreViewModelBase(SingularContext,SectionManager,SiteContext);
         }
-
-        protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-            if (Request.IsAuthenticated && !SingularContext.IsAuthenticated)
-            {
-                if (Request.Url != null)
-                    Response.Redirect(
-                        Url.Content(
-                            "~/Singular/Core/FormsAuth/AddUserToContext/?returnUrl=" + 
-                            HttpUtility.UrlEncode(Request.Url.ToString())
-                        ),
-                        true
-                    );
-                return;
-            }
-
-            base.OnActionExecuted(filterContext);
-        }
     }
 }
